@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Coastal Monitoring Program - Thresholds (mg / L)</title>
+<title>Thresholds (mg / L) – Coastal Monitoring Program</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -17,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -31,22 +34,29 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../pages/figures/cmar3.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b5cdc83d754cd650109f5c2e0467249f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -55,51 +65,97 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
 
-<script src="../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
 <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="../site_libs/datatables-binding-0.27/datatables.js"></script>
-<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="../site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="../site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="../site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
-<link href="../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="../site_libs/plotly-binding-4.10.4/plotly.js"></script>
-<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+<link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<script src="../site_libs/plotly-binding-4.12.0/plotly.js"></script>
+
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<link href="../site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="../site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../pages/figures/cmar3.png" alt="" class="navbar-logo">
+    <img src="../pages/figures/cmar3.png" alt="" class="navbar-logo light-content">
+    <img src="../pages/figures/cmar3.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Coastal Monitoring Program</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">About</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-about">    
@@ -118,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-quality-control" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-quality-control" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Quality Control</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-quality-control">    
@@ -133,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-dissolved-oxygen" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-dissolved-oxygen" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Dissolved Oxygen</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-dissolved-oxygen">    
@@ -156,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-salinity" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-salinity" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Salinity</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-salinity">    
@@ -175,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-sensor-depth" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-sensor-depth" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Sensor Depth</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-sensor-depth">    
@@ -194,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-temperature" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-temperature" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Temperature</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-temperature">    
@@ -213,8 +269,9 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -256,7 +313,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>Separate thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg per L. This page describes the thresholds for mg per L. Click <a href="../pages/do_thresholds.html">here</a> for the thresholds for percent saturation.</p>
 <p>QC test thresholds for dissolved oxygen (mg / L) were based on historical Coastal Monitoring Program data. Preliminary quality control (QC) was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted.</p>
@@ -270,25 +329,28 @@ ul.task-list li input[type="checkbox"] {
 <p>Table 1: Dissolved oxygen (mg / L) sensor thresholds for the Gross Range Test.</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-57090bb69aee02143936" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-57090bb69aee02143936">{"x":{"filter":"none","vertical":false,"data":[["<a  target=_blank href=https://www.onsetcomp.com/sites/default/files/resources-documents/15603-K%20MAN-U26x.pdf>hobo do<\/a>"],[0],[30]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sensor (link to spec sheet)<\/th>\n      <th>sensor_min<\/th>\n      <th>sensor_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-8f5cbda973554fd56233" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8f5cbda973554fd56233">{"x":{"filter":"none","vertical":false,"data":[["<a  target=_blank href=https://www.onsetcomp.com/sites/default/files/resources-documents/15603-K%20MAN-U26x.pdf>hobo do<\/a>"],[0],[30]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sensor (link to spec sheet)<\/th>\n      <th>sensor_min<\/th>\n      <th>sensor_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"},{"name":"Sensor (link to spec sheet)","targets":0},{"name":"sensor_min","targets":1},{"name":"sensor_max","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="user-thresholds" class="level2">
 <h2 class="anchored" data-anchor-id="user-thresholds">User Thresholds</h2>
-<p>The dissolved oxygen (mg / L) observations were normally distributed (<a href="#fig-do-hist">Figure&nbsp;1</a>), and so the mean and standard deviation were used to determine <span class="math inline">\(user_{min}\)</span> and <span class="math inline">\(user_{max}\)</span>. The statistics and threshold values are shown in Table 2.</p>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Figure 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Table 2</a></li></ul>
+<p>The dissolved oxygen (mg / L) observations were normally distributed (<a href="#fig-do-hist" class="quarto-xref">Figure&nbsp;1</a>), and so the mean and standard deviation were used to determine <span class="math inline">\(user_{min}\)</span> and <span class="math inline">\(user_{max}\)</span>. The statistics and threshold values are shown in Table 2.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Figure 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Table 2</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<div id="fig-do-hist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-37efb909d742576900d0" style="width:100%;height:325px;"></div>
-<script type="application/json" data-for="htmlwidget-37efb909d742576900d0">{"x":{"data":[{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0.000451021337819492,0.000451021337819492,0.000451021337819492,0,0.000902042675638984,0.000451021337819492,0.00496123471601441,0.0144326828102238,0.0514164325114221,0.129894145292014,0.376151795741457,0.828977218912227,1.15145747545316,1.62187273079889,2.8806732846531,9.46062358210167,12.0675269146983,12.5492177034896,20.1096883893577,15.539038151895,13.5094421317072,8.40703773695533,0.920985571827403,0.327441491256951,0.0405919204037543,0.00541225605383391,0.000451021337819492],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0.01 <br />bin: 7","percent: 0.05 <br />bin: 7.5","percent: 0.13 <br />bin: 8","percent: 0.38 <br />bin: 8.5","percent: 0.83 <br />bin: 9","percent: 1.15 <br />bin: 9.5","percent: 1.62 <br />bin: 10","percent: 2.88 <br />bin: 10.5","percent: 9.46 <br />bin: 11","percent: 12.07 <br />bin: 11.5","percent: 12.55 <br />bin: 12","percent: 20.11 <br />bin: 12.5","percent: 15.54 <br />bin: 13","percent: 13.51 <br />bin: 13.5","percent: 8.41 <br />bin: 14","percent: 0.92 <br />bin: 14.5","percent: 0.33 <br />bin: 15","percent: 0.04 <br />bin: 15.5","percent: 0.01 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.738,15.738,null,8.98,8.98],"y":[0,22.1206572282935,null,0,22.1206572282935],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.6118721461187,"r":7.30593607305936,"b":51.7393109173931,"l":44.4333748443338},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2.575,17.425],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Dissolved Oxygen (mg / L)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,22.1206572282935],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Percent of Observations","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.8775425487754}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"751058894db3":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"7510787467bc":{"xintercept":{}}},"cur_data":"751058894db3","visdat":{"751058894db3":["function (y) ","x"],"7510787467bc":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Distribution of dissolved oxygen (mg / L) observations (binwidth = 0.5 mg / L). Dotted orange lines indicate the user thresholds.</figcaption><p></p>
+<div id="fig-do-hist" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-do-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-34565cdc2c146d0287d4" style="width:100%;height:325px;"></div>
+<script type="application/json" data-for="htmlwidget-34565cdc2c146d0287d4">{"x":{"data":[{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0.00045102133781949223,0.00045102133781949223,0.00045102133781949223,0,0.00090204267563898446,0.00045102133781949223,0.0049612347160144146,0.014432682810223751,0.051416432511422111,0.12989414529201376,0.37615179574145652,0.82897721891222675,1.1514574754531637,1.6218727307988943,2.8806732846530969,9.46062358210167,12.067526914698334,12.549217703489552,20.1096883893577,15.539038151894966,13.50944213170725,8.4070377369553349,0.92098557182740315,0.32744149125695138,0.040591920403754304,0.0054122560538339068,0.00045102133781949223],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0.01 <br />bin: 7","percent: 0.05 <br />bin: 7.5","percent: 0.13 <br />bin: 8","percent: 0.38 <br />bin: 8.5","percent: 0.83 <br />bin: 9","percent: 1.15 <br />bin: 9.5","percent: 1.62 <br />bin: 10","percent: 2.88 <br />bin: 10.5","percent: 9.46 <br />bin: 11","percent: 12.07 <br />bin: 11.5","percent: 12.55 <br />bin: 12","percent: 20.11 <br />bin: 12.5","percent: 15.54 <br />bin: 13","percent: 13.51 <br />bin: 13.5","percent: 8.41 <br />bin: 14","percent: 0.92 <br />bin: 14.5","percent: 0.33 <br />bin: 15","percent: 0.04 <br />bin: 15.5","percent: 0.01 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.738,15.738,null,8.9800000000000004,8.9800000000000004],"y":[0,22.120657228293471,null,0,22.120657228293471],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":44.433374844333756,"l":44.433374844333756},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2.5750000000000002,17.425000000000001],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Dissolved Oxygen (mg / L)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,22.120657228293471],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Percent of Observations","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.87754254877543}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"477457666ef1":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"47744fbe50":{"xintercept":{}}},"cur_data":"477457666ef1","visdat":{"477457666ef1":["function (y) ","x"],"47744fbe50":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-do-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Distribution of dissolved oxygen (mg / L) observations (binwidth = 0.5 mg / L). Dotted orange lines indicate the user thresholds.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -297,9 +359,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Table 2: Gross Range Test statistics and user thresholds for dissolved oxygen (mg/L).</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8aa5f73e09c9cc9ee6a4" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-8aa5f73e09c9cc9ee6a4">{"x":{"filter":"none","vertical":false,"data":[[12.359],[1.126],[8.98],[15.738]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>mean<\/th>\n      <th>stdev<\/th>\n      <th>user_min<\/th>\n      <th>user_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-e914bc75380605f2b3fe" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e914bc75380605f2b3fe">{"x":{"filter":"none","vertical":false,"data":[[12.359],[1.126],[8.98],[15.738]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>mean<\/th>\n      <th>stdev<\/th>\n      <th>user_min<\/th>\n      <th>user_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"},{"name":"mean","targets":0},{"name":"stdev","targets":1},{"name":"user_min","targets":2},{"name":"user_max","targets":3}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -309,28 +370,36 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="climatological-test" class="level1">
 <h1>Climatological Test</h1>
-<p><a href="#fig-do-clim">Figure&nbsp;2</a> shows the monthly mean and standard deviation of dissolved oxygen (mg / L) data. The observations are normally distributed within each month (<a href="#fig-do-hist-clim">Figure&nbsp;3</a>), and so the mean and standard deviation were used to calculate the seasonal thresholds (Table 3).</p>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Figure 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Figure 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Table 3</a></li></ul>
+<p><a href="#fig-do-clim" class="quarto-xref">Figure&nbsp;2</a> shows the monthly mean and standard deviation of dissolved oxygen (mg / L) data. The observations are normally distributed within each month (<a href="#fig-do-hist-clim" class="quarto-xref">Figure&nbsp;3</a>), and so the mean and standard deviation were used to calculate the seasonal thresholds (Table 3).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Figure 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Figure 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Table 3</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<div id="fig-do-clim" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-af6e1a7a31dbba0d2e4e" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-af6e1a7a31dbba0d2e4e">{"x":{"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12],"y":[12.6562168435952,13.3948555937105,13.534015324504,13.360510519802,12.7838482714808,12.1986090969018,11.9150852367688,11.7898514344262,9.63981076388889,9.04098039215686,11.1475632871929,11.6608280129928],"text":["month: Jan<br />mean: 12.656217","month: Feb<br />mean: 13.394856","month: Mar<br />mean: 13.534015","month: Apr<br />mean: 13.360511","month: May<br />mean: 12.783848","month: Jun<br />mean: 12.198609","month: Jul<br />mean: 11.915085","month: Aug<br />mean: 11.789851","month: Sep<br />mean:  9.639811","month: Oct<br />mean:  9.040980","month: Nov<br />mean: 11.147563","month: Dec<br />mean: 11.660828"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":3.77952755905512,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12],"y":[12.6562168435952,13.3948555937105,13.534015324504,13.360510519802,12.7838482714808,12.1986090969018,11.9150852367688,11.7898514344262,9.63981076388889,9.04098039215686,11.1475632871929,11.6608280129928],"text":["month: Jan<br />mean: 12.656217<br />mean - n_sd * stdev: 11.203042<br />mean + n_sd * stdev: 14.10939","month: Feb<br />mean: 13.394856<br />mean - n_sd * stdev: 11.747016<br />mean + n_sd * stdev: 15.04270","month: Mar<br />mean: 13.534015<br />mean - n_sd * stdev: 11.393515<br />mean + n_sd * stdev: 15.67452","month: Apr<br />mean: 13.360511<br />mean - n_sd * stdev: 11.324966<br />mean + n_sd * stdev: 15.39606","month: May<br />mean: 12.783848<br />mean - n_sd * stdev: 11.288973<br />mean + n_sd * stdev: 14.27872","month: Jun<br />mean: 12.198609<br />mean - n_sd * stdev:  9.203076<br />mean + n_sd * stdev: 15.19414","month: Jul<br />mean: 11.915085<br />mean - n_sd * stdev:  8.695802<br />mean + n_sd * stdev: 15.13437","month: Aug<br />mean: 11.789851<br />mean - n_sd * stdev:  7.932850<br />mean + n_sd * stdev: 15.64685","month: Sep<br />mean:  9.639811<br />mean - n_sd * stdev:  7.245858<br />mean + n_sd * stdev: 12.03376","month: Oct<br />mean:  9.040980<br />mean - n_sd * stdev:  7.793655<br />mean + n_sd * stdev: 10.28831","month: Nov<br />mean: 11.147563<br />mean - n_sd * stdev: 10.489344<br />mean + n_sd * stdev: 11.80578","month: Dec<br />mean: 11.660828<br />mean - n_sd * stdev: 10.240819<br />mean + n_sd * stdev: 13.08084"],"type":"scatter","mode":"lines","opacity":1,"line":{"color":"transparent"},"error_y":{"array":[1.45317524110521,1.6478396836267,2.14050061331188,2.03554500348209,1.49487532613879,2.99553263302649,3.21928370520346,3.85700156560263,2.39395243022188,1.24732545954694,0.65821934079044,1.42000852440136],"arrayminus":[1.45317524110521,1.6478396836267,2.14050061331188,2.03554500348209,1.49487532613879,2.99553263302649,3.21928370520346,3.85700156560263,2.39395243022188,1.24732545954694,0.65821934079044,1.42000852440136],"type":"data","width":0,"symmetric":false,"color":"rgba(0,0,0,1)"},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.689497716895,"r":7.30593607305936,"b":30.2200083022001,"l":44.4333748443338},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,12.6],"tickmode":"array","ticktext":["Jan","Mar","May","Jul","Sep","Nov"],"tickvals":[1,3,5,7,9,11],"categoryorder":"array","categoryarray":["Jan","Mar","May","Jul","Sep","Nov"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[6.82442545345956,16.0959488180233],"tickmode":"array","ticktext":["8","10","12","14","16"],"tickvals":[8,10,12,14,16],"categoryorder":"array","categoryarray":["8","10","12","14","16"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"x","title":{"text":"Dissolved Oxygen (mg / L)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.8775425487754}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"7510547f40d9":{"x":{},"y":{},"type":"scatter"},"7510159c6c7e":{"x":{},"y":{},"ymin":{},"ymax":{}}},"cur_data":"7510547f40d9","visdat":{"7510547f40d9":["function (y) ","x"],"7510159c6c7e":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Mean +/- 3 standard deviations of the monthly dissolved oxygen (mg / L) observations.</figcaption><p></p>
+<div id="fig-do-clim" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-do-clim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-ad7864c5ce15526353fa" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-ad7864c5ce15526353fa">{"x":{"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12],"y":[12.656216843595187,13.394855593710464,13.534015324503983,13.360510519801981,12.783848271480757,12.19860909690178,11.915085236768801,11.789851434426229,9.6398107638888888,9.0409803921568628,11.147563287192916,11.660828012992832],"text":["month: Jan<br />mean: 12.656217","month: Feb<br />mean: 13.394856","month: Mar<br />mean: 13.534015","month: Apr<br />mean: 13.360511","month: May<br />mean: 12.783848","month: Jun<br />mean: 12.198609","month: Jul<br />mean: 11.915085","month: Aug<br />mean: 11.789851","month: Sep<br />mean:  9.639811","month: Oct<br />mean:  9.040980","month: Nov<br />mean: 11.147563","month: Dec<br />mean: 11.660828"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10,11,12],"y":[12.656216843595187,13.394855593710464,13.534015324503983,13.360510519801981,12.783848271480757,12.19860909690178,11.915085236768801,11.789851434426229,9.6398107638888888,9.0409803921568628,11.147563287192916,11.660828012992832],"text":["month: Jan<br />mean: 12.656217<br />mean - n_sd * stdev: 11.203042<br />mean + n_sd * stdev: 14.10939","month: Feb<br />mean: 13.394856<br />mean - n_sd * stdev: 11.747016<br />mean + n_sd * stdev: 15.04270","month: Mar<br />mean: 13.534015<br />mean - n_sd * stdev: 11.393515<br />mean + n_sd * stdev: 15.67452","month: Apr<br />mean: 13.360511<br />mean - n_sd * stdev: 11.324966<br />mean + n_sd * stdev: 15.39606","month: May<br />mean: 12.783848<br />mean - n_sd * stdev: 11.288973<br />mean + n_sd * stdev: 14.27872","month: Jun<br />mean: 12.198609<br />mean - n_sd * stdev:  9.203076<br />mean + n_sd * stdev: 15.19414","month: Jul<br />mean: 11.915085<br />mean - n_sd * stdev:  8.695802<br />mean + n_sd * stdev: 15.13437","month: Aug<br />mean: 11.789851<br />mean - n_sd * stdev:  7.932850<br />mean + n_sd * stdev: 15.64685","month: Sep<br />mean:  9.639811<br />mean - n_sd * stdev:  7.245858<br />mean + n_sd * stdev: 12.03376","month: Oct<br />mean:  9.040980<br />mean - n_sd * stdev:  7.793655<br />mean + n_sd * stdev: 10.28831","month: Nov<br />mean: 11.147563<br />mean - n_sd * stdev: 10.489344<br />mean + n_sd * stdev: 11.80578","month: Dec<br />mean: 11.660828<br />mean - n_sd * stdev: 10.240819<br />mean + n_sd * stdev: 13.08084"],"type":"scatter","mode":"lines","opacity":1,"line":{"color":"transparent"},"error_y":{"array":[1.4531752411052103,1.647839683626696,2.1405006133118842,2.0355450034820919,1.4948753261387946,2.9955326330264889,3.2192837052034644,3.85700156560263,2.3939524302218835,1.2473254595469374,0.6582193407904402,1.4200085244013589],"arrayminus":[1.4531752411052103,1.647839683626696,2.1405006133118842,2.0355450034820919,1.4948753261387946,2.9955326330264889,3.2192837052034644,3.8570015656026309,2.3939524302218835,1.2473254595469365,0.6582193407904402,1.4200085244013589],"type":"data","width":0,"symmetric":false,"color":"rgba(0,0,0,1)"},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":25.836446658364473,"l":44.433374844333756},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,12.6],"tickmode":"array","ticktext":["Jan","Mar","May","Jul","Sep","Nov"],"tickvals":[1,3,5,7.0000000000000009,9,11],"categoryorder":"array","categoryarray":["Jan","Mar","May","Jul","Sep","Nov"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088001,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[6.8244254534595621,16.095948818023309],"tickmode":"array","ticktext":["8","10","12","14","16"],"tickvals":[8,10,12,14,16],"categoryorder":"array","categoryarray":["8","10","12","14","16"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088001,"zeroline":false,"anchor":"x","title":{"text":"Dissolved Oxygen (mg / L)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"rgba(255,255,255,1)","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.87754254877543}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4774796357a8":{"x":{},"y":{},"type":"scatter"},"477428f229b5":{"x":{},"y":{},"ymin":{},"ymax":{}}},"cur_data":"4774796357a8","visdat":{"4774796357a8":["function (y) ","x"],"477428f229b5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-do-clim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Mean +/- 3 standard deviations of the monthly dissolved oxygen (mg / L) observations.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<div id="fig-do-hist-clim" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8fa1112207f36e96928f" style="width:100%;height:812px;"></div>
-<script type="application/json" data-for="htmlwidget-8fa1112207f36e96928f">{"x":{"data":[{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0.000902042675638984,0.00451021337819492,0.0193939175262382,0.0365327283633789,0.109598185090137,3.07416143857766,7.27497417902841,3.53149707512662,1.39140082717313,0.485749980831593,0.00360817070255594,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0 <br />bin: 10","percent: 0.02 <br />bin: 10.5","percent: 0.04 <br />bin: 11","percent: 0.11 <br />bin: 11.5","percent: 3.07 <br />bin: 12","percent: 7.27 <br />bin: 12.5","percent: 3.53 <br />bin: 13","percent: 1.39 <br />bin: 13.5","percent: 0.49 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0.00270612802691695,0.00270612802691695,0.00360817070255594,0.00721634140511188,0.0135306401345848,0.0333755789986424,0.0829879261587866,0.0663001366594654,0.0978716303068298,0.727497417902841,2.96140610412279,5.16735146739792,3.20225149851839,0.108696142414498,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0.01 <br />bin: 9.5","percent: 0.01 <br />bin: 10","percent: 0.03 <br />bin: 10.5","percent: 0.08 <br />bin: 11","percent: 0.07 <br />bin: 11.5","percent: 0.1 <br />bin: 12","percent: 0.73 <br />bin: 12.5","percent: 2.96 <br />bin: 13","percent: 5.17 <br />bin: 13.5","percent: 3.2 <br />bin: 14","percent: 0.11 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0.000451021337819492,0.000451021337819492,0.00451021337819492,0.0162367681615017,0.0383368137146568,0.056828688565256,0.0978716303068298,0.193037132586743,0.491613258223247,1.54700318872086,2.88247737000437,2.62449316477163,0.581366504449325,0.308949616406352,0.0387878350524763,0.00541225605383391,0.000451021337819492],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0.02 <br />bin: 10","percent: 0.04 <br />bin: 10.5","percent: 0.06 <br />bin: 11","percent: 0.1 <br />bin: 11.5","percent: 0.19 <br />bin: 12","percent: 0.49 <br />bin: 12.5","percent: 1.55 <br />bin: 13","percent: 2.88 <br />bin: 13.5","percent: 2.62 <br />bin: 14","percent: 0.58 <br />bin: 14.5","percent: 0.31 <br />bin: 15","percent: 0.04 <br />bin: 15.5","percent: 0.01 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0.00135306401345848,0.00180408535127797,0.00180408535127797,0.00135306401345848,0.00270612802691695,0.00405919204037543,0.00225510668909746,0.00676532006729238,0.00541225605383391,0.00496123471601441,0.00811838408075086,0.00766736274293137,0.807779216034711,0.972402004338825,1.08560836013152,1.25654544716511,0.184918748505992,0.0157857468236822,0.00180408535127797,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0.01 <br />bin: 10","percent: 0.01 <br />bin: 10.5","percent: 0 <br />bin: 11","percent: 0.01 <br />bin: 11.5","percent: 0.01 <br />bin: 12","percent: 0.81 <br />bin: 12.5","percent: 0.97 <br />bin: 13","percent: 1.09 <br />bin: 13.5","percent: 1.26 <br />bin: 14","percent: 0.18 <br />bin: 14.5","percent: 0.02 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.000451021337819492,0.0969695876311908,0.720281076497729,3.92704278839432,2.15678403745281,1.20828616401842,0.405919204037543,0.00360817070255594,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0 <br />bin: 10","percent: 0 <br />bin: 10.5","percent: 0 <br />bin: 11","percent: 0.1 <br />bin: 11.5","percent: 0.72 <br />bin: 12","percent: 3.93 <br />bin: 12.5","percent: 2.16 <br />bin: 13","percent: 1.21 <br />bin: 13.5","percent: 0.41 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y2","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0.000451021337819492,0.000451021337819492,0.000451021337819492,0,0.000902042675638984,0.000451021337819492,0.00360817070255594,0.00766736274293137,0.0166877894993212,0.0216490242153356,0.0482592831466857,0.0847920115100645,0.158759510912461,0.290006720217934,0.368033411660706,0.419449844172128,0.87092220332944,1.62548090150145,3.25051078166508,2.46573365385916,0.621056382177441,0.00766736274293137,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0.01 <br />bin: 7","percent: 0.02 <br />bin: 7.5","percent: 0.02 <br />bin: 8","percent: 0.05 <br />bin: 8.5","percent: 0.08 <br />bin: 9","percent: 0.16 <br />bin: 9.5","percent: 0.29 <br />bin: 10","percent: 0.37 <br />bin: 10.5","percent: 0.42 <br />bin: 11","percent: 0.87 <br />bin: 11.5","percent: 1.63 <br />bin: 12","percent: 3.25 <br />bin: 12.5","percent: 2.47 <br />bin: 13","percent: 0.62 <br />bin: 13.5","percent: 0.01 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y2","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0.00180408535127797,0.00225510668909746,0.0058632773916534,0.0198449388640577,0.0432980484306713,0.109598185090137,0.289555698880114,0.834389474966061,1.0806471254155,1.07568589069949,1.18167590508707,1.33998439466171,1.29172511151503,0.7103586070657,0.0978716303068298,0.00992246943202883,0.00135306401345848,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0.01 <br />bin: 8","percent: 0.02 <br />bin: 8.5","percent: 0.04 <br />bin: 9","percent: 0.11 <br />bin: 9.5","percent: 0.29 <br />bin: 10","percent: 0.83 <br />bin: 10.5","percent: 1.08 <br />bin: 11","percent: 1.08 <br />bin: 11.5","percent: 1.18 <br />bin: 12","percent: 1.34 <br />bin: 12.5","percent: 1.29 <br />bin: 13","percent: 0.71 <br />bin: 13.5","percent: 0.1 <br />bin: 14","percent: 0.01 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0.000451021337819492,0.00405919204037543,0.00947144809420934,0.0216490242153356,0.0708103500376603,0.161014617601559,0.365327283633789,0.599407357962105,0.704946351011866,0.633233958298567,0.765383210279678,0.574150163044214,0.572797099030755,0.442902953738741,0.326539448581312,0.0288653656204475,0.00135306401345848,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0.01 <br />bin: 8","percent: 0.02 <br />bin: 8.5","percent: 0.07 <br />bin: 9","percent: 0.16 <br />bin: 9.5","percent: 0.37 <br />bin: 10","percent: 0.6 <br />bin: 10.5","percent: 0.7 <br />bin: 11","percent: 0.63 <br />bin: 11.5","percent: 0.77 <br />bin: 12","percent: 0.57 <br />bin: 12.5","percent: 0.57 <br />bin: 13","percent: 0.44 <br />bin: 13.5","percent: 0.33 <br />bin: 14","percent: 0.03 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y3","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0.00270612802691695,0.0257082162557111,0.0766736274293137,0.236786202355233,0.539421520032113,0.561521565585268,0.460492785913702,0.492966322236705,0.18627181251945,0.0153347254858627,0,0,0,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0.03 <br />bin: 7.5","percent: 0.08 <br />bin: 8","percent: 0.24 <br />bin: 8.5","percent: 0.54 <br />bin: 9","percent: 0.56 <br />bin: 9.5","percent: 0.46 <br />bin: 10","percent: 0.49 <br />bin: 10.5","percent: 0.19 <br />bin: 11","percent: 0.02 <br />bin: 11.5","percent: 0 <br />bin: 12","percent: 0 <br />bin: 12.5","percent: 0 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y3","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0.000902042675638984,0.0121775761211263,0.0437490697684907,0.0825369048209671,0.0902042675638984,0.000451021337819492,0,0,0,0,0,0,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0.01 <br />bin: 8","percent: 0.04 <br />bin: 8.5","percent: 0.08 <br />bin: 9","percent: 0.09 <br />bin: 9.5","percent: 0 <br />bin: 10","percent: 0 <br />bin: 10.5","percent: 0 <br />bin: 11","percent: 0 <br />bin: 11.5","percent: 0 <br />bin: 12","percent: 0 <br />bin: 12.5","percent: 0 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x","yaxis":"y4","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0,0.0419449844172128,0.31120472309545,4.61575237124468,2.26322507317821,0.00135306401345848,0,0,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0.04 <br />bin: 10","percent: 0.31 <br />bin: 10.5","percent: 4.62 <br />bin: 11","percent: 2.26 <br />bin: 11.5","percent: 0 <br />bin: 12","percent: 0 <br />bin: 12.5","percent: 0 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y4","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0.0554756245517975,0.13305129465675,0.178153428438699,2.27179447859678,6.83026713993839,4.882305981896,1.71613619040317,0.0396898777281153,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0.06 <br />bin: 9.5","percent: 0.13 <br />bin: 10","percent: 0.18 <br />bin: 10.5","percent: 2.27 <br />bin: 11","percent: 6.83 <br />bin: 11.5","percent: 4.88 <br />bin: 12","percent: 1.72 <br />bin: 12.5","percent: 0.04 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[11.203,11.203],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[11.747,11.747],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y","hoverinfo":"text","frame":null},{"x":[11.394,11.394],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y","hoverinfo":"text","frame":null},{"x":[11.325,11.325],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[11.289,11.289],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[9.203,9.203],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[8.696,8.696],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[7.933,7.933],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[7.246,7.246],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[7.794,7.794],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[10.489,10.489],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[10.241,10.241],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[14.109,14.109],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.043,15.043],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.675,15.675],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.396,15.396],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[14.279,14.279],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[15.194,15.194],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[15.134,15.134],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[15.647,15.647],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[12.034,12.034],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[10.288,10.288],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[11.806,11.806],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[13.081,13.081],"y":[0,8.00247159693125],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y4","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":36.7222914072229,"r":7.30593607305936,"b":42.9721876297219,"l":36.994603569946},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,0.318333333333333],"automargin":true,"type":"linear","autorange":false,"range":[2.575,17.425],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y4","title":"","hoverformat":".2f"},"annotations":[{"text":"Dissolved Oxygen (mg / L)","x":0.5,"y":0,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"top","annotationType":"axis","yshift":-25.1058530510585},{"text":"Percent of Observations","x":0,"y":0.5,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xref":"paper","yref":"paper","textangle":-90,"xanchor":"right","yanchor":"center","annotationType":"axis","xshift":-17.6670817766708},{"text":"Jan","x":0.159166666666667,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Feb","x":0.5,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Mar","x":0.840833333333333,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Apr","x":0.159166666666667,"y":0.725070153590701,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"May","x":0.5,"y":0.725070153590701,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Jun","x":0.840833333333333,"y":0.725070153590701,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Jul","x":0.159166666666667,"y":0.475070153590702,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Aug","x":0.5,"y":0.475070153590702,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Sep","x":0.840833333333333,"y":0.475070153590702,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Oct","x":0.159166666666667,"y":0.225070153590702,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Nov","x":0.5,"y":0.225070153590702,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Dec","x":0.840833333333333,"y":0.225070153590702,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.8775425487754},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"}],"yaxis":{"domain":[0.774929846409299,1],"automargin":true,"type":"linear","autorange":false,"range":[0,8.00247159693125],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0.774929846409299,"y1":1},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0,"y1":26.5670402656704,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0.774929846409299,"y1":1},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0,"y1":26.5670402656704,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0.774929846409299,"y1":1},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0,"y1":26.5670402656704,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0.524929846409299,"y1":0.725070153590701},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0,"y1":26.5670402656704,"yanchor":0.725070153590701,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0.524929846409299,"y1":0.725070153590701},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0,"y1":26.5670402656704,"yanchor":0.725070153590701,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0.524929846409299,"y1":0.725070153590701},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0,"y1":26.5670402656704,"yanchor":0.725070153590701,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0.274929846409298,"y1":0.475070153590702},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0,"y1":26.5670402656704,"yanchor":0.475070153590702,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0.274929846409298,"y1":0.475070153590702},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0,"y1":26.5670402656704,"yanchor":0.475070153590702,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0.274929846409298,"y1":0.475070153590702},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0,"y1":26.5670402656704,"yanchor":0.475070153590702,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0,"y1":0.225070153590702},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":0.318333333333333,"y0":0,"y1":26.5670402656704,"yanchor":0.225070153590702,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0,"y1":0.225070153590702},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.348333333333333,"x1":0.651666666666667,"y0":0,"y1":26.5670402656704,"yanchor":0.225070153590702,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0,"y1":0.225070153590702},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0.681666666666667,"x1":1,"y0":0,"y1":26.5670402656704,"yanchor":0.225070153590702,"ysizemode":"pixel"}],"xaxis2":{"type":"linear","autorange":false,"range":[2.575,17.425],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.348333333333333,0.651666666666667],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y4","title":"","hoverformat":".2f"},"xaxis3":{"type":"linear","autorange":false,"range":[2.575,17.425],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.681666666666667,1],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y4","title":"","hoverformat":".2f"},"yaxis2":{"type":"linear","autorange":false,"range":[0,8.00247159693125],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.524929846409299,0.725070153590701],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"yaxis3":{"type":"linear","autorange":false,"range":[0,8.00247159693125],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.274929846409298,0.475070153590702],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"yaxis4":{"type":"linear","autorange":false,"range":[0,8.00247159693125],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0,0.225070153590702],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.8775425487754}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"7510144b6c4c":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"751029a52885":{"xintercept":{}},"751049f858c":{"xintercept":{}}},"cur_data":"7510144b6c4c","visdat":{"7510144b6c4c":["function (y) ","x"],"751029a52885":["function (y) ","x"],"751049f858c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Seasonal distribution of dissolved oxygen (mg / L) observations (binwidth = 0.5 mg / L). Dotted orange lines indicate the user thresholds.</figcaption><p></p>
+<div id="fig-do-hist-clim" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-do-hist-clim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-5f3d13e934bc94f9d393" style="width:100%;height:812px;"></div>
+<script type="application/json" data-for="htmlwidget-5f3d13e934bc94f9d393">{"x":{"data":[{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0.00090204267563898446,0.0045102133781949223,0.019393917526238168,0.036532728363378869,0.10959818509013661,3.0741614385776592,7.2749741790284093,3.5314970751266244,1.3914008271731335,0.4857499808315931,0.0036081707025559379,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0 <br />bin: 10","percent: 0.02 <br />bin: 10.5","percent: 0.04 <br />bin: 11","percent: 0.11 <br />bin: 11.5","percent: 3.07 <br />bin: 12","percent: 7.27 <br />bin: 12.5","percent: 3.53 <br />bin: 13","percent: 1.39 <br />bin: 13.5","percent: 0.49 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0.0027061280269169534,0.0027061280269169534,0.0036081707025559379,0.0072163414051118757,0.013530640134584767,0.033375578998642422,0.082987926158786571,0.066300136659465353,0.097871630306829827,0.72749741790284106,2.9614061041227862,5.1673514673979222,3.202251498518395,0.10869614241449763,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0.01 <br />bin: 9.5","percent: 0.01 <br />bin: 10","percent: 0.03 <br />bin: 10.5","percent: 0.08 <br />bin: 11","percent: 0.07 <br />bin: 11.5","percent: 0.1 <br />bin: 12","percent: 0.73 <br />bin: 12.5","percent: 2.96 <br />bin: 13","percent: 5.17 <br />bin: 13.5","percent: 3.2 <br />bin: 14","percent: 0.11 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0.00045102133781949223,0.00045102133781949223,0.0045102133781949223,0.01623676816150172,0.038336813714656838,0.056828688565256018,0.097871630306829827,0.19303713258674268,0.49161325822324653,1.5470031887208584,2.8824773700043749,2.6244931647716254,0.58136650444932547,0.30894961640635221,0.038787835052476335,0.0054122560538339068,0.00045102133781949223],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0.02 <br />bin: 10","percent: 0.04 <br />bin: 10.5","percent: 0.06 <br />bin: 11","percent: 0.1 <br />bin: 11.5","percent: 0.19 <br />bin: 12","percent: 0.49 <br />bin: 12.5","percent: 1.55 <br />bin: 13","percent: 2.88 <br />bin: 13.5","percent: 2.62 <br />bin: 14","percent: 0.58 <br />bin: 14.5","percent: 0.31 <br />bin: 15","percent: 0.04 <br />bin: 15.5","percent: 0.01 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0.0013530640134584767,0.0018040853512779689,0.0018040853512779689,0.0013530640134584767,0.0027061280269169534,0.0040591920403754301,0.0022551066890974612,0.0067653200672923835,0.0054122560538339068,0.0049612347160144146,0.0081183840807508602,0.0076673627429313679,0.80777921603471059,0.97240200433882529,1.0856083601315178,1.2565454471651054,0.18491874850599183,0.01578574682368223,0.0018040853512779689,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0.01 <br />bin: 10","percent: 0.01 <br />bin: 10.5","percent: 0 <br />bin: 11","percent: 0.01 <br />bin: 11.5","percent: 0.01 <br />bin: 12","percent: 0.81 <br />bin: 12.5","percent: 0.97 <br />bin: 13","percent: 1.09 <br />bin: 13.5","percent: 1.26 <br />bin: 14","percent: 0.18 <br />bin: 14.5","percent: 0.02 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.00045102133781949223,0.096969587631190832,0.7202810764977291,3.9270427883943184,2.156784037452812,1.2082861640184197,0.405919204037543,0.0036081707025559379,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0 <br />bin: 10","percent: 0 <br />bin: 10.5","percent: 0 <br />bin: 11","percent: 0.1 <br />bin: 11.5","percent: 0.72 <br />bin: 12","percent: 3.93 <br />bin: 12.5","percent: 2.16 <br />bin: 13","percent: 1.21 <br />bin: 13.5","percent: 0.41 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y2","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0.00045102133781949223,0.00045102133781949223,0.00045102133781949223,0,0.00090204267563898446,0.00045102133781949223,0.0036081707025559379,0.0076673627429313679,0.016687789499321211,0.021649024215335627,0.048259283146685671,0.084792011510064547,0.15875951091246127,0.2900067202179335,0.36803341166070569,0.41944984417212783,0.87092220332943959,1.6254809015014502,3.2505107816650809,2.4657336538591643,0.62105638217744075,0.0076673627429313679,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0.01 <br />bin: 7","percent: 0.02 <br />bin: 7.5","percent: 0.02 <br />bin: 8","percent: 0.05 <br />bin: 8.5","percent: 0.08 <br />bin: 9","percent: 0.16 <br />bin: 9.5","percent: 0.29 <br />bin: 10","percent: 0.37 <br />bin: 10.5","percent: 0.42 <br />bin: 11","percent: 0.87 <br />bin: 11.5","percent: 1.63 <br />bin: 12","percent: 3.25 <br />bin: 12.5","percent: 2.47 <br />bin: 13","percent: 0.62 <br />bin: 13.5","percent: 0.01 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y2","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0.0018040853512779689,0.0022551066890974612,0.005863277391653399,0.019844938864057658,0.043298048430671254,0.10959818509013661,0.28955569888011401,0.83438947496606075,1.0806471254155035,1.0756858906994891,1.1816759050870695,1.3399843946617114,1.2917251115150259,0.71035860706570031,0.097871630306829827,0.0099224694320288291,0.0013530640134584767,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0.01 <br />bin: 8","percent: 0.02 <br />bin: 8.5","percent: 0.04 <br />bin: 9","percent: 0.11 <br />bin: 9.5","percent: 0.29 <br />bin: 10","percent: 0.83 <br />bin: 10.5","percent: 1.08 <br />bin: 11","percent: 1.08 <br />bin: 11.5","percent: 1.18 <br />bin: 12","percent: 1.34 <br />bin: 12.5","percent: 1.29 <br />bin: 13","percent: 0.71 <br />bin: 13.5","percent: 0.1 <br />bin: 14","percent: 0.01 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0.00045102133781949223,0.0040591920403754301,0.0094714480942093369,0.021649024215335627,0.070810350037660286,0.16101461760155872,0.36532728363378875,0.5994073579621052,0.70494635101186642,0.6332339582985671,0.76538321027967837,0.57415016304421362,0.57279709903075515,0.44290295373874145,0.32653944858131234,0.028865365620447503,0.0013530640134584767,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0.01 <br />bin: 8","percent: 0.02 <br />bin: 8.5","percent: 0.07 <br />bin: 9","percent: 0.16 <br />bin: 9.5","percent: 0.37 <br />bin: 10","percent: 0.6 <br />bin: 10.5","percent: 0.7 <br />bin: 11","percent: 0.63 <br />bin: 11.5","percent: 0.77 <br />bin: 12","percent: 0.57 <br />bin: 12.5","percent: 0.57 <br />bin: 13","percent: 0.44 <br />bin: 13.5","percent: 0.33 <br />bin: 14","percent: 0.03 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y3","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0.0027061280269169534,0.025708216255711056,0.076673627429313676,0.23678620235523343,0.53942152003211263,0.56152156558526789,0.46049278591370157,0.492966322236705,0.1862718125194503,0.015334725485862736,0,0,0,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0.03 <br />bin: 7.5","percent: 0.08 <br />bin: 8","percent: 0.24 <br />bin: 8.5","percent: 0.54 <br />bin: 9","percent: 0.56 <br />bin: 9.5","percent: 0.46 <br />bin: 10","percent: 0.49 <br />bin: 10.5","percent: 0.19 <br />bin: 11","percent: 0.02 <br />bin: 11.5","percent: 0 <br />bin: 12","percent: 0 <br />bin: 12.5","percent: 0 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y3","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0.00090204267563898446,0.01217757612112629,0.043749069768490745,0.08253690482096708,0.090204267563898446,0.00045102133781949223,0,0,0,0,0,0,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0.01 <br />bin: 8","percent: 0.04 <br />bin: 8.5","percent: 0.08 <br />bin: 9","percent: 0.09 <br />bin: 9.5","percent: 0 <br />bin: 10","percent: 0 <br />bin: 10.5","percent: 0 <br />bin: 11","percent: 0 <br />bin: 11.5","percent: 0 <br />bin: 12","percent: 0 <br />bin: 12.5","percent: 0 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x","yaxis":"y4","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0,0.041944984417212776,0.31120472309544966,4.6157523712446835,2.2632250731782122,0.0013530640134584767,0,0,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0 <br />bin: 9.5","percent: 0.04 <br />bin: 10","percent: 0.31 <br />bin: 10.5","percent: 4.62 <br />bin: 11","percent: 2.26 <br />bin: 11.5","percent: 0 <br />bin: 12","percent: 0 <br />bin: 12.5","percent: 0 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x2","yaxis":"y4","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0.055475624551797539,0.13305129465675022,0.17815342843869944,2.2717944785967821,6.8302671399383907,4.8823059818960033,1.716136190403168,0.039689877728115316,0,0,0,0,0,0,0],"text":["percent: 0 <br />bin: 3.5","percent: 0 <br />bin: 4","percent: 0 <br />bin: 4.5","percent: 0 <br />bin: 5","percent: 0 <br />bin: 5.5","percent: 0 <br />bin: 6","percent: 0 <br />bin: 6.5","percent: 0 <br />bin: 7","percent: 0 <br />bin: 7.5","percent: 0 <br />bin: 8","percent: 0 <br />bin: 8.5","percent: 0 <br />bin: 9","percent: 0.06 <br />bin: 9.5","percent: 0.13 <br />bin: 10","percent: 0.18 <br />bin: 10.5","percent: 2.27 <br />bin: 11","percent: 6.83 <br />bin: 11.5","percent: 4.88 <br />bin: 12","percent: 1.72 <br />bin: 12.5","percent: 0.04 <br />bin: 13","percent: 0 <br />bin: 13.5","percent: 0 <br />bin: 14","percent: 0 <br />bin: 14.5","percent: 0 <br />bin: 15","percent: 0 <br />bin: 15.5","percent: 0 <br />bin: 16","percent: 0 <br />bin: 16.5"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":false,"xaxis":"x3","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[11.202999999999999,11.202999999999999],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[11.747,11.747],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y","hoverinfo":"text","frame":null},{"x":[11.394,11.394],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y","hoverinfo":"text","frame":null},{"x":[11.324999999999999,11.324999999999999],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[11.289,11.289],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[9.2029999999999994,9.2029999999999994],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[8.6959999999999997,8.6959999999999997],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[7.9329999999999998,7.9329999999999998],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[7.2460000000000004,7.2460000000000004],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[7.7939999999999996,7.7939999999999996],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[10.489000000000001,10.489000000000001],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[10.241,10.241],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[14.109,14.109],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.042999999999999,15.042999999999999],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.675000000000001,15.675000000000001],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y","hoverinfo":"text","frame":null},{"x":[15.396000000000001,15.396000000000001],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[14.279,14.279],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[15.194000000000001,15.194000000000001],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y2","hoverinfo":"text","frame":null},{"x":[15.134,15.134],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[15.647,15.647],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[12.034000000000001,12.034000000000001],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y3","hoverinfo":"text","frame":null},{"x":[10.288,10.288],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[11.805999999999999,11.805999999999999],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x2","yaxis":"y4","hoverinfo":"text","frame":null},{"x":[13.081,13.081],"y":[0,8.002471596931251],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x3","yaxis":"y4","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":38.183478621834794,"r":7.3059360730593621,"b":44.433374844333756,"l":36.994603569946044},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286},"xaxis":{"domain":[0,0.3183333333333333],"automargin":true,"type":"linear","autorange":false,"range":[2.5750000000000002,17.425000000000001],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y4","title":"","hoverformat":".2f"},"annotations":[{"text":"Dissolved Oxygen (mg / L)","x":0.5,"y":0,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"top","annotationType":"axis","yshift":-25.105853051058538},{"text":"Percent of Observations","x":0,"y":0.5,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286},"xref":"paper","yref":"paper","textangle":-90,"xanchor":"right","yanchor":"center","annotationType":"axis","xshift":-17.667081776670823},{"text":"Jan","x":0.15916666666666665,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Feb","x":0.5,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Mar","x":0.84083333333333332,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Apr","x":0.15916666666666665,"y":0.72507015359070148,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"May","x":0.5,"y":0.72507015359070148,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Jun","x":0.84083333333333332,"y":0.72507015359070148,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Jul","x":0.15916666666666665,"y":0.47507015359070154,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Aug","x":0.5,"y":0.47507015359070154,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Sep","x":0.84083333333333332,"y":0.47507015359070154,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Oct","x":0.15916666666666665,"y":0.22507015359070154,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Nov","x":0.5,"y":0.22507015359070154,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Dec","x":0.84083333333333332,"y":0.22507015359070154,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.87754254877543},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"}],"yaxis":{"domain":[0.77492984640929852,1],"automargin":true,"type":"linear","autorange":false,"range":[0,8.002471596931251],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0.77492984640929852,"y1":1},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0,"y1":26.567040265670411,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0.77492984640929852,"y1":1},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0,"y1":26.567040265670411,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0.77492984640929852,"y1":1},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0,"y1":26.567040265670411,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0.52492984640929852,"y1":0.72507015359070148},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0,"y1":26.567040265670411,"yanchor":0.72507015359070148,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0.52492984640929852,"y1":0.72507015359070148},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0,"y1":26.567040265670411,"yanchor":0.72507015359070148,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0.52492984640929852,"y1":0.72507015359070148},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0,"y1":26.567040265670411,"yanchor":0.72507015359070148,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0.27492984640929846,"y1":0.47507015359070154},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0,"y1":26.567040265670411,"yanchor":0.47507015359070154,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0.27492984640929846,"y1":0.47507015359070154},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0,"y1":26.567040265670411,"yanchor":0.47507015359070154,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0.27492984640929846,"y1":0.47507015359070154},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0,"y1":26.567040265670411,"yanchor":0.47507015359070154,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0,"y1":0.22507015359070154},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":0.3183333333333333,"y0":0,"y1":26.567040265670411,"yanchor":0.22507015359070154,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0,"y1":0.22507015359070154},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.34833333333333333,"x1":0.65166666666666662,"y0":0,"y1":26.567040265670411,"yanchor":0.22507015359070154,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0,"y1":0.22507015359070154},{"type":"rect","fillcolor":"rgba(179,179,179,1)","line":{"color":"rgba(0,0,0,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0.68166666666666664,"x1":1,"y0":0,"y1":26.567040265670411,"yanchor":0.22507015359070154,"ysizemode":"pixel"}],"xaxis2":{"type":"linear","autorange":false,"range":[2.5750000000000002,17.425000000000001],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.34833333333333333,0.65166666666666662],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y4","title":"","hoverformat":".2f"},"xaxis3":{"type":"linear","autorange":false,"range":[2.5750000000000002,17.425000000000001],"tickmode":"array","ticktext":["6","10","14"],"tickvals":[6,10,14],"categoryorder":"array","categoryarray":["6","10","14"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.68166666666666664,1],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y4","title":"","hoverformat":".2f"},"yaxis2":{"type":"linear","autorange":false,"range":[0,8.002471596931251],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.52492984640929852,0.72507015359070148],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"yaxis3":{"type":"linear","autorange":false,"range":[0,8.002471596931251],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0.27492984640929846,0.47507015359070154],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"yaxis4":{"type":"linear","autorange":false,"range":[0,8.002471596931251],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"domain":[0,0.22507015359070154],"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.87754254877543}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4774478a1651":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"47747e984cdd":{"xintercept":{}},"47747dee438c":{"xintercept":{}}},"cur_data":"4774478a1651","visdat":{"4774478a1651":["function (y) ","x"],"47747e984cdd":["function (y) ","x"],"47747dee438c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-do-hist-clim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Seasonal distribution of dissolved oxygen (mg / L) observations (binwidth = 0.5 mg / L). Dotted orange lines indicate the user thresholds.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -339,9 +408,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Table 2: Climatology statistics and thresholds for dissolved oxygen (mg/L).</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bd146985bc780025782a" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-bd146985bc780025782a">{"x":{"filter":"none","vertical":false,"data":[["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],[12.656,13.395,13.534,13.361,12.784,12.199,11.915,11.79,9.64,9.041,11.148,11.661],[0.484,0.549,0.714,0.679,0.498,0.999,1.073,1.286,0.798,0.416,0.219,0.473],[11.203,11.747,11.394,11.325,11.289,9.203,8.696,7.933,7.246,7.794,10.489,10.241],[14.109,15.043,15.675,15.396,14.279,15.194,15.134,15.647,12.034,10.288,11.806,13.081]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>month<\/th>\n      <th>season_mean<\/th>\n      <th>season_stdev<\/th>\n      <th>season_min<\/th>\n      <th>season_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bft","paging":false,"searching":true,"scrollY":"500px","scrollX":"500px","columnDefs":[{"className":"dt-center","targets":"_all"}],"buttons":["copy","csv"],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-23d200c3917c8a3f8fe7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-23d200c3917c8a3f8fe7">{"x":{"filter":"none","vertical":false,"data":[["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],[12.656,13.395,13.534,13.361,12.784,12.199,11.915,11.79,9.640000000000001,9.041,11.148,11.661],[0.484,0.549,0.714,0.679,0.498,0.999,1.073,1.286,0.798,0.416,0.219,0.473],[11.203,11.747,11.394,11.325,11.289,9.202999999999999,8.696,7.933,7.246,7.794,10.489,10.241],[14.109,15.043,15.675,15.396,14.279,15.194,15.134,15.647,12.034,10.288,11.806,13.081]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>month<\/th>\n      <th>season_mean<\/th>\n      <th>season_stdev<\/th>\n      <th>season_min<\/th>\n      <th>season_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bft","paging":false,"searching":true,"scrollY":"500px","scrollX":"500px","columnDefs":[{"className":"dt-center","targets":"_all"},{"name":"month","targets":0},{"name":"season_mean","targets":1},{"name":"season_stdev","targets":2},{"name":"season_min","targets":3},{"name":"season_max","targets":4}],"buttons":["copy","csv"],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -350,18 +418,22 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="spike-test" class="level1">
 <h1>Spike Test</h1>
-<p>The distribution of the spike value is skewed right (<a href="#fig-do-spike-dist">Figure&nbsp;4</a>), and so several upper quartile values (90th, 95th, and 99.7th quartile) were evaluated to use as the <span class="math inline">\(spike_{low}\)</span>.</p>
+<p>The distribution of the spike value is skewed right (<a href="#fig-do-spike-dist" class="quarto-xref">Figure&nbsp;4</a>), and so several upper quartile values (90th, 95th, and 99.7th quartile) were evaluated to use as the <span class="math inline">\(spike_{low}\)</span>.</p>
 <p>There were relatively few large single-value spikes in the dissolved oxygen (mg / L) data, and so the 99.7th quartile was selected to avoid false positives. <span class="math inline">\(spike_{high}\)</span> was defined as 3 * <span class="math inline">\(spike_{low}\)</span> to identify especially egregious spike values.</p>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Figure 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Table 4</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Figure 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Table 4</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
-<div id="fig-do-spike-dist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8b791c9fe1aae5b1e114" style="width:100%;height:325px;"></div>
-<script type="application/json" data-for="htmlwidget-8b791c9fe1aae5b1e114">{"x":{"data":[{"orientation":"v","width":[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.0999999999999996,0.1,0.0999999999999996,0.1,0.1,0.0999999999999996,0.1,0.0999999999999996,0.100000000000001,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996,0.0999999999999996],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3],"y":[79.1455960302244,14.4472764181798,3.41851810082328,1.32942370587572,0.631555204691553,0.358182023232209,0.219239878200068,0.143904364497575,0.0915755046802752,0.066764407353107,0.0374422014209992,0.0279688733506259,0.0234577647456863,0.0184955452802526,0.0117288823728431,0.00721777376790346,0.00496221946543363,0.0013533325814819,0.00360888688395173,0.0027066651629638,0.00180444344197587,0.0013533325814819,0.000902221720987933,0.000902221720987933,0.000902221720987933,0.0013533325814819,0,0,0.000902221720987933,0.000451110860493966,0,0,0,0.000451110860493966],"text":["percent: 79.15 <br />bin: 0","percent: 14.45 <br />bin: 0.1","percent: 3.42 <br />bin: 0.2","percent: 1.33 <br />bin: 0.3","percent: 0.63 <br />bin: 0.4","percent: 0.36 <br />bin: 0.5","percent: 0.22 <br />bin: 0.6","percent: 0.14 <br />bin: 0.7","percent: 0.09 <br />bin: 0.8","percent: 0.07 <br />bin: 0.9","percent: 0.04 <br />bin: 1","percent: 0.03 <br />bin: 1.1","percent: 0.02 <br />bin: 1.2","percent: 0.02 <br />bin: 1.3","percent: 0.01 <br />bin: 1.4","percent: 0.01 <br />bin: 1.5","percent: 0 <br />bin: 1.6","percent: 0 <br />bin: 1.7","percent: 0 <br />bin: 1.8","percent: 0 <br />bin: 1.9","percent: 0 <br />bin: 2","percent: 0 <br />bin: 2.1","percent: 0 <br />bin: 2.2","percent: 0 <br />bin: 2.3","percent: 0 <br />bin: 2.4","percent: 0 <br />bin: 2.5","percent: 0 <br />bin: 2.6","percent: 0 <br />bin: 2.7","percent: 0 <br />bin: 2.8","percent: 0 <br />bin: 2.9","percent: 0 <br />bin: 3","percent: 0 <br />bin: 3.1","percent: 0 <br />bin: 3.2","percent: 0 <br />bin: 3.3"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.76,0.76],"y":[0,87.0601556332469],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.28,2.28],"y":[0,87.0601556332469],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(219,67,37,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.6118721461187,"r":7.30593607305936,"b":51.7393109173931,"l":44.4333748443338},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.22,3.52],"tickmode":"array","ticktext":["0","1","2","3"],"tickvals":[0,1,2,3],"categoryorder":"array","categoryarray":["0","1","2","3"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Dissolved Oxygen (mg / L)<br />Spike Value","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,87.0601556332469],"tickmode":"array","ticktext":["0","20","40","60","80"],"tickvals":[0,20,40,60,80],"categoryorder":"array","categoryarray":["0","20","40","60","80"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Percent of Observations","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.8775425487754}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"75104405d90":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"75102397589":{"xintercept":{}},"7510430f1de2":{"xintercept":{}}},"cur_data":"75104405d90","visdat":{"75104405d90":["function (y) ","x"],"75102397589":["function (y) ","x"],"7510430f1de2":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Distribution of the spike value of dissolved oxygen (gm / L) observations (binwidth = 0.1 mg/ L). Dotted orange line indicates <span class="math inline">\(spike_{low}\)</span>; dotted red line indicates <span class="math inline">\(spike_{high}\)</span>.</figcaption><p></p>
+<div id="fig-do-spike-dist" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-do-spike-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-84d6d40d7ddf1a7a9363" style="width:100%;height:325px;"></div>
+<script type="application/json" data-for="htmlwidget-84d6d40d7ddf1a7a9363">{"x":{"data":[{"orientation":"v","width":[0.10000000000000001,0.10000000000000003,0.10000000000000003,0.099999999999999978,0.099999999999999978,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.099999999999999645,0.10000000000000009,0.099999999999999645,0.10000000000000009,0.10000000000000009,0.099999999999999645,0.10000000000000009,0.099999999999999645,0.10000000000000053,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645,0.099999999999999645],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,0.10000000000000001,0.20000000000000004,0.30000000000000004,0.40000000000000002,0.5,0.60000000000000009,0.69999999999999996,0.80000000000000004,0.89999999999999991,1,1.1000000000000001,1.2000000000000002,1.3,1.3999999999999999,1.5,1.6000000000000001,1.7000000000000002,1.8,1.8999999999999999,2,2.1000000000000005,2.2000000000000002,2.3000000000000007,2.4000000000000004,2.5,2.6000000000000005,2.7000000000000002,2.8000000000000007,2.9000000000000004,3,3.1000000000000005,3.2000000000000002,3.3000000000000007],"y":[79.145596030224425,14.447276418179767,3.418518100823277,1.3294237058757188,0.63155520469155291,0.35818202323220932,0.21923987820006768,0.14390436449757529,0.091575504680275172,0.066764407353107028,0.037442201420999209,0.027968873350625915,0.023457764745686251,0.018495545280252622,0.011728882372843126,0.0072177737679034624,0.0049622194654336304,0.0013533325814818991,0.0036088868839517312,0.0027066651629637983,0.0018044434419758656,0.0013533325814818991,0.0009022217209879328,0.0009022217209879328,0.0009022217209879328,0.0013533325814818991,0,0,0.0009022217209879328,0.0004511108604939664,0,0,0,0.0004511108604939664],"text":["percent: 79.15 <br />bin: 0","percent: 14.45 <br />bin: 0.1","percent: 3.42 <br />bin: 0.2","percent: 1.33 <br />bin: 0.3","percent: 0.63 <br />bin: 0.4","percent: 0.36 <br />bin: 0.5","percent: 0.22 <br />bin: 0.6","percent: 0.14 <br />bin: 0.7","percent: 0.09 <br />bin: 0.8","percent: 0.07 <br />bin: 0.9","percent: 0.04 <br />bin: 1","percent: 0.03 <br />bin: 1.1","percent: 0.02 <br />bin: 1.2","percent: 0.02 <br />bin: 1.3","percent: 0.01 <br />bin: 1.4","percent: 0.01 <br />bin: 1.5","percent: 0 <br />bin: 1.6","percent: 0 <br />bin: 1.7","percent: 0 <br />bin: 1.8","percent: 0 <br />bin: 1.9","percent: 0 <br />bin: 2","percent: 0 <br />bin: 2.1","percent: 0 <br />bin: 2.2","percent: 0 <br />bin: 2.3","percent: 0 <br />bin: 2.4","percent: 0 <br />bin: 2.5","percent: 0 <br />bin: 2.6","percent: 0 <br />bin: 2.7","percent: 0 <br />bin: 2.8","percent: 0 <br />bin: 2.9","percent: 0 <br />bin: 3","percent: 0 <br />bin: 3.1","percent: 0 <br />bin: 3.2","percent: 0 <br />bin: 3.3"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.76000000000000001,0.76000000000000001],"y":[0,87.060155633246865],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.2800000000000002,2.2800000000000002],"y":[0,87.060155633246865],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(219,67,37,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":44.433374844333756,"l":44.433374844333756},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.22000000000000003,3.5200000000000005],"tickmode":"array","ticktext":["0","1","2","3"],"tickvals":[0,1,2,3],"categoryorder":"array","categoryarray":["0","1","2","3"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Dissolved Oxygen (mg / L)<br />Spike Value","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,87.060155633246865],"tickmode":"array","ticktext":["0","20","40","60","80"],"tickvals":[0,20,40,60,80],"categoryorder":"array","categoryarray":["0","20","40","60","80"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Percent of Observations","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.87754254877543}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4774412c7947":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"4774687f4fae":{"xintercept":{}},"4774494925ee":{"xintercept":{}}},"cur_data":"4774412c7947","visdat":{"4774412c7947":["function (y) ","x"],"4774687f4fae":["function (y) ","x"],"4774494925ee":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-do-spike-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Distribution of the spike value of dissolved oxygen (gm / L) observations (binwidth = 0.1 mg/ L). Dotted orange line indicates <span class="math inline">\(spike_{low}\)</span>; dotted red line indicates <span class="math inline">\(spike_{high}\)</span>.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -370,9 +442,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Table 4: Spike thresholds for dissolved oxygen (mg / L).</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-27f9771f984897d9332a" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-27f9771f984897d9332a">{"x":{"filter":"none","vertical":false,"data":[[0.76],[2.28]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>spike_low<\/th>\n      <th>spike_high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-059241374f200cbb5a18" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-059241374f200cbb5a18">{"x":{"filter":"none","vertical":false,"data":[[0.76],[2.28]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>spike_low<\/th>\n      <th>spike_high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"},{"name":"spike_low","targets":0},{"name":"spike_high","targets":1}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -381,20 +452,24 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="rolling-standard-deviation-test" class="level1">
 <h1>Rolling Standard Deviation Test</h1>
-<p>The distribution of rolling standard deviation is skewed right (<a href="#fig-do-roll-sd-dist">Figure&nbsp;5</a>), and so several upper quartile values were evaluated to use as the <span class="math inline">\(rolling\_sd\_max\)</span>.</p>
+<p>The distribution of rolling standard deviation is skewed right (<a href="#fig-do-roll-sd-dist" class="quarto-xref">Figure&nbsp;5</a>), and so several upper quartile values were evaluated to use as the <span class="math inline">\(rolling\_sd\_max\)</span>.</p>
 <p>The 90th, 95th, and 99.7th quartile values were each applied to the the raw data (no preliminary QC) and the results inspected. The 90th quartile was determined to be too stringent, as it generated false positives, while The 99.7th quartile was determined to be too lenient, as it resulted in false negatives. The 95th quartile identified 23 % of the raw data (no preliminary QC) as <span style="color: #EDA247;">Suspect/Of Interest</span> and was considered the most useful threshold.</p>
 <p>As discussed for dissolved oxygen (percent saturation), this is a very high percent of observations to flag as <span style="color: #EDA247;">Suspect/Of Interest</span>. However, it was anticipated that a large proportion of the dissolved oxygen observations would be flagged by this test because there were substantial biofouling signals identified during the preliminary QC process. CMAR is currently assessing options to reduce biofouling on dissolved oxygen sensors.</p>
 <p>There is no <span style="color: #DB4325;">Fail</span> flag for the Rolling Standard Deviation Test because of the natural variability of the Water Quality variables. However, CMAR recommends that the dissolved oxygen observations flagged as <span style="color: #EDA247;">Suspect/Of Interest</span> should be considered <span style="color: #EDA247;">Suspect</span>, and filtered out of most analyses.</p>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Figure 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Table 5</a></li></ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Figure 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Table 5</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
-<div id="fig-do-roll-sd-dist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7409a47721b413b79fd4" style="width:100%;height:325px;"></div>
-<script type="application/json" data-for="htmlwidget-7409a47721b413b79fd4">{"x":{"data":[{"orientation":"v","width":[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.0999999999999996,0.1,0.0999999999999996,0.1,0.1,0.0999999999999996,0.1,0.0999999999999996,0.100000000000001,0.0999999999999996,0.0999999999999996,0.0999999999999996],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3],"y":[24.7652480753753,36.5003433175847,15.3669860353867,7.54161873104364,5.05745453884036,3.46728024264141,2.13038792613443,1.7074934178516,1.06905912792786,0.848517368231983,0.656168575754958,0.383788134398603,0.240549671915712,0.160063297758659,0.0363780222178771,0.0172795605534916,0.00181890111089385,0.00363780222178771,0.00954923083219273,0.00773032972129888,0.00818505499902234,0.00909450555446927,0.00636615388812849,0.0050019780549581],"text":["percent: 24.77 <br />bin: 0","percent: 36.5 <br />bin: 0.1","percent: 15.37 <br />bin: 0.2","percent: 7.54 <br />bin: 0.3","percent: 5.06 <br />bin: 0.4","percent: 3.47 <br />bin: 0.5","percent: 2.13 <br />bin: 0.6","percent: 1.71 <br />bin: 0.7","percent: 1.07 <br />bin: 0.8","percent: 0.85 <br />bin: 0.9","percent: 0.66 <br />bin: 1","percent: 0.38 <br />bin: 1.1","percent: 0.24 <br />bin: 1.2","percent: 0.16 <br />bin: 1.3","percent: 0.04 <br />bin: 1.4","percent: 0.02 <br />bin: 1.5","percent: 0 <br />bin: 1.6","percent: 0 <br />bin: 1.7","percent: 0.01 <br />bin: 1.8","percent: 0.01 <br />bin: 1.9","percent: 0.01 <br />bin: 2","percent: 0.01 <br />bin: 2.1","percent: 0.01 <br />bin: 2.2","percent: 0.01 <br />bin: 2.3"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.88976377952756,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.66,0.66],"y":[0,40.1503776493431],"text":"","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":30.6118721461187,"r":7.30593607305936,"b":51.7393109173931,"l":44.4333748443338},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.17,2.47],"tickmode":"array","ticktext":["0.0","0.5","1.0","1.5","2.0"],"tickvals":[0,0.5,1,1.5,2],"categoryorder":"array","categoryarray":["0.0","0.5","1.0","1.5","2.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Dissolved Oxygen (mg / L)<br />Rolling Standard Deviation","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,40.1503776493431],"tickmode":"array","ticktext":["0","10","20","30","40"],"tickvals":[0,10,20,30,40],"categoryorder":"array","categoryarray":["0","10","20","30","40"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.8775425487754},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Percent of Observations","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.8775425487754}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"75105a0154be":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"75102db0f62":{"xintercept":{}}},"cur_data":"75105a0154be","visdat":{"75105a0154be":["function (y) ","x"],"75102db0f62":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (mg / L) observations (binwidth = 0.1 mg / L). Dotted orange line indicates <span class="math inline">\(rolling\_sd\_max\)</span>.</figcaption><p></p>
+<div id="fig-do-roll-sd-dist" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-do-roll-sd-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-88e9f538a1eb494c85ad" style="width:100%;height:325px;"></div>
+<script type="application/json" data-for="htmlwidget-88e9f538a1eb494c85ad">{"x":{"data":[{"orientation":"v","width":[0.10000000000000001,0.10000000000000003,0.10000000000000003,0.099999999999999978,0.099999999999999978,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.099999999999999645,0.10000000000000009,0.099999999999999645,0.10000000000000009,0.10000000000000009,0.099999999999999645,0.10000000000000009,0.099999999999999645,0.10000000000000053,0.099999999999999645,0.099999999999999645,0.099999999999999645],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,0.10000000000000001,0.20000000000000004,0.30000000000000004,0.40000000000000002,0.5,0.60000000000000009,0.69999999999999996,0.80000000000000004,0.89999999999999991,1,1.1000000000000001,1.2000000000000002,1.3,1.3999999999999999,1.5,1.6000000000000001,1.7000000000000002,1.8,1.8999999999999999,2,2.1000000000000005,2.2000000000000002,2.3000000000000007],"y":[24.765248075375261,36.500343317584679,15.36698603538672,7.5416187310436396,5.0574545388403589,3.467280242641408,2.1303879261344258,1.7074934178516048,1.0690591279278623,0.84851736823198265,0.65616857575495757,0.38378813439860304,0.24054967191571211,0.16006329775865913,0.036378022217877067,0.017279560553491606,0.0018189011108938535,0.003637802221787707,0.0095492308321927302,0.0077303297212988776,0.0081850549990223412,0.0090945055544692666,0.0063661538881284877,0.0050019780549580978],"text":["percent: 24.77 <br />bin: 0","percent: 36.5 <br />bin: 0.1","percent: 15.37 <br />bin: 0.2","percent: 7.54 <br />bin: 0.3","percent: 5.06 <br />bin: 0.4","percent: 3.47 <br />bin: 0.5","percent: 2.13 <br />bin: 0.6","percent: 1.71 <br />bin: 0.7","percent: 1.07 <br />bin: 0.8","percent: 0.85 <br />bin: 0.9","percent: 0.66 <br />bin: 1","percent: 0.38 <br />bin: 1.1","percent: 0.24 <br />bin: 1.2","percent: 0.16 <br />bin: 1.3","percent: 0.04 <br />bin: 1.4","percent: 0.02 <br />bin: 1.5","percent: 0 <br />bin: 1.6","percent: 0 <br />bin: 1.7","percent: 0.01 <br />bin: 1.8","percent: 0.01 <br />bin: 1.9","percent: 0.01 <br />bin: 2","percent: 0.01 <br />bin: 2.1","percent: 0.01 <br />bin: 2.2","percent: 0.01 <br />bin: 2.3"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(127,127,127,1)","line":{"width":1.8897637795275593,"color":"rgba(26,26,26,1)"}},"name":"-111","legendgroup":"-111","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.66000000000000003,0.66000000000000003],"y":[0,40.150377649343149],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(237,162,71,1)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":44.433374844333756,"l":44.433374844333756},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.17000000000000004,2.4700000000000006],"tickmode":"array","ticktext":["0.0","0.5","1.0","1.5","2.0"],"tickvals":[0,0.5,0.99999999999999989,1.5,2],"categoryorder":"array","categoryarray":["0.0","0.5","1.0","1.5","2.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Dissolved Oxygen (mg / L)<br />Rolling Standard Deviation","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,40.150377649343149],"tickmode":"array","ticktext":["0","10","20","30","40"],"tickvals":[0,10,20,30,40],"categoryorder":"array","categoryarray":["0","10","20","30","40"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.6529680365296811,"tickwidth":0.33208800332088001,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":14.87754254877543},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Percent of Observations","font":{"color":"rgba(0,0,0,1)","family":"","size":18.596928185969286}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(26,26,26,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.87754254877543}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"4774654034a":{"x":{},"fill":{},"y":{},"text":{},"type":"bar"},"477457f87fc":{"xintercept":{}}},"cur_data":"4774654034a","visdat":{"4774654034a":["function (y) ","x"],"477457f87fc":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-do-roll-sd-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (mg / L) observations (binwidth = 0.1 mg / L). Dotted orange line indicates <span class="math inline">\(rolling\_sd\_max\)</span>.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -403,9 +478,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Table 5: Rolling standard deviation threshold for dissolved oxygen (mg / L).</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-12ac30fbeccf3c74bfe7" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-12ac30fbeccf3c74bfe7">{"x":{"filter":"none","vertical":false,"data":[[0.66]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>rolling_sd_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-8a3418e282d714bcfe3e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8a3418e282d714bcfe3e">{"x":{"filter":"none","vertical":false,"data":[[0.66]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>rolling_sd_max<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"columnDefs":[{"className":"dt-center","targets":"_all"},{"name":"rolling_sd_max","targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -424,139 +498,407 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
-    } else {
-      return undefined;
+      return false;
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
-</script>
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
+
 
 
 

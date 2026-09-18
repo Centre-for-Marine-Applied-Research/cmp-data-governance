@@ -70,7 +70,7 @@ st_locations %>%
       distinct(), by = join_by(COUNTY, STATION)
   ) %>% 
   leaflet() %>% 
-  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addProviderTiles("Esri.OceanBasemap") %>% 
   add_circle_markers_county(county_pal = county_pal, size = 6) %>% 
   add_county_fill_legend(county_pal = county_pal)
   

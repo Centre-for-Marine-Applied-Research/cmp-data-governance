@@ -35,7 +35,7 @@ size <- 6
 
 # interactive map
 leaflet(st_locations) %>% 
-  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addProviderTiles("Esri.OceanBasemap") %>% 
   add_circle_markers_county(
     dat = filter(st_locations, do_units == "percent saturation"),
     county_pal = county_pal,

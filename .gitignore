@@ -10,3 +10,5 @@
 /pages/figures/*.pptx
 
 
+
+**/*.quarto_ipynb

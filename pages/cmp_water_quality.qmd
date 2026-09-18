@@ -69,7 +69,7 @@ For Validation Tests of the other variables, sensors are set to record at 10 - 1
 
 After the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with > 10 % of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance. 
 
-![Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test.](figures/val_cooler3.jpg){#fig-cooler}
+![Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test.](figures/val_cooler2.jpg){#fig-cooler}
 
 All code used to evaluate sensor validation test status are published in CMAR’s R package [calval](https://github.com/ntorrie/calval).
 
