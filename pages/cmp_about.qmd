@@ -2,9 +2,12 @@
 title: "Data Governance"
 ---
 
-Welcome to the Centre for Marine Applied Research's (CMAR) Data Governance Website. This website provides technical details on the automated Quality Control tests applied to Water Quality data collected through CMAR's Coastal Monitoring Program.
+Welcome to the Centre for Marine Applied Research (CMAR) Data Governance site. This site documents how Water Quality data from CMAR's Coastal Monitoring Program is collected, processed, Quality Controlled, and published. It provides technical details so that anyone working with the data can understand and use it appropriately.
 
-To return to CMAR's main Coastal Monitoring Program website page, click [here](https://cmar.ca/coastal-monitoring-program/).
+Visit the [Coastal Monitoring Program homepage](https://cmar.ca/coastal-monitoring-program/) for a program overview, Data Access Map, and summary reports.
+
+*This site is under active development; content is being added and revised. Last updated: `r format(Sys.Date(), "%B %d, %Y")`.*
+
 
 # Coastal Monitoring Program
 
@@ -17,17 +20,9 @@ CMAR's Coastal Monitoring Program is an ongoing data collection effort to:
 
 # Water Quality Data
 
-Through the Water Quality Branch of the Program, CMAR collects temperature, dissolved oxygen, salinity, and depth data using sensors deployed on stationary moorings. Click [here](../pages/cmp_water_quality.qmd) for more information on data collection, sensor calibration and validation, and data access.
+CMAR collects Water Quality data (dissolved oxygen, salinity, sensor depth, temperature) using sensors deployed on stationary moorings. See the [Water Quality Data page](cmp_water_quality.qmd) for more information on data collection, sensor calibration and validation, and data access.
 
-Click on a variable in the menu bar above for more detailed information about the variable, CMAR measurements, and quality control thresholds. 
-
-# Quality Control
-
-Automated Quality Control tests have been applied to the data to identify outlying and unexpected observations. Click [here](../pages/qc_tests.qmd) to learn more about the Quality Control tests applied to the Water Quality data.
-
-# Data Products
-
-Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the [CMAR Data Access Map](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
+Click on a variable in the menu bar above for more detailed information about the variable, CMAR measurements, and Quality Control thresholds. 
 
 # Code
 
@@ -36,13 +31,17 @@ CMAR has developed and maintains a suite of packages in R (free, open-source sta
 ```{r}
 #| echo: false
 #| fig-align: center
+#| fig-alt: "Hex stickers for the sensorstrings and qaqcmar R packages."
 
 knitr::include_graphics("figures/hex_stickers.png")
 ```
 
 
-# Note
+# Quality Control
 
-The CMAR Data Governance Website is under development. Content is being added and revised.
+Automated Quality Control (QC) tests have been applied to the data to identify outlying and unexpected observations. See the [QC Overview page](qc_overview.qmd) for an overview of the QC workflow. See the [QC Tests & Thresholds page](qc_tests.qmd) to learn more about the Quality Control tests applied to the Water Quality data.
 
+# Data Products
+
+Coastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the [Coastal Monitoring Program Homepage](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the Canadian Integrated Ocean Observing System (CIOOS) [CIOOS Atlantic catalogue](https://catalogue.cioosatlantic.ca/organization/cmar).
 

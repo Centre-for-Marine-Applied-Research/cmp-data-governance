@@ -233,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data-collection" id="toc-data-collection" class="nav-link active" data-scroll-target="#data-collection">Data Collection</a></li>
   <li><a href="#sensor-validation" id="toc-sensor-validation" class="nav-link" data-scroll-target="#sensor-validation">Sensor Validation</a>
   <ul class="collapse">
-  <li><a href="#pre-deployment-val" id="toc-pre-deployment-val" class="nav-link" data-scroll-target="#pre-deployment-val">Pre-Deployment Val</a></li>
+  <li><a href="#pre-deployment-validation" id="toc-pre-deployment-validation" class="nav-link" data-scroll-target="#pre-deployment-validation">Pre-Deployment Validation</a></li>
   <li><a href="#post-deployment-validation" id="toc-post-deployment-validation" class="nav-link" data-scroll-target="#post-deployment-validation">Post-Deployment Validation</a></li>
   </ul></li>
   <li><a href="#data-access" id="toc-data-access" class="nav-link" data-scroll-target="#data-access">Data Access</a></li>
@@ -262,10 +262,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>CMAR collects high resolution temperature, dissolved oxygen, and salinity data through the Water Quality branch of the Coastal Monitoring Program.</p>
+<p>CMAR collects high-resolution (10 minutes to 1 hour) temperature, dissolved oxygen, salinity, and sensor depth data through the Coastal Monitoring Program.</p>
 <section id="data-collection" class="level1">
 <h1>Data Collection</h1>
-<p>Water Quality data is collected using moorings referred to as “sensor strings”. A typical sensor string configuration consists of a rope attached to the seafloor by an anchor and suspended by a sub-surface buoy, with sensors attached at various depths (<a href="#fig-sensor-string" class="quarto-xref">Figure&nbsp;1</a>). Most strings deployed since 2018 are attached to the anchor by an acoustic receiver with a release mechanism. The receiver also logs detections of tagged animals including great white sharks, sturgeon, and tuna for the <a href="https://oceantrackingnetwork.org/">Ocean Tracking Network</a>.</p>
+<p>Water Quality data is collected using moorings referred to as “sensor strings”. A typical sensor string configuration consists of a rope attached to the seafloor by an anchor and suspended by a sub-surface buoy, with sensors attached at various depths (<a href="#fig-sensor-string" class="quarto-xref">Figure&nbsp;1</a>). Most strings deployed since 2018 are attached to the anchor by an acoustic receiver with a release mechanism, which allows the mooring to be retrieved without a diver or winch. The receiver also logs detections of tagged animals including great white sharks, sturgeon, and tuna for the <a href="https://oceantrackingnetwork.org/">Ocean Tracking Network</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-sensor-string" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -280,40 +280,63 @@ Figure&nbsp;1: Diagram of a typical sensor string configuration (not to scale).
 </div>
 </div>
 </div>
-<p>Characteristics of the station location<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and stakeholder needs dictate the string design<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Sensor strings are generally deployed 200 m to 1000 m from shore, in depths up to 75 m. Historically, strings were deployed with only temperature sensors, but in more recent years at least one dissolved oxygen sensor is included (typically at 5 m). At the request of industry, salinity sensors are also included at stations near proposed and existing shellfish aquaculture leases. Some of the sensors used to measure these variables also measure sensor depth. CMAR has also processed and published this opportunistic depth data.</p>
-<p>The different sensor string configurations are described in the table below and (<a href="#fig-sensor-string-configs" class="quarto-xref">Figure&nbsp;2</a>):</p>
+<p>Characteristics of the station location (e.g., depth, bottom type, and currents) and stakeholder needs dictate the string design (e.g., anchor weight, and number/type of sensors). Sensor strings are generally deployed 200 m to 1000 m from shore, in depths up to 75 m. Historically, strings were deployed with only temperature sensors, but in more recent years at least one dissolved oxygen sensor is included (typically at 5 m). At the request of industry, salinity sensors are also included at stations near proposed and existing shellfish aquaculture leases. Some of the sensors used to measure these variables also measure sensor depth, and CMAR has also processed and published this opportunistic depth data.</p>
+<p>The sensor string configurations are described in <a href="#tbl-configs" class="quarto-xref">Table&nbsp;1</a> and shown in <a href="#fig-sensor-string-configs" class="quarto-xref">Figure&nbsp;2</a>. For configurations that float with the tide, sensors remain at a roughly constant depth below the surface. For fixed configurations, the sensor depth below the surface changes with the tide.</p>
+<div id="tbl-configs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-configs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Sensor string configurations.
+</figcaption>
+<div aria-describedby="tbl-configs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
-<col style="width: 80%">
+<col style="width: 65%">
+<col style="width: 15%">
 </colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Configuration</th>
+<th style="text-align: left;">Description</th>
+<th>Floats with tide?</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td>sub-surface buoy</td>
-<td>Attached to sub-surface buoy. Typically has an acoustic release, but sometimes retrieved by diver or drag line. Does not float with tide.</td>
+<td style="text-align: left;">Sub-surface buoy</td>
+<td style="text-align: left;">Attached to a sub-surface buoy. Typically has an acoustic release, but is sometimes retrieved by a diver or drag line.</td>
+<td>No</td>
 </tr>
 <tr class="even">
-<td>surface buoy</td>
-<td>Attached to surface buoy. Floats with tide.</td>
+<td style="text-align: left;">Attached to fixed structure</td>
+<td style="text-align: left;">Attached to a wharf, bridge, or pole.</td>
+<td>No</td>
 </tr>
 <tr class="odd">
-<td>attached to gear</td>
-<td>Typically attached to aquaculture gear, but may be attached to another structure. Floats with tide.</td>
+<td style="text-align: left;">Surface buoy</td>
+<td style="text-align: left;">Attached to a surface buoy.</td>
+<td>Yes</td>
 </tr>
 <tr class="even">
-<td>attached to fixed structure</td>
-<td>Attached to wharf, bridge, or pole. Does not float with tide.</td>
+<td style="text-align: left;">Attached to gear</td>
+<td style="text-align: left;">Typically attached to aquaculture gear, but may be attached to another floating structure.</td>
+<td>Yes</td>
 </tr>
 <tr class="odd">
-<td>floating dock</td>
-<td>Attached to a floating dock. Floats with tide.</td>
+<td style="text-align: left;">Floating dock</td>
+<td style="text-align: left;">Attached to a floating dock.</td>
+<td>Yes</td>
 </tr>
 <tr class="even">
-<td>unknown</td>
-<td>Configuration not indicated in deployment log.</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Configuration not indicated in the deployment log.</td>
+<td>Unknown</td>
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -323,7 +346,7 @@ Figure&nbsp;1: Diagram of a typical sensor string configuration (not to scale).
 <img src="figures/sensor_string_configurations.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1152">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sensor-string-configs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Diagram of different sensor string configuration (not to scale).
+Figure&nbsp;2: Diagram of different sensor string configurations (not to scale).
 </figcaption>
 </figure>
 </div>
@@ -333,11 +356,11 @@ Figure&nbsp;2: Diagram of different sensor string configuration (not to scale).
 <section id="sensor-validation" class="level1">
 <h1>Sensor Validation</h1>
 <p>Prior to deployment, the sensor calibration is validated using a simple cooler test. Code to run the validation test is published in CMAR’s R package <a href="https://github.com/centre-for-marine-applied-research/calval"><code>calval</code></a>. The <a href="https://cmar-calval.share.connect.posit.cloud/">CMAR Sensor Validation App</a> provides a user interface for running the code.</p>
-<section id="pre-deployment-val" class="level2">
-<h2 class="anchored" data-anchor-id="pre-deployment-val">Pre-Deployment Val</h2>
+<section id="pre-deployment-validation" class="level2">
+<h2 class="anchored" data-anchor-id="pre-deployment-validation">Pre-Deployment Validation</h2>
 <p>Sensors are set to record at 10 - 15 minute intervals and submerged in a well insulated container (cooler) of water for at least 24 hours. Seawater is used for tests with salinity sensors.</p>
 <p>After the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with &gt; 10% of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A temperature or salinity sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance.</p>
-<p>Dissolved oxygen sensors are included in the validation test, but do not reliably pass. Sensors in the same cooler at the same time show different magnitudes and trends in dissolved oxygen. It is not feasible to re-test all sensor that fail, and so they are deployed regardless of the validation results. The observations undergo strict quality control on retrieval.</p>
+<p>Dissolved oxygen sensors are included in the validation test, but do not reliably pass. Sensors in the same cooler at the same time show different magnitudes and trends in dissolved oxygen. It is not feasible to re-test all sensors that fail, and so they are deployed regardless of the validation results. The observations undergo strict quality control on retrieval.</p>
 <div id="fig-cooler" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cooler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -370,14 +393,7 @@ Figure&nbsp;3: Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor 
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>e.g., depth, bottom type, and currents<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>e.g., anchor weight, and number/type of sensors<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

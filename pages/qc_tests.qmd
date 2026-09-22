@@ -56,7 +56,7 @@ These thresholds may be re-evaluated in several years, when more data is availab
 
 Three QARTOD tests, two CMAR-developed tests, and a human in the loop test were applied to the CMAR Water Quality data.
 
-Automated QC tests were applied to each sensor string deployment using CMAR-developed R package [`qaqcmar`](https://github.com/dempsey-CMAR/qaqcmar), which is available to view and install from GitHub. The human in the loop test was applied during data review using `qaqcmar` and the [qc_tests_water_quality](https://github.com/dempsey-CMAR/qc_tests_water_quality) R repository, which is also available on GitHub.
+Automated QC tests were applied to each sensor string deployment using CMAR-developed R package [`qaqcmar`](https://github.com/centre-for-marine-applied-research/qaqcmar), which is available to view and install from GitHub. The human in the loop test was applied during data review using `qaqcmar` and the [qc_tests_water_quality](https://github.com/centre-for-marine-applied-research/qc_tests_water_quality) R repository, which is also available on GitHub.
 
 ## Gross Range Test
 
