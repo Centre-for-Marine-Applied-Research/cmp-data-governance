@@ -37,6 +37,8 @@ The different sensor string configurations are described in the table below and 
 |     unknown    |     Configuration not indicated in deployment log.    |
 
 
+<br>
+
 ```{r}
 #| echo: false
 #| fig-align: center
@@ -46,32 +48,20 @@ The different sensor string configurations are described in the table below and 
 knitr::include_graphics("figures/sensor_string_configurations.png")
 ```
 
-# Sensor Calibration & Validation
+# Sensor Validation
 
-## Pre-Deployment Validation
+Prior to deployment, the sensor calibration is validated using a simple cooler test. Code to run the validation test is published in CMAR’s R package [`calval`](https://github.com/centre-for-marine-applied-research/calval). The [CMAR Sensor Validation App](https://cmar-calval.share.connect.posit.cloud/) provides a user interface for running the code. 
 
-Prior to deployment, sensors that can be calibrated are calibrated according to their specific sensor manual. All sensors are then subjected to a Validation Test(s), which differ depending on the variables measured. 
 
-### Dissolved Oxygen (percent saturation)
-For a Validation Test of dissolved oxygen measured in units of percent saturation, sensors are set to record at 15 minute intervals and placed in an air-tight environment with water-saturated air at 100 % humidity. The sensors are left to record for at least 6 hours (@fig-bucket).
+## Pre-Deployment Val
 
-![Four aquaMeasure DOT sensors in a sealed dissolved oxygen validation test bucket.](figures/bucket2.jpg){#fig-bucket}
+Sensors are set to record at 10 - 15 minute intervals and submerged in a well insulated container (cooler) of water for at least 24 hours. Seawater is used for tests with salinity sensors. 
 
-The precision for these dissolved oxygen sensors is +/-5 % [@RN26880]. Since the the sensors in the bucket are in water-saturated air, they should measure 100 +/-5 % saturation. Any sensors outside of the acceptable 95 - 105 % range for more than 10 % of the test are re-calibrated and re-validated. A sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance.
+After the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with > 10% of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A temperature or salinity sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance. 
 
-![Observations from a  dissolved oxygen (percent saturation) Validation Test of 4 sensors. The gray band indicates the acceptable range of values.](figures/do_calval.png){#fig-do_calval}
+Dissolved oxygen sensors are included in the validation test, but do not reliably pass. Sensors in the same cooler at the same time show different magnitudes and trends in dissolved oxygen. It is not feasible to re-test all sensor that fail, and so they are deployed regardless of the validation results. The observations undergo strict quality control on retrieval.
 
-@fig-do_calval shows the results of a dissolved oxygen Validation Test for four sensors. Sensor #675016 recorded outside of an acceptable range for 99.9% of the test period, and was therefore flagged for re-calibration.
-
-### Other Variables
-
-For Validation Tests of the other variables, sensors are set to record at 10 - 15 minute intervals and submerged in a well insulated container of water for at least 6 hours. Seawater is used for tests with salinity sensors. 
-
-After the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with > 10 % of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance. 
-
-![Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test.](figures/val_cooler2.jpg){#fig-cooler}
-
-All code used to evaluate sensor validation test status are published in CMAR’s R package [calval](https://github.com/ntorrie/calval).
+![Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test.](figures/val_cooler2.jpg){#fig-cooler width=60% height=60%}
 
 ## Post-Deployment Validation
 
@@ -79,9 +69,7 @@ Retrieved sensors undergo a post-deployment validation test, which follows the s
 
 # Data Access
 
-Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the [CMAR Website](https://cmar.ca/reports/). Full datasets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
-
-The reports and datasets can also be accessed through the CMAR [Station Locations Map](https://cmar.ca/coastal-monitoring-program/#station).
+Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the [CMAR Data Access Map](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
 
 ```{r}
 #| echo: false

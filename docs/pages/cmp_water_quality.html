@@ -23,26 +23,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -59,10 +40,14 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a3fefc22b14b6017fbe60300162a1dca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-1f62b248516a512e71cdcd2aebf59042.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a3fefc22b14b6017fbe60300162a1dca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b5cdc83d754cd650109f5c2e0467249f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,7 +77,6 @@ div.csl-indent {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -169,7 +153,7 @@ div.csl-indent {
   </li>  
         <li>
     <a class="dropdown-item" href="../pages/do_thresholds_mg_per_l.html">
- <span class="dropdown-text">Thresholds (mg / L)</span></a>
+ <span class="dropdown-text">Thresholds (mg/L)</span></a>
   </li>  
     </ul>
   </li>
@@ -247,13 +231,9 @@ div.csl-indent {
    
   <ul>
   <li><a href="#data-collection" id="toc-data-collection" class="nav-link active" data-scroll-target="#data-collection">Data Collection</a></li>
-  <li><a href="#sensor-calibration-validation" id="toc-sensor-calibration-validation" class="nav-link" data-scroll-target="#sensor-calibration-validation">Sensor Calibration &amp; Validation</a>
+  <li><a href="#sensor-validation" id="toc-sensor-validation" class="nav-link" data-scroll-target="#sensor-validation">Sensor Validation</a>
   <ul class="collapse">
-  <li><a href="#pre-deployment-validation" id="toc-pre-deployment-validation" class="nav-link" data-scroll-target="#pre-deployment-validation">Pre-Deployment Validation</a>
-  <ul class="collapse">
-  <li><a href="#dissolved-oxygen-percent-saturation" id="toc-dissolved-oxygen-percent-saturation" class="nav-link" data-scroll-target="#dissolved-oxygen-percent-saturation">Dissolved Oxygen (percent saturation)</a></li>
-  <li><a href="#other-variables" id="toc-other-variables" class="nav-link" data-scroll-target="#other-variables">Other Variables</a></li>
-  </ul></li>
+  <li><a href="#pre-deployment-val" id="toc-pre-deployment-val" class="nav-link" data-scroll-target="#pre-deployment-val">Pre-Deployment Val</a></li>
   <li><a href="#post-deployment-validation" id="toc-post-deployment-validation" class="nav-link" data-scroll-target="#post-deployment-validation">Post-Deployment Validation</a></li>
   </ul></li>
   <li><a href="#data-access" id="toc-data-access" class="nav-link" data-scroll-target="#data-access">Data Access</a></li>
@@ -334,6 +314,7 @@ Figure&nbsp;1: Diagram of a typical sensor string configuration (not to scale).
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-sensor-string-configs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -349,53 +330,24 @@ Figure&nbsp;2: Diagram of different sensor string configuration (not to scale).
 </div>
 </div>
 </section>
-<section id="sensor-calibration-validation" class="level1">
-<h1>Sensor Calibration &amp; Validation</h1>
-<section id="pre-deployment-validation" class="level2">
-<h2 class="anchored" data-anchor-id="pre-deployment-validation">Pre-Deployment Validation</h2>
-<p>Prior to deployment, sensors that can be calibrated are calibrated according to their specific sensor manual. All sensors are then subjected to a Validation Test(s), which differ depending on the variables measured.</p>
-<section id="dissolved-oxygen-percent-saturation" class="level3">
-<h3 class="anchored" data-anchor-id="dissolved-oxygen-percent-saturation">Dissolved Oxygen (percent saturation)</h3>
-<p>For a Validation Test of dissolved oxygen measured in units of percent saturation, sensors are set to record at 15 minute intervals and placed in an air-tight environment with water-saturated air at 100 % humidity. The sensors are left to record for at least 6 hours (<a href="#fig-bucket" class="quarto-xref">Figure&nbsp;3</a>).</p>
-<div id="fig-bucket" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bucket-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/bucket2.jpg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bucket-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Four aquaMeasure DOT sensors in a sealed dissolved oxygen validation test bucket.
-</figcaption>
-</figure>
-</div>
-<p>The precision for these dissolved oxygen sensors is +/-5 % <span class="citation" data-cites="RN26880">(<a href="#ref-RN26880" role="doc-biblioref">InnovaSea 2021</a>)</span>. Since the the sensors in the bucket are in water-saturated air, they should measure 100 +/-5 % saturation. Any sensors outside of the acceptable 95 - 105 % range for more than 10 % of the test are re-calibrated and re-validated. A sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance.</p>
-<div id="fig-do_calval" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-do_calval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/do_calval.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-do_calval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Observations from a dissolved oxygen (percent saturation) Validation Test of 4 sensors. The gray band indicates the acceptable range of values.
-</figcaption>
-</figure>
-</div>
-<p><a href="#fig-do_calval" class="quarto-xref">Figure&nbsp;4</a> shows the results of a dissolved oxygen Validation Test for four sensors. Sensor #675016 recorded outside of an acceptable range for 99.9% of the test period, and was therefore flagged for re-calibration.</p>
-</section>
-<section id="other-variables" class="level3">
-<h3 class="anchored" data-anchor-id="other-variables">Other Variables</h3>
-<p>For Validation Tests of the other variables, sensors are set to record at 10 - 15 minute intervals and submerged in a well insulated container of water for at least 6 hours. Seawater is used for tests with salinity sensors.</p>
-<p>After the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with &gt; 10 % of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance.</p>
+<section id="sensor-validation" class="level1">
+<h1>Sensor Validation</h1>
+<p>Prior to deployment, the sensor calibration is validated using a simple cooler test. Code to run the validation test is published in CMAR’s R package <a href="https://github.com/centre-for-marine-applied-research/calval"><code>calval</code></a>. The <a href="https://cmar-calval.share.connect.posit.cloud/">CMAR Sensor Validation App</a> provides a user interface for running the code.</p>
+<section id="pre-deployment-val" class="level2">
+<h2 class="anchored" data-anchor-id="pre-deployment-val">Pre-Deployment Val</h2>
+<p>Sensors are set to record at 10 - 15 minute intervals and submerged in a well insulated container (cooler) of water for at least 24 hours. Seawater is used for tests with salinity sensors.</p>
+<p>After the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with &gt; 10% of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A temperature or salinity sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance.</p>
+<p>Dissolved oxygen sensors are included in the validation test, but do not reliably pass. Sensors in the same cooler at the same time show different magnitudes and trends in dissolved oxygen. It is not feasible to re-test all sensor that fail, and so they are deployed regardless of the validation results. The observations undergo strict quality control on retrieval.</p>
 <div id="fig-cooler" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cooler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/val_cooler2.jpg" class="img-fluid figure-img">
+<img src="figures/val_cooler2.jpg" style="width:60.0%;height:60.0%" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cooler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test.
+Figure&nbsp;3: Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test.
 </figcaption>
 </figure>
 </div>
-<p>All code used to evaluate sensor validation test status are published in CMAR’s R package <a href="https://github.com/ntorrie/calval">calval</a>.</p>
-</section>
 </section>
 <section id="post-deployment-validation" class="level2">
 <h2 class="anchored" data-anchor-id="post-deployment-validation">Post-Deployment Validation</h2>
@@ -404,8 +356,7 @@ Figure&nbsp;5: Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor 
 </section>
 <section id="data-access" class="level1">
 <h1>Data Access</h1>
-<p>Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the <a href="https://cmar.ca/reports/">CMAR Website</a>. Full datasets can be downloaded from the <a href="https://data.novascotia.ca/browse?tags=coastal+monitoring+program">Nova Scotia Open Data Portal</a> and the <a href="https://catalogue.cioosatlantic.ca/organization/cmar">CIOOS Atlantic</a>.</p>
-<p>The reports and datasets can also be accessed through the CMAR <a href="https://cmar.ca/coastal-monitoring-program/#station">Station Locations Map</a>.</p>
+<p>Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the <a href="https://cmar.ca/coastal-monitoring-program/">CMAR Data Access Map</a>. Full data sets can be downloaded from the <a href="https://data.novascotia.ca/browse?tags=coastal+monitoring+program">Nova Scotia Open Data Portal</a> and the <a href="https://catalogue.cioosatlantic.ca/organization/cmar">CIOOS Atlantic</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -417,15 +368,10 @@ Figure&nbsp;5: Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor 
 </div>
 
 
-
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-RN26880" class="csl-entry" role="listitem">
-InnovaSea. 2021. <em>Firmware Update Improves Accuracy of aquaMeasure Dissolved Oxygen Sensors</em>. <a href="https://storage.googleapis.com/innovasea-staging/uploads/2021/03/6d174318-firmware-do-wp-012021-2-1.pdf">https://storage.googleapis.com/innovasea-staging/uploads/2021/03/6d174318-firmware-do-wp-012021-2-1.pdf</a>.
-</div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>e.g., depth, bottom type, and currents<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

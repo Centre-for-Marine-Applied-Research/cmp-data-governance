@@ -32,7 +32,7 @@ dat_sat <- readRDS(here("pages/data/do_rolling_sd_prelim_qc.rds")) %>%
 colnames(dat_sat) <- str_remove_all(colnames(dat_sat), "value_")
 ```
 
-Separate thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg per L. This page describes the thresholds for percent saturation. Click [here](../pages/do_thresholds_mg_per_l.qmd) for the thresholds for mg per L.
+Separate thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg/L. This page describes the thresholds for percent saturation. Click [here](../pages/do_thresholds_mg_per_l.qmd) for the thresholds for mg/L.
 
 QC test thresholds for dissolved oxygen (percent saturation) were based on historical Coastal Monitoring Program data. Preliminary quality control (QC) was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted. Three deployments in Whycocomagh Basin (Inverness County) measured data near or below the oxycline. This data was also omitted from the thresholds analysis because it is not representative of typical conditions measured by the Program. 
 

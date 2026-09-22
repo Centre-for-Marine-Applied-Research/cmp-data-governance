@@ -48,6 +48,12 @@ beaver <- readRDS(here("pages/data-reprocessed/beaver_point_2019-10-20.rds")) %>
 
 ```
 
+```{css}
+.info.legend.leaflet-control i { 
+  float: left; 
+  margin-right: 8px;
+}
+```
 
 This page provides an overview of where and how sensor depth is measured through the CMAR Coastal Monitoring Program.
 
@@ -90,13 +96,13 @@ n_county_obs <- dat_depth_raw %>%
 
 ```
 
-A large proportion of depth records are from `r n_county_obs[1, "county"]$county` County (`r n_county_obs[1, "n_percent"]$n_percent` %) and `r n_county_obs[2, "county"]$county` County (`r n_county_obs[2, "n_percent"]$n_percent` %), while a small proportion are from `r n_county_obs[nrow(n_county_obs), "county"]$county` (`r n_county_obs[nrow(n_county_obs), "n_percent"]$n_percent` %) and `r n_county_obs[nrow(n_county_obs)-1, "county"]$county` (`r n_county_obs[nrow(n_county_obs)-1, "n_percent"]$n_percent` %) Counties (@fig-depth-n-obs). 
+A large proportion of depth records are from `r n_county_obs[1, "county"]$county` County (`r n_county_obs[1, "n_percent"]$n_percent`%) and `r n_county_obs[2, "county"]$county` County (`r n_county_obs[2, "n_percent"]$n_percent`%), while a small proportion are from `r n_county_obs[nrow(n_county_obs), "county"]$county` (`r n_county_obs[nrow(n_county_obs), "n_percent"]$n_percent`%) and `r n_county_obs[nrow(n_county_obs)-1, "county"]$county` (`r n_county_obs[nrow(n_county_obs)-1, "n_percent"]$n_percent`%) Counties (@fig-depth-n-obs). 
 
 
 ```{r}
 #| label: fig-depth-n-obs
 #| fig-height: 8
-#| fig-cap: The number of dissolved oxygen observations in each county. 
+#| fig-cap: The number of depth observations in each county. 
 
 p <- plot_n_obs_county(n_county_obs)
 

@@ -40,10 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a3fefc22b14b6017fbe60300162a1dca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-1f62b248516a512e71cdcd2aebf59042.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a3fefc22b14b6017fbe60300162a1dca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b5cdc83d754cd650109f5c2e0467249f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +77,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -150,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../pages/do_thresholds_mg_per_l.html">
- <span class="dropdown-text">Thresholds (mg / L)</span></a>
+ <span class="dropdown-text">Thresholds (mg/L)</span></a>
   </li>  
     </ul>
   </li>
@@ -261,18 +264,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>CMAR Water Quality data is available through several data products. Summary reports are available on the <a href="https://cmar.ca/reports/">CMAR Website</a>. Full datasets can be downloaded from the <a href="https://data.novascotia.ca/browse?tags=coastal+monitoring+program">Nova Scotia Open Data Portal</a> and <a href="https://catalogue.cioosatlantic.ca/organization/cmar">CIOOS Atlantic</a>.</p>
-<p>The reports and datasets can also be accessed through the CMAR <a href="https://cmar.ca/coastal-monitoring-program/#station">Station Locations Map</a>.</p>
+<p>Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the <a href="https://cmar.ca/coastal-monitoring-program/">CMAR Data Access Map</a>. Full data sets can be downloaded from the <a href="https://data.novascotia.ca/browse?tags=coastal+monitoring+program">Nova Scotia Open Data Portal</a> and the <a href="https://catalogue.cioosatlantic.ca/organization/cmar">CIOOS Atlantic</a>.</p>
 <p>This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal.</p>
 <section id="county-datasets" class="level1">
 <h1>County Datasets</h1>
-<p>The Water Quality datasets are organized by county. These are large datasets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest before downloading the data.</p>
-<p>Take care when filtering based on the quality control flags, because removing a whole row with a “Failed” observation may also removed good observations. For example, a sensor may measure a temperature observation flagged as “Pass” at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as “Fail”. The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a “long” format using CMAR’s <code>qaqcmar</code> package and then filtered.</p>
+<p>The Water Quality data sets are organized by county. These are large data sets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest before downloading the data.</p>
+<p>Take care when filtering based on the quality control flags, because removing a whole row with a “Failed” observation may also removed good observations. For example, a sensor may measure a temperature observation flagged as “Pass” at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as “Fail”. The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a “long” format using CMAR’s <a href="https://github.com/Centre-for-Marine-Applied-Research/qaqcmar"><code>qaqcmar</code></a> R package and then filtered.</p>
 <p>Note that Excel files (.xlsx) have a limit of <a href="https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3?ui=en-us&amp;rs=en-us&amp;ad=us">1,048,576 rows per sheet</a>. CSV files can hold more rows, but may not display them all. Please use caution when downloading and analyzing the data.</p>
 </section>
 <section id="data-format" class="level1">
 <h1>Data Format</h1>
-<p>There are 22 columns in each dataset, as described below.</p>
+<p>There are 22 columns in each data set, as described below.</p>
 <section id="deployment-columns" class="level2">
 <h2 class="anchored" data-anchor-id="deployment-columns">Deployment Columns</h2>
 <p>The first 7 columns provide information on the deployment, including the location<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, the deployment dates, and the sensor string configuration.</p>

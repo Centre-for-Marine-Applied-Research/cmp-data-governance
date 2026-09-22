@@ -2,24 +2,22 @@
 title: "Data Products"
 ---
 
-CMAR Water Quality data is available through several data products. Summary reports are available on the [CMAR Website](https://cmar.ca/reports/). Full datasets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
-
-The reports and datasets can also be accessed through the CMAR [Station Locations Map](https://cmar.ca/coastal-monitoring-program/#station).
+Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the [CMAR Data Access Map](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
 
 This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal. 
 
 # County Datasets
 
-The Water Quality datasets are organized by county. These are large datasets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest before downloading the data.
+The Water Quality data sets are organized by county. These are large data sets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest before downloading the data.
 
-Take care when filtering based on the quality control flags, because removing a whole row with a "Failed" observation may also removed good observations. For example, a sensor may measure a temperature observation flagged as "Pass" at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as "Fail". The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a "long" format using CMAR's `qaqcmar` package and then filtered. 
+Take care when filtering based on the quality control flags, because removing a whole row with a "Failed" observation may also removed good observations. For example, a sensor may measure a temperature observation flagged as "Pass" at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as "Fail". The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a "long" format using CMAR's [`qaqcmar`](https://github.com/Centre-for-Marine-Applied-Research/qaqcmar) R package and then filtered. 
 
 
 Note that Excel files (.xlsx) have a limit of [1,048,576 rows per sheet](https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3?ui=en-us&rs=en-us&ad=us). CSV files can hold more rows, but may not display them all. Please use caution when downloading and analyzing the data.
 
 # Data Format
 
-There are 22 columns in each dataset, as described below.
+There are 22 columns in each data set, as described below.
 
 ## Deployment Columns
 The first 7 columns provide information on the deployment, including the location[^1], the deployment dates, and the sensor string configuration.

@@ -41,10 +41,8 @@ website:
           
 format:
   html:
-    theme: yeti
-    css: styles.css
     toc: true
-
+brand: _brand.yml
 editor: source
 execute: 
   freeze: auto

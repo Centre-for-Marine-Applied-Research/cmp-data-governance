@@ -1,5 +1,5 @@
 ---
-title: "Thresholds (mg / L)"
+title: "Thresholds (mg/L)"
 editor_options: 
   chunk_output_type: console
 ---
@@ -47,13 +47,13 @@ dat_do_mg_per_l <- readRDS(here("pages/data/do_mg_per_l_rolling_sd_prelim_qc.rds
 colnames(dat_do_mg_per_l) <- str_remove_all(colnames(dat_do_mg_per_l), "value_")
 ```
 
-Separate thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg per L. This page describes the thresholds for mg per L. Click [here](../pages/do_thresholds.qmd) for the thresholds for percent saturation.
+Separate thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg/L. This page describes the thresholds for mg/L. Click [here](../pages/do_thresholds.qmd) for the thresholds for percent saturation.
 
-QC test thresholds for dissolved oxygen (mg / L) were based on historical Coastal Monitoring Program data. Preliminary quality control (QC) was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted.
+QC test thresholds for dissolved oxygen (mg/L) were based on historical Coastal Monitoring Program data. Preliminary quality control (QC) was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted.
 
-To date, dissolved oxygen (mg / L) has only been measured in two counties[^1] in adjacent waterbodies[^2]. A single set of thresholds was calculated for these counties.
+To date, dissolved oxygen (mg/L) has only been measured in two counties[^1] in adjacent waterbodies[^2]. A single set of thresholds was calculated for these counties.
 
-The dissolved oxygen (mg / L) data has not been corrected for salinity. The threshold were calculated from and applied to the uncorrected data.
+The dissolved oxygen (mg/L) data has not been corrected for salinity. The threshold were calculated from and applied to the uncorrected data.
 
 [^1]: Halifax and Lunenburg
 [^2]: Mahone Bay and St. Margaret's Bay
@@ -65,7 +65,7 @@ The dissolved oxygen (mg / L) data has not been corrected for salinity. The thre
 
 The sensor thresholds were determined based on the manual for the HOBO DO (Table 1).
 
-Table 1: Dissolved oxygen (mg / L) sensor thresholds for the Gross Range Test.
+Table 1: Dissolved oxygen (mg/L) sensor thresholds for the Gross Range Test.
 ```{r}
 sensors %>%
   filter(str_detect(variable, "dissolved_oxygen"), sensor_type == "hobo do") %>%
@@ -79,7 +79,7 @@ sensors %>%
 
 ## User Thresholds
 
-The dissolved oxygen (mg / L) observations were normally distributed (@fig-do-hist), and so the mean and standard deviation were used to determine $user_{min}$ and $user_{max}$. The statistics and threshold values are shown in Table 2.
+The dissolved oxygen (mg/L) observations were normally distributed (@fig-do-hist), and so the mean and standard deviation were used to determine $user_{min}$ and $user_{max}$. The statistics and threshold values are shown in Table 2.
 
 :::panel-tabset
 
@@ -119,7 +119,7 @@ user_do %>%
 
 # Climatological Test
 
-@fig-do-clim shows the monthly mean and standard deviation of dissolved oxygen (mg / L) data. The observations are normally distributed within each month (@fig-do-hist-clim), and so the mean and standard deviation were used to calculate the seasonal thresholds (Table 3).
+@fig-do-clim shows the monthly mean and standard deviation of dissolved oxygen (mg/L) data. The observations are normally distributed within each month (@fig-do-hist-clim), and so the mean and standard deviation were used to calculate the seasonal thresholds (Table 3).
 
 ::: panel-tabset
 
@@ -161,7 +161,7 @@ ggplotly(p)
 ```{r}
 #| warning: false
 #| fig-height: 10
-#| fig-cap:  Seasonal distribution of dissolved oxygen (mg / L) observations (binwidth = 0.5 mg / L). Dotted orange lines indicate the user thresholds. 
+#| fig-cap:  Seasonal distribution of dissolved oxygen (mg/L) observations (binwidth = 0.5 mg/L). Dotted orange lines indicate the user thresholds. 
 #| label: fig-do-hist-clim
 #| message: false
 
@@ -202,7 +202,7 @@ do_clim %>%
 
 The distribution of the spike value is skewed right (@fig-do-spike-dist), and so several upper quartile values (90th, 95th, and 99.7th quartile) were evaluated to use as the $spike_{low}$. 
 
-There were relatively few large single-value spikes in the dissolved oxygen (mg / L) data, and so the 99.7th quartile was selected to avoid false positives. $spike_{high}$ was defined as 3 * $spike_{low}$ to identify especially egregious spike values.
+There were relatively few large single-value spikes in the dissolved oxygen (mg/L) data, and so the 99.7th quartile was selected to avoid false positives. $spike_{high}$ was defined as 3 * $spike_{low}$ to identify especially egregious spike values.
 
 ::: panel-tabset
 
@@ -242,7 +242,7 @@ ggplotly(p, tooltip = "text")
 
 ### Table 4
 
-Table 4: Spike thresholds for dissolved oxygen (mg / L).
+Table 4: Spike thresholds for dissolved oxygen (mg/L).
 ```{r}
 spike_thresh %>% 
   select(spike_low, spike_high) %>% 
@@ -255,7 +255,7 @@ spike_thresh %>%
 
 The distribution of rolling standard deviation is skewed right (@fig-do-roll-sd-dist), and so several upper quartile values were evaluated to use as the $rolling\_sd\_max$. 
 
-The 90th, 95th, and 99.7th quartile values were each applied to the the raw data (no preliminary QC) and the results inspected. The 90th quartile was determined to be too stringent, as it generated false positives, while The 99.7th quartile was determined to be too lenient, as it resulted in false negatives. The 95th quartile identified 23 % of the raw data (no preliminary QC) as [Suspect/Of Interest]{style="color: #EDA247;"} and was considered the most useful threshold.
+The 90th, 95th, and 99.7th quartile values were each applied to the the raw data (no preliminary QC) and the results inspected. The 90th quartile was determined to be too stringent, as it generated false positives, while The 99.7th quartile was determined to be too lenient, as it resulted in false negatives. The 95th quartile identified 23% of the raw data (no preliminary QC) as [Suspect/Of Interest]{style="color: #EDA247;"} and was considered the most useful threshold.
 
 As discussed for dissolved oxygen (percent saturation), this is a very high percent of observations to flag as [Suspect/Of Interest]{style="color: #EDA247;"}. However, it was anticipated that a large proportion of the dissolved oxygen observations would be flagged by this test because there were substantial biofouling signals identified during the preliminary QC process. CMAR is currently assessing options to reduce biofouling on dissolved oxygen sensors.
 
@@ -267,7 +267,7 @@ There is no [Fail]{style="color: #DB4325;"} flag for the Rolling Standard Deviat
 ```{r}
 #| warning: false
 #| fig-height: 4
-#| fig-cap: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (mg / L) observations (binwidth = 0.1 mg / L). Dotted orange line indicates $rolling\_sd\_max$.
+#| fig-cap: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (mg/L) observations (binwidth = 0.1 mg / L). Dotted orange line indicates $rolling\_sd\_max$.
 #| label: fig-do-roll-sd-dist
 
 do_roll_sd <- thresholds %>% 
@@ -284,7 +284,7 @@ p <- dat_do_mg_per_l %>%
     hist_col = sd_roll, binwidth = 0.1, pal = hist_pal,
     user_thresh = do_roll_sd$rolling_sd_max
   ) +
-  scale_x_continuous("Dissolved Oxygen (mg / L)\nRolling Standard Deviation")
+  scale_x_continuous("Dissolved Oxygen (mg/L)\nRolling Standard Deviation")
 
 ggplotly(p, tooltip = "text")
 
@@ -292,7 +292,7 @@ ggplotly(p, tooltip = "text")
 
 ### Table 5
 
-Table 5: Rolling standard deviation threshold for dissolved oxygen (mg / L).
+Table 5: Rolling standard deviation threshold for dissolved oxygen (mg/L).
 ```{r}
 do_roll_sd %>% 
   datatable(options = dt_options2, rownames = FALSE)

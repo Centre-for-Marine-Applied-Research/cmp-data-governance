@@ -18,6 +18,13 @@ st_locations <- st_locations %>%
   
 ```
 
+```{css}
+.info.legend.leaflet-control i { 
+  float: left; 
+  margin-right: 8px;
+}
+```
+
 This page provides an overview of where and how dissolved oxygen is measured through CMAR's Coastal Monitoring Program.
 
 These figures and values include data collected up to the end of the 2022 field season and were subjected to preliminary Quality Control.
@@ -72,7 +79,7 @@ n_county_obs <- dat %>%
 
 A large proportion of dissolved oxygen records are from `r n_county_obs[1, "county"]$county` County (`r n_county_obs[1, "n_percent"]$n_percent` %) and `r n_county_obs[2, "county"]$county` County (`r n_county_obs[2, "n_percent"]$n_percent` %), while a small proportion are from `r n_county_obs[nrow(n_county_obs), "county"]$county` (`r n_county_obs[nrow(n_county_obs), "n_percent"]$n_percent` %) and `r n_county_obs[nrow(n_county_obs)-1, "county"]$county` (`r n_county_obs[nrow(n_county_obs)-1, "n_percent"]$n_percent` %) Counties (@fig-do-n-obs-sat). 
 
-Most observations to date have been measured in units of percent saturation. In 2021, CMAR began deploying several sensors that record in concentration (mg / L), and there are a growing number of observations recorded in these units (@fig-do-n-obs-sat).
+Most observations to date have been measured in units of percent saturation. In 2021, CMAR began deploying several sensors that record in concentration (mg/L), and there are a growing number of observations recorded in these units (@fig-do-n-obs-sat).
 
 ```{r}
 #| label: fig-do-n-obs-sat
@@ -117,7 +124,7 @@ CMAR uses two types of sensors to measure dissolved oxygen: the [aquaMeasure DOT
 CMAR has a large inventory of DOTs (104 in October 2024), which are used for most deployments with dissolved oxygen. The DOT measures temperature and partial pressure of oxygen, providing dissolved oxygen values in units of percent saturation. Partial pressure values are not affected by salinity [@RN13158], and so no correction factor is required for these measurements. For CMAR deployments, each DOT is programmed to measure and internally log at 10 minute intervals. CMAR typically retrieves sensors after ~1 year for data offload, cleaning, and calibration/validation.
 
 ### HOBO U26
-CMAR added 13 HOBO U26 sensors to the inventory in 2021, and has slowly increased the inventory to 20 in October 2024. The HOBO U26 measures temperature and the concentration of dissolved oxygen (in units of mg / L). For CMAR deployments, each HOBO U26 is programmed to measure and internally log at 10 minute intervals. These sensors have a sensor cap that needs to be replaced every 6 months. After this time, neither dissolved oxygen nor temperature are logged. These sensors are deployed in St. Margarets Bay and Mahone Bay rather than more remote locations so that they can be serviced twice a year with minimal travel requirements (@fig-do-station-locations).
+CMAR added 13 HOBO U26 sensors to the inventory in 2021, and has slowly increased the inventory to 20 in October 2024. The HOBO U26 measures temperature and the concentration of dissolved oxygen (in units of mg/L). For CMAR deployments, each HOBO U26 is programmed to measure and internally log at 10 minute intervals. These sensors have a sensor cap that needs to be replaced every 6 months. After this time, neither dissolved oxygen nor temperature are logged. These sensors are deployed in St. Margarets Bay and Mahone Bay rather than more remote locations so that they can be serviced twice a year with minimal travel requirements (@fig-do-station-locations).
 
 The HOBO U26 sensor does not account for salinity, so the measurements should be adjusted based on a salinity correction factor before analysis. The [HOBOware software](https://www.onsetcomp.com/products/software/hoboware) can apply this salinity correction if salinity conditions are provided. The software can also convert measured concentration values to percent saturation if salinity and pressure conditions are provided. CMAR does not have consistent salinity or pressure measurements, and so the uncorrected data are published. 
 

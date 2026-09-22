@@ -4,11 +4,11 @@ title: "QC Overview"
 
 CMAR applies automated Quality Control (QC) tests and "human in the loop" QC to the Coastal Monitoring Program Water Quality data. 
 
-An automated QC test is an algorithm that evaluates each data observation and assigns a flag to the observation indicating the test results. These flags are typically reviewed by human experts, which is referred to as "human in the loop" QC. End users can then filter the data set for records that meet their quality criteria [@RN26831].
+An automated QC test is an algorithm that evaluates each data observation and assigns a flag to the observation indicating the test result. These flags are typically reviewed by human experts, which is referred to as "human in the loop" QC. End users can then filter the data set for records that meet their quality criteria [@RN26831].
 
 Numerous QC flagging schemes and tests exist and have been applied to oceanographic data sets [e.g., Appendix A in @RN26831]. CMAR has adopted the well-known QARTOD flag scheme and several QARTOD tests.
 
-Note that it is beyond the scope of the Program to produce analysis-ready data products for all potential users, and some users may wish to apply additional QC.
+It is beyond the scope of the Program to produce analysis-ready data products for all potential users. Some users may wish to apply additional QC. All users should carefully evaluate data and flags before analysis.
 
 ## QARTOD Guidance
 
@@ -27,15 +27,15 @@ CMAR has adopted the QARTOD flag scheme (@tbl-qartod-flags) with some adaptation
 | **Flag Label** | **Flag Value** | **Description** |
 |---------------------|:-----------------:|-----------------------------------------------------------|
 | [Pass]{style="color: #009200;"} | [1]{style="color: #009200;"} | [Data have passed critical real-time quality control tests and are deemed adequate for use as preliminary data.]{style="color: #009200;"} |
-| [Not Evaluated]{style="color: #5A5A5A;"} | [2]{style="color: #5A5A5A;"} | [Data have not been QC-tested, or the information on quality is not available.]{style="color: #5A5A5A;"} |
+| [Not Evaluated]{style="color: #3D3D3D;"} | [2]{style="color: #3D3D3D;"} | [Data have not been QC-tested, or the information on quality is not available.]{style="color: #3D3D3D;"} |
 | [Suspect/Of Interest]{style="color: #EDA247;"}  | [3]{style="color: #EDA247;"} | [Data are considered to be either suspect or of high interest to data providers and users. They are flagged suspect to draw further attention to them by operators.]{style="color: #EDA247;"}                     |
 | [Fail]{style="color: #DB4325;"} | [4]{style="color: #DB4325;"} | [Data are considered to have failed one or more critical real-time QC checks. If they are disseminated at all, it should be readily apparent that they are not of acceptable quality.]{style="color: #DB4325;"} |
-| [Missing Data]{style="color: #c4c1a5;"} | [9]{style="color: #c4c1a5;"} | [Data are missing; used as a placeholder.]{style="color: #c4c1a5;"}                                  
+| [Missing Data]{style="color: #76764C;"} | [9]{style="color: #76764C;"} | [Data are missing; used as a placeholder.]{style="color: #76764C;"}                                  
   
 
 : QARTOD flag scheme. Modified from @RN25922. {#tbl-qartod-flags}
 
-The main CMAR adaptation to this flag scheme is that the [Missing Data]{style="color: #c4c1a5;"} flag is not used. This flag is meant to alert real-time operators that an expected observation was not received, and may trigger efforts to fix recording and transmission issues. Since CMAR does not receive real-time data, this placeholder flag was deemed unnecessary. Note that data gaps may still occur due to sensor failure, delays between retrieval and re-deployment, and vandalism. It is the responsibility of the data users to identify and address these data gaps if required.
+The main CMAR adaptation to this flag scheme is that the [Missing Data]{style="color: #76764C;"} flag is not used. This flag is meant to alert real-time operators that an expected observation was not received, and may trigger efforts to fix recording and transmission issues. Since CMAR does not receive real-time data, this placeholder flag was deemed unnecessary. Note that data gaps may still occur due to sensor failure, delays between retrieval and re-deployment, and vandalism. It is the responsibility of the data users to identify and address these data gaps if required.
 
 Note that QARTOD uses a flag of [3]{style="color: #EDA247;"} to denote observations that are [Suspect]{style="color: #EDA247;"} (e.g., of dubious quality) **or** [Of High Interest]{style="color: #EDA247;"} (e.g., an unusual event). This is meant to encourage human in the loop decision making [@RN25922]. Where possible, CMAR has defined when these test results are likely [Suspect]{style="color: #EDA247;"} vs. [Of Interest]{style="color: #EDA247;"}, although data users should inspect these records carefully before deciding how to use (or discard) them.
 

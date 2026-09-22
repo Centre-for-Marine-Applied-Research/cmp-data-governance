@@ -27,13 +27,11 @@ Automated Quality Control tests have been applied to the data to identify outlyi
 
 # Data Products
 
-Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the [CMAR Website](https://cmar.ca/reports/). [Full datasets](../pages/cmp_data_products.qmd) can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
-
-The reports and datasets can also be accessed through the CMAR [Station Locations Map](https://cmar.ca/coastal-monitoring-program/#station).
+Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the [CMAR Data Access Map](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
 
 # Code
 
-CMAR has developed and maintains a suite of packages in R (free, open-source statistical software) to facilitate processing Coastal Monitoring Program data. Water Quality data was compiled using the [`sensorstrings`](https://github.com/dempsey-CMAR/sensorstrings) package. Quality Control flags were applied using the [`qaqcmar`](https://github.com/dempsey-CMAR/qaqcmar) package. Both packages can be viewed or installed from [GitHub](https://github.com/dempsey-CMAR).
+CMAR has developed and maintains a suite of packages in R (free, open-source statistical software) to facilitate processing Coastal Monitoring Program data. Water Quality data was compiled using the [`sensorstrings`](https://github.com/centre-for-marine-applied-research/sensorstrings) package. Quality Control flags were applied using the [`qaqcmar`](https://github.com/centre-for-marine-applied-research/qaqcmar) package. Both packages can be viewed or installed from [GitHub](https://github.com/centre-for-marine-applied-research).
 
 ```{r}
 #| echo: false

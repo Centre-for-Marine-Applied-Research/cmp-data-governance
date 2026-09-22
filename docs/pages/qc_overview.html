@@ -59,10 +59,14 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a3fefc22b14b6017fbe60300162a1dca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-1f62b248516a512e71cdcd2aebf59042.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a3fefc22b14b6017fbe60300162a1dca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b5cdc83d754cd650109f5c2e0467249f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a6758946dd542f30e3017b7a8dceaed2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,7 +96,6 @@ div.csl-indent {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -169,7 +172,7 @@ div.csl-indent {
   </li>  
         <li>
     <a class="dropdown-item" href="../pages/do_thresholds_mg_per_l.html">
- <span class="dropdown-text">Thresholds (mg / L)</span></a>
+ <span class="dropdown-text">Thresholds (mg/L)</span></a>
   </li>  
     </ul>
   </li>
@@ -276,9 +279,9 @@ div.csl-indent {
 
 
 <p>CMAR applies automated Quality Control (QC) tests and “human in the loop” QC to the Coastal Monitoring Program Water Quality data.</p>
-<p>An automated QC test is an algorithm that evaluates each data observation and assigns a flag to the observation indicating the test results. These flags are typically reviewed by human experts, which is referred to as “human in the loop” QC. End users can then filter the data set for records that meet their quality criteria <span class="citation" data-cites="RN26831">(<a href="#ref-RN26831" role="doc-biblioref">UNESCO 2013</a>)</span>.</p>
+<p>An automated QC test is an algorithm that evaluates each data observation and assigns a flag to the observation indicating the test result. These flags are typically reviewed by human experts, which is referred to as “human in the loop” QC. End users can then filter the data set for records that meet their quality criteria <span class="citation" data-cites="RN26831">(<a href="#ref-RN26831" role="doc-biblioref">UNESCO 2013</a>)</span>.</p>
 <p>Numerous QC flagging schemes and tests exist and have been applied to oceanographic data sets <span class="citation" data-cites="RN26831">(e.g., Appendix A in <a href="#ref-RN26831" role="doc-biblioref">UNESCO 2013</a>)</span>. CMAR has adopted the well-known QARTOD flag scheme and several QARTOD tests.</p>
-<p>Note that it is beyond the scope of the Program to produce analysis-ready data products for all potential users, and some users may wish to apply additional QC.</p>
+<p>It is beyond the scope of the Program to produce analysis-ready data products for all potential users. Some users may wish to apply additional QC. All users should carefully evaluate data and flags before analysis.</p>
 <section id="qartod-guidance" class="level2">
 <h2 class="anchored" data-anchor-id="qartod-guidance">QARTOD Guidance</h2>
 <p>QARTOD stands for the <a href="https://ioos.noaa.gov/project/qartod/">“Quality Assurance / Quality Control of Real-Time Oceanographic Data”</a>. It is a project led by the U.S. Integrated Ocean Observing System (IOOS) that aims to develop guidelines for producing high-quality oceanographic data. QARTOD has developed QC manuals for core ocean variables that outline best practices and describe QC tests with codable instructions. QC manuals are formally reviewed by subject-matter experts, and are updated as needed to reflect new technology, additional knowledge, or growth of the project <span class="citation" data-cites="RN25921">(<a href="#ref-RN25921" role="doc-biblioref">IOOS 2020a</a>)</span>.</p>
@@ -313,9 +316,9 @@ Table&nbsp;1: QARTOD flag scheme. Modified from <span class="citation" data-cite
 <td><span style="color: #009200;">Data have passed critical real-time quality control tests and are deemed adequate for use as preliminary data.</span></td>
 </tr>
 <tr class="even">
-<td><span style="color: #5A5A5A;">Not Evaluated</span></td>
-<td style="text-align: center;"><span style="color: #5A5A5A;">2</span></td>
-<td><span style="color: #5A5A5A;">Data have not been QC-tested, or the information on quality is not available.</span></td>
+<td><span style="color: #3D3D3D;">Not Evaluated</span></td>
+<td style="text-align: center;"><span style="color: #3D3D3D;">2</span></td>
+<td><span style="color: #3D3D3D;">Data have not been QC-tested, or the information on quality is not available.</span></td>
 </tr>
 <tr class="odd">
 <td><span style="color: #EDA247;">Suspect/Of Interest</span></td>
@@ -328,16 +331,16 @@ Table&nbsp;1: QARTOD flag scheme. Modified from <span class="citation" data-cite
 <td><span style="color: #DB4325;">Data are considered to have failed one or more critical real-time QC checks. If they are disseminated at all, it should be readily apparent that they are not of acceptable quality.</span></td>
 </tr>
 <tr class="odd">
-<td><span style="color: #c4c1a5;">Missing Data</span></td>
-<td style="text-align: center;"><span style="color: #c4c1a5;">9</span></td>
-<td><span style="color: #c4c1a5;">Data are missing; used as a placeholder.</span></td>
+<td><span style="color: #76764C;">Missing Data</span></td>
+<td style="text-align: center;"><span style="color: #76764C;">9</span></td>
+<td><span style="color: #76764C;">Data are missing; used as a placeholder.</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
 </div>
-<p>The main CMAR adaptation to this flag scheme is that the <span style="color: #c4c1a5;">Missing Data</span> flag is not used. This flag is meant to alert real-time operators that an expected observation was not received, and may trigger efforts to fix recording and transmission issues. Since CMAR does not receive real-time data, this placeholder flag was deemed unnecessary. Note that data gaps may still occur due to sensor failure, delays between retrieval and re-deployment, and vandalism. It is the responsibility of the data users to identify and address these data gaps if required.</p>
+<p>The main CMAR adaptation to this flag scheme is that the <span style="color: #76764C;">Missing Data</span> flag is not used. This flag is meant to alert real-time operators that an expected observation was not received, and may trigger efforts to fix recording and transmission issues. Since CMAR does not receive real-time data, this placeholder flag was deemed unnecessary. Note that data gaps may still occur due to sensor failure, delays between retrieval and re-deployment, and vandalism. It is the responsibility of the data users to identify and address these data gaps if required.</p>
 <p>Note that QARTOD uses a flag of <span style="color: #EDA247;">3</span> to denote observations that are <span style="color: #EDA247;">Suspect</span> (e.g., of dubious quality) <strong>or</strong> <span style="color: #EDA247;">Of High Interest</span> (e.g., an unusual event). This is meant to encourage human in the loop decision making <span class="citation" data-cites="RN25922">(<a href="#ref-RN25922" role="doc-biblioref">IOOS 2020b</a>)</span>. Where possible, CMAR has defined when these test results are likely <span style="color: #EDA247;">Suspect</span> vs.&nbsp;<span style="color: #EDA247;">Of Interest</span>, although data users should inspect these records carefully before deciding how to use (or discard) them.</p>
 </section>
 <section id="tests" class="level1">
