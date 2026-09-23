@@ -75,6 +75,26 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
+<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+<link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
 
 
 </head>
@@ -237,7 +257,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sensor-columns" id="toc-sensor-columns" class="nav-link" data-scroll-target="#sensor-columns">Sensor Columns</a></li>
   <li><a href="#measurement-columns" id="toc-measurement-columns" class="nav-link" data-scroll-target="#measurement-columns">Measurement Columns</a></li>
   <li><a href="#summary-flag-columns" id="toc-summary-flag-columns" class="nav-link" data-scroll-target="#summary-flag-columns">Summary Flag Columns</a></li>
-  <li><a href="#additional-flag-columns" id="toc-additional-flag-columns" class="nav-link" data-scroll-target="#additional-flag-columns">Additional Flag Columns</a></li>
+  </ul></li>
+  <li><a href="#sec-data-dict" id="toc-sec-data-dict" class="nav-link" data-scroll-target="#sec-data-dict">Data Dictionary</a>
+  <ul class="collapse">
+  <li><a href="#cioos-data-sets" id="toc-cioos-data-sets" class="nav-link" data-scroll-target="#cioos-data-sets">CIOOS Data Sets</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -264,53 +287,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the <a href="https://cmar.ca/coastal-monitoring-program/">CMAR Data Access Map</a>. Full data sets can be downloaded from the <a href="https://data.novascotia.ca/browse?tags=coastal+monitoring+program">Nova Scotia Open Data Portal</a> and the <a href="https://catalogue.cioosatlantic.ca/organization/cmar">CIOOS Atlantic</a>.</p>
-<p>This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal.</p>
+<p>Coastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the <a href="https://cmar.ca/coastal-monitoring-program/">Coastal Monitoring Program homepage</a>. Full data sets can be downloaded from the <a href="https://data.novascotia.ca/browse?tags=coastal+monitoring+program">Nova Scotia Open Data Portal</a> and the Canadian Integrated Ocean Observing System (CIOOS) <a href="https://catalogue.cioosatlantic.ca/organization/cmar">Atlantic catalogue</a>.</p>
+<p>This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal. The CIOOS Atlantic data sets have a similar structure. Differences are noted in the Data Format section below.</p>
 <section id="county-datasets" class="level1">
 <h1>County Datasets</h1>
-<p>The Water Quality data sets are organized by county. These are large data sets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest before downloading the data.</p>
-<p>Take care when filtering based on the quality control flags, because removing a whole row with a “Failed” observation may also removed good observations. For example, a sensor may measure a temperature observation flagged as “Pass” at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as “Fail”. The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a “long” format using CMAR’s <a href="https://github.com/Centre-for-Marine-Applied-Research/qaqcmar"><code>qaqcmar</code></a> R package and then filtered.</p>
-<p>Note that Excel files (.xlsx) have a limit of <a href="https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3?ui=en-us&amp;rs=en-us&amp;ad=us">1,048,576 rows per sheet</a>. CSV files can hold more rows, but may not display them all. Please use caution when downloading and analyzing the data.</p>
+<p>The Water Quality data sets are organized by county. These are large data sets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest using the portal’s filter tools before downloading the data. Refer to the CMAR Data Access Map on the <a href="https://cmar.ca/coastal-monitoring-program/">Coastal Monitoring Program homepage</a> to determine which county a station is in.</p>
+<p>Each row contains the observations recorded by one sensor at one timestamp. Because different sensors measure different variables, measurement and flag columns for variables a sensor does not record are <code>NA</code>.</p>
+<p>Take care when filtering based on the quality control (QC) flags, because removing a whole row with an observation flagged “Fail” may also remove good observations. For example, a sensor may measure a temperature observation flagged as “Pass” at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as “Fail”. The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a “long” format using <code>qaqcmar::qc_pivot_longer()</code> from CMAR’s <a href="https://github.com/Centre-for-Marine-Applied-Research/qaqcmar"><code>qaqcmar</code></a> from the R package and then filtered.</p>
+<p>Note that Excel files (.xlsx) have a limit of <a href="https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3?ui=en-us&amp;rs=en-us&amp;ad=us">1,048,576 rows per sheet</a>. CSV files have no row limit, but Excel will only open the first 1,048,576 rows. For large downloads, filter the data first or use software such as R or Python.</p>
 </section>
 <section id="data-format" class="level1">
 <h1>Data Format</h1>
-<p>There are 22 columns in each data set, as described below.</p>
+<p>There are 22 columns in each data set. The following sub-sections provide an overview of the data in each column. See the <a href="../pages/cmp_data_products.html#sec-data-dict">Data Dictionary</a> for more detail on the information in each column.</p>
 <section id="deployment-columns" class="level2">
 <h2 class="anchored" data-anchor-id="deployment-columns">Deployment Columns</h2>
-<p>The first 7 columns provide information on the deployment, including the location<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, the deployment dates, and the sensor string configuration.</p>
-<p>The string configuration indicates how the sensors were deployed, e.g., are they at a fixed vertical locations, or do they float with the tide. Configuration options are: sub-surface buoy, surface buoy, attached to gear, attached to fixed structure, floating dock, or unknown<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, as described under <a href="../pages/cmp_water_quality.html">Data Collection</a>.</p>
+<p>The first seven columns provide information on the deployment, including the location, the deployment dates, and the sensor string configuration.</p>
+<p>The string configuration indicates how the sensors were deployed, e.g., whether sensors stay at a fixed depth or float with the tide. Configuration options are: sub-surface buoy, surface buoy, attached to gear, attached to fixed structure, floating dock, or unknown, as described under <a href="../pages/cmp_water_quality.html">Data Collection</a>.</p>
 </section>
 <section id="sensor-columns" class="level2">
 <h2 class="anchored" data-anchor-id="sensor-columns">Sensor Columns</h2>
-<p>The <code>sensor_*</code> columns provide information on the sensor the made the measurement, including the model, serial number, and the estimated depth below the surface at low tide. If sensor depth was measured, the <code>depth_crosscheck</code> column checks whether this estimated sensor depth aligns with measured depth.</p>
+<p>The <code>sensor_*</code> columns provide information on the sensor that made the measurement, including the model, serial number, and the estimated depth below the surface at low tide. If sensor depth was measured, the <code>depth_crosscheck</code> column checks whether this estimated sensor depth aligns with measured depth.</p>
 </section>
 <section id="measurement-columns" class="level2">
 <h2 class="anchored" data-anchor-id="measurement-columns">Measurement Columns</h2>
-<p>The <code>timestamp_utc</code> column indicates the time the measurement(s) was recorded, in the UTC (Coordinated Universal Time) time zone. This time zone does not observe daylight savings time, so users should take care if required to convert to Atlantic Standard Time (AST; UTC-4 hours) or Atlantic Daylight Time (ADT; UTC-3 hours).</p>
-<p>There is a measurement value column for each variable (and unit). The measurement columns are named in the format <code>variable_unit</code>, e.g., <code>temperature_degree_c</code>. If a sensor records more than one variable per timestamp, both measurements will be in the same row. Otherwise, there will be an <code>NA</code> value in the measurement column. This results in many <code>NA</code> values per dataset, and these should be dealt with appropriately prior to analysis.</p>
+<p>The <code>timestamp_utc</code> column indicates the time the measurements were recorded, in the UTC (Coordinated Universal Time) time zone. This time zone does not observe daylight saving time, so users should take care if required to convert to Atlantic Standard Time (AST; UTC-4 hours) or Atlantic Daylight Time (ADT; UTC-3 hours).</p>
+<p>There is a measurement value column for each variable (and unit). The measurement columns are named in the format <code>variable_unit</code>, e.g., <code>temperature_degree_c</code>. If a sensor records more than one variable per timestamp, both measurements will be in the same row. Measurement columns for variables a sensor does not record are <code>NA</code>.</p>
 </section>
 <section id="summary-flag-columns" class="level2">
 <h2 class="anchored" data-anchor-id="summary-flag-columns">Summary Flag Columns</h2>
-<p>The remaining columns are for summary quality control flags. These are named in the format <code>qc_flag_variable_unit</code>, e.g., <code>qc_flag_temperature_degree_c</code>. These columns hold the <strong>worst</strong> flag value assigned to the corresponding observation. Because measurements are recorded by row, there will be many <code>NA</code> values in these columns.</p>
-<p>The <a href="../pages/qc_tests.html">Spike Test</a> and <a href="../pages/qc_tests.html">Rolling Standard Deviation Test</a> inherently assign a flag of “Not Evaluated” to observations at the beginning and end of each deployment. Following QARTOD, this corresponds to a numeric value of 2, while “Pass” corresponds to a numeric value of 1. Therefore, many observations are expected to be assigned a flag of “Not Evaluated”. These are typically safe to include in an analysis.</p>
-</section>
-<section id="additional-flag-columns" class="level2">
-<h2 class="anchored" data-anchor-id="additional-flag-columns">Additional Flag Columns</h2>
-<p>Internal CMAR datasets hold a separate flag column for each variable and QC test; however, to keep the datasets more manageable for users, these were not published<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. If it is crucial for a user to understand which test resulted in a specific flag value for an observation, the user can contact CMAR using the information on the <a href="https://cmar.ca/">website footer</a>.</p>
-
-
+<p>The remaining columns are for QC flags. Internal CMAR datasets hold a separate flag column for each variable and <a href="../pages/qc_tests.html#sec-qc-tests">QC test</a>; however, to keep the data sets more manageable for users, only the summary flag was published. QC summary columns are named in the format <code>qc_flag_variable_unit</code>, e.g., <code>qc_flag_temperature_degree_c</code>. These columns hold the <strong>worst</strong> flag value assigned to the corresponding observation. Flag values are Pass (1), Not Evaluated (2), Suspect/Of Interest (3), and Fail (4), as described on the <a href="../pages/qc_overview.html#sec-flag-scheme">QC Overview page</a>. The downloaded data shows the labels rather than the numeric values.</p>
+<p>Because measurements are recorded by row, there will also be many <code>NA</code> values in these columns. If it is crucial for a user to understand which test resulted in a specific flag value for an observation, the user can contact CMAR using the information on the <a href="https://cmar.ca/">website footer</a>.</p>
+<p>The <a href="../pages/qc_tests.html#sec-spike-test">Spike Test</a> and <a href="../pages/qc_tests.html#sec-rolling-sd-test">Rolling Standard Deviation Test</a> cannot evaluate observations at the beginning and end of each deployment, so these observations are flagged “Not Evaluated” for those tests. Because the summary flag holds the worst flag across all tests, and “Not Evaluated” ranks worse than “Pass,” these observations will have a summary flag of “Not Evaluated”. They are typically safe to include in an analysis.</p>
 </section>
 </section>
+<section id="sec-data-dict" class="level1">
+<h1>Data Dictionary</h1>
+<div class="cell">
+<div id="tbl-data-dict" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-data-dict-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: CMAR Water Quality data dictionary.
+</figcaption>
+<div aria-describedby="tbl-data-dict-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-271a52c60b69fe73497b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-271a52c60b69fe73497b">{"x":{"filter":"none","vertical":false,"data":[["waterbody","station","lease","latitude","longitude","deployment_range","string_configuration","sensor_type","sensor_serial_number","timestamp_utc","sensor_depth_at_low_tide_m","depth_crosscheck_flag","dissolved_oxygen_percent_saturation","dissolved_oxygen_uncorrected_mg_per_l","salinity_psu","sensor_depth_measured_m","temperature_degree_c","qc_flag_dissolved_oxygen_percent_saturation","qc_flag_dissolved_oxygen_uncorrected_mg_per_l","qc_flag_salinity_psu","qc_flag_sensor_depth_measured_m","qc_flag_temperature_degree_c"],["String","String","String","Decimal Number","Decimal Number","String","String","String","Integer","Date &amp; Time","Decimal Number","String","Decimal Number","Decimal Number","Decimal Number","Decimal Number","Decimal Number","String","String","String","String","String"],["Waterbody in which the station for this deployment is located","Name of the location for this deployment. Deployments at the same station must be within 500 m of defined station coordinates.","Aquaculture lease number associated with the station (where applicable)","Latitude of the deployment (decimal degrees)","Longitude of the deployment (decimal degrees)","String describing the instrument deployment and retrieval dates. The format is \"YYYY-MMM-DD to YYYY-MMM-DD\"","Configuration in which the sensors were deployed.","Model of the sensor that recorded the measurement","Unique identifying number for the sensor that recorded the measurement","Timestamp at which a measurement was made, in UTC. The formatting is \"YYYY-MM-DD HH:MM:SS\"","Estimated depth of the sensor at low tide, in metres, based on its position in the sensor string configuration","Quality control flag comparing estimated and measured sensor depth at low tide.","Dissolved oxygen measurement, in units of percent saturation","Dissolved oxygen measurement, in units of mg/L, without applying a salinity correction factor","Salinity measurement, in practical salinity units","Depth of the sensor, as measured by the sensor in metres","Temperature measurement, in degrees Celsius","Quality control flag for dissolved oxygen (percent saturation).","Quality control flag for dissolved oxygen (mg/L).","Quality control flag for salinity.","Quality control flag for measured sensor depth.","Quality control flag for temperature."],["St. Margarets Bay","Shut-In Island","1008","44.55452","-63.95672","2018-Feb-20 to 2018-Apr-25","sub-surface buoy","aquameasure","670352","2018-02-20 19:41","2","Pass","108","2.53","29.2","2.2","3.4","Suspect/Of Interest","Fail","Pass","Pass","Pass"]],"container":"<table class=\"compact stripe\">\n  <thead>\n    <tr>\n      <th>Column Name<\/th>\n      <th>Data Type<\/th>\n      <th>Description<\/th>\n      <th>Example<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","paging":false,"searching":false,"scrollY":"500px","scrollX":true,"columnDefs":[{"className":"dt-left","targets":"_all"},{"name":"Column Name","targets":0},{"name":"Data Type","targets":1},{"name":"Description","targets":2},{"name":"Example","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'font-size':'85%'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'font-size':'85%'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-size':'85%'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-size':'85%'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<section id="cioos-data-sets" class="level2">
+<h2 class="anchored" data-anchor-id="cioos-data-sets">CIOOS Data Sets</h2>
+<ul>
+<li>text to come</li>
+<li>can choose download format</li>
+<li>csv splits the deployment_Range column</li>
+</ul>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+</section>
+</section>
 
-<ol>
-<li id="fn1"><p>waterbody, station name, coordinates, and lease if applicable<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>e.g., historical deployments where configuration was not recorded<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>including the results of all tests and summary flags results in 42 columns.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

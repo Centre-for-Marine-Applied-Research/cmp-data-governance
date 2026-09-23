@@ -43,5 +43,5 @@ Automated Quality Control (QC) tests have been applied to the data to identify o
 
 # Data Products
 
-Coastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the [Coastal Monitoring Program Homepage](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the Canadian Integrated Ocean Observing System (CIOOS) [CIOOS Atlantic catalogue](https://catalogue.cioosatlantic.ca/organization/cmar).
+Coastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the [Coastal Monitoring Program Homepage](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the Canadian Integrated Ocean Observing System (CIOOS) [Atlantic catalogue](https://catalogue.cioosatlantic.ca/organization/cmar).
 

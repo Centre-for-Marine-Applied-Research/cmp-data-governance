@@ -2,52 +2,81 @@
 title: "Data Products"
 ---
 
-Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the [CMAR Data Access Map](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the [CIOOS Atlantic](https://catalogue.cioosatlantic.ca/organization/cmar).
+Coastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the [Coastal Monitoring Program homepage](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the Canadian Integrated Ocean Observing System (CIOOS) [Atlantic catalogue](https://catalogue.cioosatlantic.ca/organization/cmar).
 
-This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal. 
+This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal. The CIOOS Atlantic data sets have a similar structure. Differences are noted in the Data Format section below.
 
 # County Datasets
 
-The Water Quality data sets are organized by county. These are large data sets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest before downloading the data.
+The Water Quality data sets are organized by county. These are large data sets, and it is highly recommended that users filter the data for the station(s) and variable(s) of interest using the portal's filter tools before downloading the data. Refer to the CMAR Data Access Map on the [Coastal Monitoring Program homepage](https://cmar.ca/coastal-monitoring-program/) to determine which county a station is in.
 
-Take care when filtering based on the quality control flags, because removing a whole row with a "Failed" observation may also removed good observations. For example, a sensor may measure a temperature observation flagged as "Pass" at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as "Fail". The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a "long" format using CMAR's [`qaqcmar`](https://github.com/Centre-for-Marine-Applied-Research/qaqcmar) R package and then filtered. 
+Each row contains the observations recorded by one sensor at one timestamp. Because different sensors measure different variables, measurement and flag columns for variables a sensor does not record are `NA`.
 
+Take care when filtering based on the quality control (QC) flags, because removing a whole row with an observation flagged "Fail" may also remove good observations. For example, a sensor may measure a temperature observation flagged as "Pass" at the same time (i.e., on the same row) as a dissolved oxygen observation flagged as "Fail". The temperature observation should be included in the analysis, but the dissolved oxygen observation should be excluded. Ideally data should be pivoted into a "long" format using `qaqcmar::qc_pivot_longer()` from CMAR's [`qaqcmar`](https://github.com/Centre-for-Marine-Applied-Research/qaqcmar) from the R package and then filtered. 
 
-Note that Excel files (.xlsx) have a limit of [1,048,576 rows per sheet](https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3?ui=en-us&rs=en-us&ad=us). CSV files can hold more rows, but may not display them all. Please use caution when downloading and analyzing the data.
+Note that Excel files (.xlsx) have a limit of [1,048,576 rows per sheet](https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3?ui=en-us&rs=en-us&ad=us). CSV files have no row limit, but Excel will only open the first 1,048,576 rows. For large downloads, filter the data first or use software such as R or Python. 
 
 # Data Format
-
-There are 22 columns in each data set, as described below.
+There are 22 columns in each data set. The following sub-sections provide an overview of the data in each column. See the [Data Dictionary](cmp_data_products.qmd#sec-data-dict) for more detail on the information in each column.
 
 ## Deployment Columns
-The first 7 columns provide information on the deployment, including the location[^1], the deployment dates, and the sensor string configuration.
+The first seven columns provide information on the deployment, including the location, the deployment dates, and the sensor string configuration.
 
-The string configuration indicates how the sensors were deployed, e.g., are they at a fixed vertical locations, or do they float with the tide. Configuration options are: sub-surface buoy, surface buoy, attached to gear, attached to fixed structure, floating dock, or unknown[^2], as described under [Data Collection](../pages/cmp_water_quality.qmd).
+The string configuration indicates how the sensors were deployed, e.g., whether sensors stay at a fixed depth or float with the tide. Configuration options are: sub-surface buoy, surface buoy, attached to gear, attached to fixed structure, floating dock, or unknown, as described under [Data Collection](cmp_water_quality.qmd).
 
 ## Sensor Columns
-The `sensor_*` columns provide information on the sensor the made the measurement, including the model, serial number, and the estimated depth below the surface at low tide. If sensor depth was measured, the `depth_crosscheck` column checks whether this estimated sensor depth aligns with measured depth.
+The `sensor_*` columns provide information on the sensor that made the measurement, including the model, serial number, and the estimated depth below the surface at low tide. If sensor depth was measured, the `depth_crosscheck` column checks whether this estimated sensor depth aligns with measured depth.
 
 ## Measurement Columns
-The `timestamp_utc` column indicates the time the measurement(s) was recorded, in the UTC (Coordinated Universal Time) time zone. This time zone does not observe daylight savings time, so users should take care if required to convert to Atlantic Standard Time (AST; UTC-4 hours) or Atlantic Daylight Time (ADT; UTC-3 hours).
+The `timestamp_utc` column indicates the time the measurements were recorded, in the UTC (Coordinated Universal Time) time zone. This time zone does not observe daylight saving time, so users should take care if required to convert to Atlantic Standard Time (AST; UTC-4 hours) or Atlantic Daylight Time (ADT; UTC-3 hours).
 
-There is a measurement value column for each variable (and unit). The measurement columns are named in the format `variable_unit`, e.g., `temperature_degree_c`. If a sensor records more than one variable per timestamp, both measurements will be in the same row. Otherwise, there will be an `NA` value in the measurement column. This results in many `NA` values per dataset, and these should be dealt with appropriately prior to analysis.
+There is a measurement value column for each variable (and unit). The measurement columns are named in the format `variable_unit`, e.g., `temperature_degree_c`. If a sensor records more than one variable per timestamp, both measurements will be in the same row. Measurement columns for variables a sensor does not record are `NA`.
 
 ## Summary Flag Columns
-The remaining columns are for summary quality control flags. These are named in the format `qc_flag_variable_unit`, e.g., `qc_flag_temperature_degree_c`. These columns hold the **worst** flag value assigned to the corresponding observation. Because measurements are recorded by row, there will be many `NA` values in these columns.
+The remaining columns are for QC flags. Internal CMAR datasets hold a separate flag column for each variable and [QC test](qc_tests.qmd#sec-qc-tests); however, to keep the data sets more manageable for users, only the summary flag was published. QC summary columns are named in the format `qc_flag_variable_unit`, e.g., `qc_flag_temperature_degree_c`. These columns hold the **worst** flag value assigned to the corresponding observation. Flag values are Pass (1), Not Evaluated (2), Suspect/Of Interest (3), and Fail (4), as described on the [QC Overview page](qc_overview.qmd#sec-flag-scheme). The downloaded data shows the labels rather than the numeric values.
 
-The [Spike Test](../pages/qc_tests.qmd) and [Rolling Standard Deviation Test](../pages/qc_tests.qmd) inherently assign a flag of "Not Evaluated" to observations at the beginning and end of each deployment. Following QARTOD, this corresponds to a numeric value of 2, while "Pass" corresponds to a numeric value of 1. Therefore, many observations are expected to be assigned a flag of "Not Evaluated". These are typically safe to include in an analysis. 
+Because measurements are recorded by row, there will also be many `NA` values in these columns. If it is crucial for a user to understand which test resulted in a specific flag value for an observation, the user can contact CMAR using the information on the [website footer](https://cmar.ca/). 
 
-## Additional Flag Columns
-Internal CMAR datasets hold a separate flag column for each variable and QC test; however, to keep the datasets more manageable for users, these were not published[^3]. If it is crucial for a user to understand which test resulted in a specific flag value for an observation, the user can contact CMAR using the information on the [website footer](https://cmar.ca/).
+The [Spike Test](qc_tests.qmd#sec-spike-test) and [Rolling Standard Deviation Test](qc_tests.qmd#sec-rolling-sd-test) cannot evaluate observations at the beginning and end of each deployment, so these observations are flagged "Not Evaluated" for those tests. Because the summary flag holds the worst flag across all tests, and "Not Evaluated" ranks worse than "Pass," these observations will have a summary flag of "Not Evaluated". They are typically safe to include in an analysis.
 
-[^1]: waterbody, station name, coordinates, and lease if applicable
-[^2]: e.g., historical deployments where configuration was not recorded
-[^3]: including the results of all tests and summary flags results in 42 columns.
+# Data Dictionary {#sec-data-dict}
+
+```{r}
+#| echo: false
+#| message: false
+#| label: tbl-data-dict
+#| tbl-cap: CMAR Water Quality data dictionary.
+
+library(DT)
+library(readr)
+
+dd <- read_csv(
+  "2026-09-23_cmar_water_quality_datasets_data_dictionary.csv",
+  show_col_types = FALSE
+)
+
+#knitr::kable(dd)
+
+dd |>
+  datatable(
+    rownames = FALSE,
+    class = "compact stripe",
+    options =list(
+      dom = 'ft',
+      paging = FALSE,
+      searching = FALSE,
+      scrollY = "500px",
+      scrollX = TRUE,
+      columnDefs = list(list(className = "dt-left", targets = "_all"))
+    )) |> 
+  formatStyle(columns = names(dd), fontSize = "85%")
+```
 
 
+## CIOOS Data Sets
 
-
-
-
+- text to come
+- can choose download format
+- csv splits the deployment_Range column
 
 

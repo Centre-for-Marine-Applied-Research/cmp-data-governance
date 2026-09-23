@@ -63,15 +63,15 @@
     "text": "Climatological Test\nThe Climatological Test is a variation of the Gross Range Test that accounts for seasonal variability. Under QARTOD, there is no Fail flag associated with this test for temperature, salinity, or dissolved oxygen due to the dynamic nature of these variables (IOOS 2020, 2018). Following this guidance, CMAR chose to assign the flag Suspect/Of Interest to seasonal outliers for all variables.\nThe Climatological thresholds are named \\(season_{min}\\) and \\(season_{max}\\). Following the OOI Biogeochemical Sensor Data: Best Practices & User Guide, seasons were defined based on the calendar month, and the thresholds were based on historical data. The monthly thresholds were defined similar to the Gross Range Test:\n\\[\nseason_{min} = avg_{season} - 3 * stdev_{season}  \n\\tag{3}\\]\n\\[\nseason_{max} = avg_{season} + 3 * stdev_{season}  \n\\tag{4}\\]\nThe \\(avg_{season}\\) was calculated as the average of all observations for a given month, and \\(stdev_{season}\\) was the associated standard deviation.\nNote that OOI used a more complex method (harmonic analysis, as described here) to estimate \\(avg_{season}\\) to account for spurious values. This was beyond the current scope of the CMAR Coastal Monitoring Program, but could be applied in future iterations of this threshold analysis."
   },
   {
-    "objectID": "pages/qc_tests.html#spike-test",
-    "href": "pages/qc_tests.html#spike-test",
+    "objectID": "pages/qc_tests.html#sec-spike-test",
+    "href": "pages/qc_tests.html#sec-spike-test",
     "title": "QC Tests & Thresholds",
     "section": "Spike Test",
     "text": "Spike Test\nThe QARTOD Spike Test identifies single observations that are unexpectedly high (or low) based on the previous and following observations.\nFor each observation, a \\(spike_{value}\\) is calculated based on a spike reference (\\(spike_{ref}\\)). The \\(spike_{value}\\) is compared to the Spike Test thresholds and the appropriate flag is assigned.\n\\[spike_{ref} = (lead_{value} + lag_{value}) / 2\\]\n\\[spike_{value} = abs(value - spike_{ref})\\]\nDue to the dependence on \\(lead_{value}\\) and \\(lag_{value}\\), the first and last observations in each sensor deployment will be flagged as Not Evaluated because the \\(spike_{ref}\\) cannot be calculated.\nAs a simple example, consider several observations that increase linearly over time (Example 1: Figure). Here, the \\(spike_{ref}\\) is always equal to the observed value, and so the \\(spike_{value}\\) is zero, indicating no spike detected (Example 1: Table).\n\nExample 1: FigureExample 1: Table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNow consider that the value of one of these observations lies above or below the linear pattern (Example 2). This value will have a relatively high \\(spike_{value}\\), and may be flagged, depending on the threshold values. Note that the observations on either side of the spike may also be flagged, but multiple spike values may not be (Example 2, Example 3).\n\nExample 2: FigureExample 2: TableExample 3: FigureExample 3: Table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCMAR uses two Spike Test thresholds: \\(spike_{low}\\) and \\(spike_{high}\\). Observations greater than \\(spike_{low}\\) but less than or equal to \\(spike_{high}\\) are assigned a flag of Suspect/Of Interest. Values greater than \\(spike_{high}\\) are assigned a flag of Fail.\nValues for \\(spike_{low}\\) were selected based on the 99.7th quartile of the \\(spike_{value}\\) for each variable. The quartile was used instead of the mean and standard deviation because the distribution of \\(spike_{value}\\) skews right for each variable. The value for \\(spike_{high}\\) was set to be 3 * \\(spike_{low}\\)."
   },
   {
-    "objectID": "pages/qc_tests.html#rolling-standard-deviation",
-    "href": "pages/qc_tests.html#rolling-standard-deviation",
+    "objectID": "pages/qc_tests.html#sec-rolling-sd-test",
+    "href": "pages/qc_tests.html#sec-rolling-sd-test",
     "title": "QC Tests & Thresholds",
     "section": "Rolling Standard Deviation",
     "text": "Rolling Standard Deviation\nThe Rolling Standard Deviation test was developed by CMAR to identify suspected biofouling in the dissolved oxygen data. The test assumes that there is a 24-hour oxygen cycle, with net oxygen production during the day, and net oxygen consumption during the night. Biofouling is suspected when the amplitude of this cycle, as measured by the standard deviation, increases above a threshold (Figure 1).\nThe rolling standard deviation, \\(sd_{roll}\\), was calculated from a 24-hour centered rolling window of observations, i.e., \\(T_{n-m/2}\\), … \\(T_{n-1}\\), \\(T_{n}\\), \\(T_{n+1}\\), … \\(T_{n+m/2}\\).1 The number of observations in each window depends on the sample interval, which is typically 10 minutes.\nAlthough this test was designed to identify suspected biofouling, it was also applied to the other Water Quality variables as a general test of the standard deviation. In particular, it is expected to flag rapid changes in temperature due to fall storms and upwelling.\nThe Rolling Standard Deviation Test threshold is called \\(rolling\\_sd\\_max\\). Observations greater than this threshold are flagged as Suspect/Of Interest. This test does not flag any observations as Fail because of the high natural variability in the Water Quality variables. Observations at the beginning and end of the deployment for which the rolling standard deviation cannot be calculated (i.e, observations less than 12 hours from the start or end of deployment) are flagged Not Evaluated.\nValues for \\(rolling\\_sd\\_max\\) were selected based on the mean and standard deviation or an upper quartile \\(sd_{roll}\\), depending on the distribution of the variable observations.\n\n\n\n\n\n\n\n\nFigure 1: Simulated dissolved oxygen data and associated flags from the rolling standard deviation test."
@@ -200,84 +200,70 @@
     "href": "pages/cmp_data_products.html",
     "title": "Data Products",
     "section": "",
-    "text": "Coastal Monitoring Program Water Quality Data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map. Full data sets can be downloaded from the Nova Scotia Open Data Portal and the CIOOS Atlantic.\nThis page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal."
+    "text": "Coastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the Coastal Monitoring Program homepage. Full data sets can be downloaded from the Nova Scotia Open Data Portal and the Canadian Integrated Ocean Observing System (CIOOS) Atlantic catalogue.\nThis page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal. The CIOOS Atlantic data sets have a similar structure. Differences are noted in the Data Format section below."
   },
   {
     "objectID": "pages/cmp_data_products.html#deployment-columns",
     "href": "pages/cmp_data_products.html#deployment-columns",
     "title": "Data Products",
     "section": "Deployment Columns",
-    "text": "Deployment Columns\nThe first 7 columns provide information on the deployment, including the location1, the deployment dates, and the sensor string configuration.\nThe string configuration indicates how the sensors were deployed, e.g., are they at a fixed vertical locations, or do they float with the tide. Configuration options are: sub-surface buoy, surface buoy, attached to gear, attached to fixed structure, floating dock, or unknown2, as described under Data Collection."
+    "text": "Deployment Columns\nThe first seven columns provide information on the deployment, including the location, the deployment dates, and the sensor string configuration.\nThe string configuration indicates how the sensors were deployed, e.g., whether sensors stay at a fixed depth or float with the tide. Configuration options are: sub-surface buoy, surface buoy, attached to gear, attached to fixed structure, floating dock, or unknown, as described under Data Collection."
   },
   {
     "objectID": "pages/cmp_data_products.html#sensor-columns",
     "href": "pages/cmp_data_products.html#sensor-columns",
     "title": "Data Products",
     "section": "Sensor Columns",
-    "text": "Sensor Columns\nThe sensor_* columns provide information on the sensor the made the measurement, including the model, serial number, and the estimated depth below the surface at low tide. If sensor depth was measured, the depth_crosscheck column checks whether this estimated sensor depth aligns with measured depth."
+    "text": "Sensor Columns\nThe sensor_* columns provide information on the sensor that made the measurement, including the model, serial number, and the estimated depth below the surface at low tide. If sensor depth was measured, the depth_crosscheck column checks whether this estimated sensor depth aligns with measured depth."
   },
   {
     "objectID": "pages/cmp_data_products.html#measurement-columns",
     "href": "pages/cmp_data_products.html#measurement-columns",
     "title": "Data Products",
     "section": "Measurement Columns",
-    "text": "Measurement Columns\nThe timestamp_utc column indicates the time the measurement(s) was recorded, in the UTC (Coordinated Universal Time) time zone. This time zone does not observe daylight savings time, so users should take care if required to convert to Atlantic Standard Time (AST; UTC-4 hours) or Atlantic Daylight Time (ADT; UTC-3 hours).\nThere is a measurement value column for each variable (and unit). The measurement columns are named in the format variable_unit, e.g., temperature_degree_c. If a sensor records more than one variable per timestamp, both measurements will be in the same row. Otherwise, there will be an NA value in the measurement column. This results in many NA values per dataset, and these should be dealt with appropriately prior to analysis."
+    "text": "Measurement Columns\nThe timestamp_utc column indicates the time the measurements were recorded, in the UTC (Coordinated Universal Time) time zone. This time zone does not observe daylight saving time, so users should take care if required to convert to Atlantic Standard Time (AST; UTC-4 hours) or Atlantic Daylight Time (ADT; UTC-3 hours).\nThere is a measurement value column for each variable (and unit). The measurement columns are named in the format variable_unit, e.g., temperature_degree_c. If a sensor records more than one variable per timestamp, both measurements will be in the same row. Measurement columns for variables a sensor does not record are NA."
   },
   {
     "objectID": "pages/cmp_data_products.html#summary-flag-columns",
     "href": "pages/cmp_data_products.html#summary-flag-columns",
     "title": "Data Products",
     "section": "Summary Flag Columns",
-    "text": "Summary Flag Columns\nThe remaining columns are for summary quality control flags. These are named in the format qc_flag_variable_unit, e.g., qc_flag_temperature_degree_c. These columns hold the worst flag value assigned to the corresponding observation. Because measurements are recorded by row, there will be many NA values in these columns.\nThe Spike Test and Rolling Standard Deviation Test inherently assign a flag of “Not Evaluated” to observations at the beginning and end of each deployment. Following QARTOD, this corresponds to a numeric value of 2, while “Pass” corresponds to a numeric value of 1. Therefore, many observations are expected to be assigned a flag of “Not Evaluated”. These are typically safe to include in an analysis."
+    "text": "Summary Flag Columns\nThe remaining columns are for QC flags. Internal CMAR datasets hold a separate flag column for each variable and QC test; however, to keep the data sets more manageable for users, only the summary flag was published. QC summary columns are named in the format qc_flag_variable_unit, e.g., qc_flag_temperature_degree_c. These columns hold the worst flag value assigned to the corresponding observation. Flag values are Pass (1), Not Evaluated (2), Suspect/Of Interest (3), and Fail (4), as described on the QC Overview page. The downloaded data shows the labels rather than the numeric values.\nBecause measurements are recorded by row, there will also be many NA values in these columns. If it is crucial for a user to understand which test resulted in a specific flag value for an observation, the user can contact CMAR using the information on the website footer.\nThe Spike Test and Rolling Standard Deviation Test cannot evaluate observations at the beginning and end of each deployment, so these observations are flagged “Not Evaluated” for those tests. Because the summary flag holds the worst flag across all tests, and “Not Evaluated” ranks worse than “Pass,” these observations will have a summary flag of “Not Evaluated”. They are typically safe to include in an analysis."
   },
   {
-    "objectID": "pages/cmp_data_products.html#additional-flag-columns",
-    "href": "pages/cmp_data_products.html#additional-flag-columns",
+    "objectID": "pages/cmp_data_products.html#cioos-data-sets",
+    "href": "pages/cmp_data_products.html#cioos-data-sets",
     "title": "Data Products",
-    "section": "Additional Flag Columns",
-    "text": "Additional Flag Columns\nInternal CMAR datasets hold a separate flag column for each variable and QC test; however, to keep the datasets more manageable for users, these were not published3. If it is crucial for a user to understand which test resulted in a specific flag value for an observation, the user can contact CMAR using the information on the website footer."
-  },
-  {
-    "objectID": "pages/cmp_data_products.html#footnotes",
-    "href": "pages/cmp_data_products.html#footnotes",
-    "title": "Data Products",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nwaterbody, station name, coordinates, and lease if applicable↩︎\ne.g., historical deployments where configuration was not recorded↩︎\nincluding the results of all tests and summary flags results in 42 columns.↩︎"
+    "section": "CIOOS Data Sets",
+    "text": "CIOOS Data Sets\n\ntext to come\ncan choose download format\ncsv splits the deployment_Range column"
   },
   {
     "objectID": "pages/cmp_about.html",
     "href": "pages/cmp_about.html",
     "title": "Data Governance",
     "section": "",
-    "text": "Welcome to the Centre for Marine Applied Research (CMAR) Data Governance site. This site documents how Water Quality data from CMAR’s Coastal Monitoring Program is collected, processed, Quality Controlled, and published. It provides technical details so that anyone working with the data can understand and use it appropriately.\nVisit the Coastal Monitoring Program homepage for a program overview, Data Access Map, and summary reports.\nThis site is under active development; content is being added and revised. Last updated: September 22, 2026.\n\nCoastal Monitoring Program\nCMAR’s Coastal Monitoring Program is an ongoing data collection effort to:\n\nInform development of coastal industry\nGuide government policy and management decisions\nEncourage environmental stewardship\nEnsure preparedness for climate change\n\n\n\nWater Quality Data\nCMAR collects Water Quality data (dissolved oxygen, salinity, sensor depth, temperature) using sensors deployed on stationary moorings. See the Water Quality Data page for more information on data collection, sensor calibration and validation, and data access.\nClick on a variable in the menu bar above for more detailed information about the variable, CMAR measurements, and Quality Control thresholds.\n\n\nCode\nCMAR has developed and maintains a suite of packages in R (free, open-source statistical software) to facilitate processing Coastal Monitoring Program data. Water Quality data was compiled using the sensorstrings package. Quality Control flags were applied using the qaqcmar package. Both packages can be viewed or installed from GitHub.\n\n\n\n\n\n\n\n\n\n\n\nQuality Control\nAutomated Quality Control (QC) tests have been applied to the data to identify outlying and unexpected observations. See the QC Overview page for an overview of the QC workflow. See the QC Tests & Thresholds page to learn more about the Quality Control tests applied to the Water Quality data.\n\n\nData Products\nCoastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the Coastal Monitoring Program Homepage. Full data sets can be downloaded from the Nova Scotia Open Data Portal and the Canadian Integrated Ocean Observing System (CIOOS) CIOOS Atlantic catalogue."
+    "text": "Welcome to the Centre for Marine Applied Research (CMAR) Data Governance site. This site documents how Water Quality data from CMAR’s Coastal Monitoring Program is collected, processed, Quality Controlled, and published. It provides technical details so that anyone working with the data can understand and use it appropriately.\nVisit the Coastal Monitoring Program homepage for a program overview, Data Access Map, and summary reports.\nThis site is under active development; content is being added and revised. Last updated: September 23, 2026.\n\nCoastal Monitoring Program\nCMAR’s Coastal Monitoring Program is an ongoing data collection effort to:\n\nInform development of coastal industry\nGuide government policy and management decisions\nEncourage environmental stewardship\nEnsure preparedness for climate change\n\n\n\nWater Quality Data\nCMAR collects Water Quality data (dissolved oxygen, salinity, sensor depth, temperature) using sensors deployed on stationary moorings. See the Water Quality Data page for more information on data collection, sensor calibration and validation, and data access.\nClick on a variable in the menu bar above for more detailed information about the variable, CMAR measurements, and Quality Control thresholds.\n\n\nCode\nCMAR has developed and maintains a suite of packages in R (free, open-source statistical software) to facilitate processing Coastal Monitoring Program data. Water Quality data was compiled using the sensorstrings package. Quality Control flags were applied using the qaqcmar package. Both packages can be viewed or installed from GitHub.\n\n\n\n\n\n\n\n\n\n\n\nQuality Control\nAutomated Quality Control (QC) tests have been applied to the data to identify outlying and unexpected observations. See the QC Overview page for an overview of the QC workflow. See the QC Tests & Thresholds page to learn more about the Quality Control tests applied to the Water Quality data.\n\n\nData Products\nCoastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the Coastal Monitoring Program Homepage. Full data sets can be downloaded from the Nova Scotia Open Data Portal and the Canadian Integrated Ocean Observing System (CIOOS) Atlantic catalogue."
   },
   {
     "objectID": "pages/cmp_water_quality.html",
     "href": "pages/cmp_water_quality.html",
     "title": "Water Quality Data",
     "section": "",
-    "text": "CMAR collects high-resolution (10 minutes to 1 hour) temperature, dissolved oxygen, salinity, and sensor depth data through the Coastal Monitoring Program."
+    "text": "CMAR collects high-frequency (recorded every 10 minutes to 1 hour) temperature, dissolved oxygen, salinity, and sensor depth data through the Coastal Monitoring Program."
   },
   {
-    "objectID": "pages/cmp_water_quality.html#pre-deployment-val",
-    "href": "pages/cmp_water_quality.html#pre-deployment-val",
+    "objectID": "pages/cmp_water_quality.html#pre-deployment",
+    "href": "pages/cmp_water_quality.html#pre-deployment",
     "title": "Water Quality Data",
-    "section": "Pre-Deployment Val",
-    "text": "Pre-Deployment Val\nSensors are set to record at 10 - 15 minute intervals and submerged in a well insulated container (cooler) of water for at least 24 hours. Seawater is used for tests with salinity sensors.\nAfter the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with &gt; 10% of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A temperature or salinity sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance.\nDissolved oxygen sensors are included in the validation test, but do not reliably pass. Sensors in the same cooler at the same time show different magnitudes and trends in dissolved oxygen. It is not feasible to re-test all sensor that fail, and so they are deployed regardless of the validation results. The observations undergo strict quality control on retrieval.\n\n\n\n\n\n\nFigure 3: Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test."
+    "section": "Pre-deployment",
+    "text": "Pre-deployment\nSensors are calibrated by the manufacturer. Prior to deployment, sensors are checked to ensure they are still reading within their stated accuracy. This is called a Calibration Validation Test or “Cal-Val” test.\nFor a Cal-Val test, each sensor is set to record in 10–15 minute intervals. Sensors are submerged in a cooler of water for at least 24 hours (Figure 3). Seawater is used for tests with salinity sensors.\n\n\n\n\n\n\nFigure 3: Four aquaMeasure DOT sensors, three HOBO sensors, and one VR2AR sensor submerged in water in a cooler for a validation test.\n\n\n\nAfter the recording period, data from all sensors is offloaded. The observations are binned into 15-minute intervals, and the median value for each interval is calculated. The acceptable measurement range is the median ± the accuracy defined in the sensor manual. Sensors with &gt;10% of measurements outside of the acceptable range are re-validated. A temperature or salinity sensor that fails two consecutive Cal-Val tests is sent to the manufacturer for maintenance.\nDissolved oxygen sensors are included in the Cal-Val test, but results are inconsistent: sensors in the same cooler at the same time show different magnitudes and trends. Because retesting every sensor that fails is not feasible, dissolved oxygen sensors are deployed regardless of Cal-Val results. The data undergo strict quality control on retrieval.\nCode to assess the results of the Cal-Val Test is published in CMAR’s R package calval. The CMAR Sensor Validation App provides a user interface for running the code."
   },
   {
-    "objectID": "pages/cmp_water_quality.html#post-deployment-validation",
-    "href": "pages/cmp_water_quality.html#post-deployment-validation",
+    "objectID": "pages/cmp_water_quality.html#post-deployment",
+    "href": "pages/cmp_water_quality.html#post-deployment",
     "title": "Water Quality Data",
-    "section": "Post-Deployment Validation",
-    "text": "Post-Deployment Validation\nRetrieved sensors undergo a post-deployment validation test, which follows the same procedures as the pre-deployment validation test. The post-deployment tests identify sensors that drifted, were impacted by biofouling, or were damaged."
-  },
-  {
-    "objectID": "pages/cmp_water_quality.html#footnotes",
-    "href": "pages/cmp_water_quality.html#footnotes",
-    "title": "Water Quality Data",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\ne.g., depth, bottom type, and currents↩︎\ne.g., anchor weight, and number/type of sensors↩︎"
+    "section": "Post-deployment",
+    "text": "Post-deployment\nRetrieved sensors undergo a post-deployment Cal-Val Test, which follows the same procedures as the pre-deployment Cal-Val Test. The post-deployment tests identify sensor drift, biofouling, and damage. The results of the post-deployment Cal-Val test are not currently included in the published data; however, they may be included in future releases as an additional Quality Control flag."
   },
   {
     "objectID": "pages/depth_overview.html",
@@ -333,21 +319,14 @@
     "href": "pages/qc_overview.html",
     "title": "QC Overview",
     "section": "",
-    "text": "CMAR applies automated Quality Control (QC) tests and “human in the loop” QC to the Coastal Monitoring Program Water Quality data.\nAn automated QC test is an algorithm that evaluates each data observation and assigns a flag to the observation indicating the test result. These flags are typically reviewed by human experts, which is referred to as “human in the loop” QC. End users can then filter the data set for records that meet their quality criteria (UNESCO 2013).\nNumerous QC flagging schemes and tests exist and have been applied to oceanographic data sets (e.g., Appendix A in UNESCO 2013). CMAR has adopted the well-known QARTOD flag scheme and several QARTOD tests.\nIt is beyond the scope of the Program to produce analysis-ready data products for all potential users. Some users may wish to apply additional QC. All users should carefully evaluate data and flags before analysis."
-  },
-  {
-    "objectID": "pages/qc_overview.html#qartod-guidance",
-    "href": "pages/qc_overview.html#qartod-guidance",
-    "title": "QC Overview",
-    "section": "QARTOD Guidance",
-    "text": "QARTOD Guidance\nQARTOD stands for the “Quality Assurance / Quality Control of Real-Time Oceanographic Data”. It is a project led by the U.S. Integrated Ocean Observing System (IOOS) that aims to develop guidelines for producing high-quality oceanographic data. QARTOD has developed QC manuals for core ocean variables that outline best practices and describe QC tests with codable instructions. QC manuals are formally reviewed by subject-matter experts, and are updated as needed to reflect new technology, additional knowledge, or growth of the project (IOOS 2020a).\nQARTOD manuals focus on QC of real-time data1, but acknowledge that other data types may also benefit from these flags and tests (IOOS 2020b). The CMAR Water Quality data is not processed in real-time2. Instead, data is logged and offloaded from the sensors for processing every 6 - 12 months. Some QARTOD guidance was therefore not applicable to this data, and procedures were adapted to reflect the nature of CMAR data and processing."
+    "text": "CMAR applies automated Quality Control (QC) tests and “human-in-the-loop” QC to the Coastal Monitoring Program Water Quality data.\nAn automated QC test is an algorithm that evaluates each data observation and assigns a flag to the observation indicating the test result. These flags are typically reviewed by human experts, which is referred to as “human-in-the-loop” QC. End users can then filter the data set for records that meet their quality criteria (UNESCO 2013).\nNumerous QC flagging schemes and tests exist and have been applied to oceanographic data sets (e.g., Appendix A in UNESCO 2013). CMAR has adopted the well-known QARTOD flag scheme and several QARTOD tests.\nIt is beyond the scope of the Program to produce analysis-ready data products for all potential users. Some users may wish to apply additional QC. All users should carefully evaluate data and flags before analysis."
   },
   {
     "objectID": "pages/qc_overview.html#footnotes",
     "href": "pages/qc_overview.html#footnotes",
     "title": "QC Overview",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\ne.g., minimal delay from when data are recorded to when they are ready for use↩︎\ndue to technical, logistical, and budget constraints↩︎\ne.g., when there was a known issue with the deployment that was not flagged by the automated tests↩︎\nnote that this is a deployment-level test. See here for more information.↩︎"
+    "text": "Footnotes\n\n\ne.g., minimal delay from when data is recorded to when it is ready for use↩︎\ne.g., when there was a known issue with the deployment that was not flagged by the automated tests↩︎"
   },
   {
     "objectID": "pages/sal_measurements.html",
@@ -390,12 +369,5 @@
     "title": "Overview",
     "section": "Footnotes",
     "text": "Footnotes\n\n\ne.g., from surface warming and freshwater inputs↩︎\ne.g., from wind-driven mixing↩︎"
-  },
-  {
-    "objectID": "pages/cmp_water_quality.html#pre-deployment-validation",
-    "href": "pages/cmp_water_quality.html#pre-deployment-validation",
-    "title": "Water Quality Data",
-    "section": "Pre-Deployment Validation",
-    "text": "Pre-Deployment Validation\nSensors are set to record at 10 - 15 minute intervals and submerged in a well insulated container (cooler) of water for at least 24 hours. Seawater is used for tests with salinity sensors.\nAfter the recording period, data from all sensors is offloaded. Each observation is compared to the median value of all sensors in the container. Sensors with &gt; 10% of measurements outside of the acceptable range indicated in the sensor manual are re-validated. A temperature or salinity sensor that fails 2 consecutive validation tests is sent to the manufacturer for maintenance.\nDissolved oxygen sensors are included in the validation test, but do not reliably pass. Sensors in the same cooler at the same time show different magnitudes and trends in dissolved oxygen. It is not feasible to re-test all sensors that fail, and so they are deployed regardless of the validation results. The observations undergo strict quality control on retrieval.\n\n\n\n\n\n\nFigure 3: Four aquaMeasure DOT sensors, 3 hobo sensors, and 1 VR2AR sensor submerged in water in a cooler for a validation test."
   }
 ]
