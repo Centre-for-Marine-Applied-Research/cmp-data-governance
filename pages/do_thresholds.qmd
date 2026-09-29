@@ -5,7 +5,7 @@ editor_options:
 ---
 
 ```{r, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, dpi = 600, fig.width = 8)
+knitr::opts_chunk$set(echo = FALSE, dpi = 200, fig.width = 8)
 
 library(dplyr)
 library(here)
@@ -32,25 +32,26 @@ dat_sat <- readRDS(here("pages/data/do_rolling_sd_prelim_qc.rds")) %>%
 colnames(dat_sat) <- str_remove_all(colnames(dat_sat), "value_")
 ```
 
-Separate thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg/L. This page describes the thresholds for percent saturation. Click [here](../pages/do_thresholds_mg_per_l.qmd) for the thresholds for mg/L.
+Separate quality control (QC) thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg/L. This page describes the thresholds for percent saturation. Thresholds for mg/L are described on the [Thresholds (mg/L) page](do_thresholds_mg_per_l.qmd).
 
-QC test thresholds for dissolved oxygen (percent saturation) were based on historical Coastal Monitoring Program data. Preliminary quality control (QC) was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted. Three deployments in Whycocomagh Basin (Inverness County) measured data near or below the oxycline. This data was also omitted from the thresholds analysis because it is not representative of typical conditions measured by the Program. 
+QC test thresholds for dissolved oxygen (percent saturation) were based on historical Coastal Monitoring Program data submitted to the Nova Scotia Open Data Portal in December 2022. Preliminary QC was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted. Three deployments in Whycocomagh Basin (Inverness County) measured data near or below the oxycline. This data was also omitted from the thresholds analysis because it is not representative of typical conditions measured by the Program. 
 
-The observations were pooled to calculate a single set of thresholds for all counties because there were limited observations for several counties[^1]. This analysis could be revisited and thresholds revised when there is more consistent data.
+The observations were pooled to calculate a single set of thresholds for all counties because there were limited observations for several counties (five counties only have data from a single station). This analysis could be revisited and thresholds revised when there is more consistent data.
 
-[^1]: 5 counties only have data from a single station
+## Gross Range Test
 
-# Gross Range Test
+### Sensor Thresholds
 
-## Sensor Thresholds
+The sensor thresholds were determined based on the manual for the aquaMeasure DOT (@tbl-do-sensor-thresh).
 
-The sensor thresholds were determined based on the manual for the aquaMeasure DOT (Table 1).
-
-Table 1: Dissolved oxygen (percent saturation) sensor thresholds for the Gross Range Test.
 ```{r}
+#| label: tbl-do-sensor-thresh
+#| tbl-cap: Gross Range Test sensor thresholds for dissolved oxygen (percent saturation).
+
 sensors %>%
   filter(str_detect(variable, "dissolved_oxygen"), sensor_type == "aquameasure") %>%
   mutate(
+    sensor_type = "aquaMeasure DOT",
     `Sensor (link to spec sheet)` =
       paste0('<a  target=_blank href=', url, '>', sensor_type,'</a>')
   ) %>%
@@ -59,18 +60,19 @@ sensors %>%
 ```
 
 
-## User Thresholds
+### User Thresholds
 
-The dissolved oxygen (percent saturation) observations are normally distributed (@fig-do-hist), and so the mean and standard deviation were used to determine $user_{min}$ and $user_{max}$. The statistics and threshold values are shown in Table 2.
+The dissolved oxygen (percent saturation) observations are approximately normally distributed (@fig-do-hist), and so the mean and standard deviation were used to determine $\text{user}_\text{min}$ and $\text{user}_\text{max}$. The statistics and threshold values are shown in @tbl-do-sat-user.
 
 :::panel-tabset
 
-### Figure 1
+#### Figure 1
 ```{r}
 #| warning: false
 #| fig-height: 4
-#| fig-cap: Distribution of dissolved oxygen (percent saturation) observations (binwidth = 2 %). Dotted orange lines indicate the user thresholds.
 #| label: fig-do-hist
+#| fig-cap: Distribution of dissolved oxygen (percent saturation) observations (binwidth = 2%). Dotted orange lines indicate the user thresholds.
+#| fig-alt: Histogram of dissolved oxygen observations.
 
 user_do <- dat_sat %>% 
   qc_calculate_user_thresholds(
@@ -89,27 +91,30 @@ p <- plot_histogram(
 ggplotly(p, tooltip = "text")
 ```
 
-### Table 2
+#### User Thresholds
 
-Table 2: Gross Range Test statistics and user thresholds for dissolved oxygen (percent saturation).
 ```{r}
+#| label: tbl-do-sat-user
+#| tbl-cap: Gross Range Test statistics and user thresholds for dissolved oxygen (percent saturation).
+
 user_do %>% 
   datatable(options = dt_options2, rownames = FALSE)
 ```
 :::
 
-# Climatological Test
+## Climatological Test
 
-@fig-do-clim shows the monthly mean and standard deviation of dissolved oxygen (percent saturation) data. The observations are normally distributed within each month (@fig-do-hist-clim), and so the mean and standard deviation were used to calculate the seasonal thresholds (Table 3).
+@fig-do-clim shows the monthly mean and standard deviation of dissolved oxygen (percent saturation) data. The observations are approximately normally distributed within each month (@fig-do-hist-clim), and so the mean and standard deviation were used to calculate the seasonal thresholds (@tbl-do-climatology).
 
 ::: panel-tabset
 
 ### Figure 2
 ```{r}
 #| fig-height: 5
-#| fig-cap: Mean +/- 3 standard deviations of the monthly dissolved oxygen (percent saturation) observations.
 #| label: fig-do-clim
 #| message: false
+#| fig-cap: Mean ± 3 standard deviations of the monthly dissolved oxygen (percent saturation) observations.
+#| fig-alt: Mean monthly dissolved oxygen shown as points, with ± 3 standard deviations as vertical lines.
 
 do_clim <- dat_sat %>% 
   group_by(month) %>% 
@@ -119,8 +124,8 @@ do_clim <- dat_sat %>%
   ) %>% 
   mutate(
     variable = "dissolved_oxygen_percent_saturation",
-    season_min = round(mean - 3 * stdev, digits = 3),
-    season_max = round(mean + 3 * stdev, digits = 3)
+    season_min = round(mean - 3 * stdev, digits = 1),
+    season_max = round(mean + 3 * stdev, digits = 1)
   )
 
 # quick check
@@ -142,9 +147,10 @@ ggplotly(p)
 ```{r}
 #| warning: false
 #| fig-height: 10
-#| fig-cap:  Seasonal distribution of dissolved oxygen (percent saturation) observations (binwidth = 2 %). Dotted orange lines indicate the user thresholds. 
 #| label: fig-do-hist-clim
 #| message: false
+#| fig-cap: Monthly distribution of dissolved oxygen (percent saturation) observations (binwidth = 2%). Dotted orange lines indicate the seasonal thresholds. 
+#| fig-alt: A separate panel for each month showing a histogram of dissolved oxygen observations measured in that month.
 
 p <- dat_sat %>% 
   plot_histogram(
@@ -165,14 +171,16 @@ ggplotly(p, tooltip = "text")
 
 ```
 
-### Table 3
+### Climatology Thresholds
 
-Table 3: Climatology statistics and thresholds for dissolved oxygen (percent saturation).
 ```{r}
+#| label: tbl-do-climatology
+#| tbl-cap: Climatology statistics and thresholds for dissolved oxygen (percent saturation).
+
 do_clim %>% 
   mutate( 
-    season_mean = round(mean, digits = 3), 
-    season_stdev = round(stdev, digits = 3)
+    season_mean = round(mean, digits = 1), 
+    season_stdev = round(stdev, digits = 1)
   ) %>% 
   select(month, season_mean, season_stdev, season_min, season_max) %>% 
   datatable(options = dt_options, rownames = FALSE)
@@ -180,11 +188,11 @@ do_clim %>%
 
 :::
 
-# Spike Test
+## Spike Test
 
-The distribution of the spike value is skewed right (@fig-do-spike-dist), and so several upper quartile values (90th, 95th, and 99.7th quartile) were evaluated to use as the $spike_{low}$. 
+The distribution of the [spike value](qc_tests.qmd#sec-spike-test) is skewed right (@fig-do-spike-dist), and so several upper percentile values (90th, 95th, and 99.7th percentile) were evaluated to use as the $\text{spike}_\text{low}$. 
 
-There were relatively few large single-value spikes in the dissolved oxygen (percent saturation) data, and so the 99.7th quartile was selected to avoid false positives. $spike_{high}$ was defined as 3 * $spike_{low}$ to identify especially egregious spike values.
+There were relatively few large single-value spikes in the dissolved oxygen (percent saturation) data, and so the 99.7th percentile was selected to avoid false positives. $\text{spike}_\text{high}$ was defined as $3 \times \text{spike}_\text{low}$ to identify especially egregious spike values.
 
 ::: panel-tabset
 
@@ -192,8 +200,9 @@ There were relatively few large single-value spikes in the dissolved oxygen (per
 ```{r}
 #| warning: false
 #| fig-height: 4
-#| fig-cap: Distribution of the spike value of dissolved oxygen (percent saturation) observations (binwidth = 0.1 %). Dotted orange line indicates $spike_{low}$; dotted red line indicates $spike_{high}$.
 #| label: fig-do-spike-dist
+#| fig-cap: Distribution of the spike value of dissolved oxygen (percent saturation) observations (binwidth = 0.1%). Dotted orange line indicates $\text{spike}_\text{low}$ and dotted red line indicates $\text{spike}_\text{high}$.
+#| fig-alt: Histogram of the spike value calculated for dissolved oxygen (percent saturation) observations.
 
 spike_thresh <- thresholds %>% 
   filter(variable == "dissolved_oxygen_percent_saturation", qc_test == "spike") %>% 
@@ -222,10 +231,12 @@ ggplotly(p, tooltip = "text")
 
 ```
 
-### Table 4
+### Spike Thresholds
 
-Table 4: Spike thresholds for dissolved oxygen (percent saturation).
 ```{r}
+#| label: tbl-do-spike
+#| tbl-cap: Spike thresholds for dissolved oxygen (percent saturation).
+
 spike_thresh %>% 
   select(spike_low, spike_high) %>% 
   datatable(options = dt_options2, rownames = FALSE)
@@ -233,16 +244,15 @@ spike_thresh %>%
 
 :::
 
-# Rolling Standard Deviation Test
+## Rolling Standard Deviation Test
 
-The distribution of rolling standard deviation is skewed right (@fig-do-roll-sd-dist), and so several upper quartile values were evaluated to use as the $rolling\_sd\_max$. 
+The distribution of [rolling standard deviation](qc_tests.qmd#sec-rolling-sd-test) is skewed right (@fig-do-roll-sd-dist), and so several upper percentile values were evaluated to use as the $\text{rolling\_sd}_\text{max}$. 
 
-The 90th, 95th, and 99.7th quartile values were each applied to the the raw data (no preliminary QC) and the results inspected. The 90th quartile was determined to be too stringent, as it flagged 31 % of the observations and generated false positives. The 99.7th quartile was determined to be too lenient, as only about 11 % of the observations were flagged, and visual inspection identified false negatives. The 95th quartile, which flagged 24 % of the observations, was considered the most useful threshold.
+The 90th, 95th, and 99.7th percentile values were each applied to the raw data (no preliminary QC) and the results were inspected. The 90th percentile was determined to be too stringent, as it flagged 31% of the observations and generated false positives. The 99.7th percentile was determined to be too lenient, as only about 11% of the observations were flagged, and visual inspection identified false negatives. The 95th percentile, which flagged 24% of the observations, was considered the most useful threshold.
 
-CMAR acknowledges that this is a very high percent of observations to flag as 
-[Suspect/Of Interest]{style="color: #EDA247;"}. However, it was anticipated that a large proportion of the dissolved oxygen observations would be flagged by this test because there were substantial biofouling signals identified during the preliminary QC process. CMAR is currently assessing options to reduce biofouling on dissolved oxygen sensors.
+CMAR acknowledges that this is a very high percentage of observations to flag as Suspect/Of Interest. However, it was anticipated that a large proportion of the dissolved oxygen observations would be flagged by this test because there were substantial biofouling signals identified during the preliminary QC process. CMAR is currently assessing options to reduce biofouling on dissolved oxygen sensors.
 
-There is no [Fail]{style="color: #DB4325;"} flag for the Rolling Standard Deviation Test because of the natural variability of the Water Quality variables. However, CMAR recommends that the dissolved oxygen observations flagged as [Suspect/Of Interest]{style="color: #EDA247;"} should be considered [Suspect]{style="color: #EDA247;"}, and filtered out of most analyses. 
+There is no Fail flag for the Rolling Standard Deviation Test because of the natural variability of the Water Quality variables. 
 
 ::: panel-tabset
 
@@ -250,8 +260,10 @@ There is no [Fail]{style="color: #DB4325;"} flag for the Rolling Standard Deviat
 ```{r}
 #| warning: false
 #| fig-height: 4
-#| fig-cap: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (percent saturation) observations (binwidth = 0.25 %). Dotted orange line indicates $rolling\_sd\_max$.
 #| label: fig-do-roll-sd-dist
+#| fig-cap: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (percent saturation) observations (binwidth = 0.25%). Dotted orange line indicates $rolling\_sd\_max$.
+#| fig-alt: Histogram of the rolling standard deviation calculated for dissolved oxygen (percent saturation) observations.
+
 
 do_roll_sd <- thresholds %>% 
   filter(
@@ -272,10 +284,12 @@ p <- dat_sat %>%
 ggplotly(p, tooltip = "text")
 ```
 
-### Table 5
+### Rolling SD Thresholds
 
-Table 5: Rolling standard deviation threshold for dissolved oxygen (percent saturation).
 ```{r}
+#| label: tbl-do-rolling-sd
+#| tbl-cap: Rolling standard deviation threshold for dissolved oxygen (percent saturation).
+
 do_roll_sd %>% 
   datatable(options = dt_options2, rownames = FALSE)
 ```

@@ -5,7 +5,7 @@ editor_options:
 ---
 
 ```{r, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, dpi = 600, fig.width = 8)
+knitr::opts_chunk$set(echo = FALSE, dpi = 200, fig.width = 8)
 
 library(here)
 library(lubridate)
@@ -47,29 +47,28 @@ dat_do_mg_per_l <- readRDS(here("pages/data/do_mg_per_l_rolling_sd_prelim_qc.rds
 colnames(dat_do_mg_per_l) <- str_remove_all(colnames(dat_do_mg_per_l), "value_")
 ```
 
-Separate thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg/L. This page describes the thresholds for mg/L. Click [here](../pages/do_thresholds.qmd) for the thresholds for percent saturation.
+Separate quality control (QC) thresholds were calculated for dissolved oxygen measured in units of percent saturation and dissolved oxygen measured in units of mg/L. This page describes the thresholds for mg/L. Thresholds for percent saturation are described on the [Thresholds (% saturation) page](do_thresholds.qmd).
 
-QC test thresholds for dissolved oxygen (mg/L) were based on historical Coastal Monitoring Program data. Preliminary quality control (QC) was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted.
+QC test thresholds for dissolved oxygen (mg/L) were based on historical Coastal Monitoring Program data submitted to the Nova Scotia Open Data Portal in December 2022. Preliminary QC was applied to the historical data. Obvious outliers, suspected biofouling, and freshwater stations were omitted.
 
-To date, dissolved oxygen (mg/L) has only been measured in two counties[^1] in adjacent waterbodies[^2]. A single set of thresholds was calculated for these counties.
+To date, dissolved oxygen (mg/L) has only been measured in two counties (Halifax and Lunenburg) in adjacent waterbodies (Mahone Bay and St. Margarets Bay). A single set of thresholds was calculated for these counties.
 
-The dissolved oxygen (mg/L) data has not been corrected for salinity. The threshold were calculated from and applied to the uncorrected data.
+The dissolved oxygen (mg/L) data has not been corrected for salinity. The thresholds were calculated from and applied to the uncorrected data.
 
-[^1]: Halifax and Lunenburg
-[^2]: Mahone Bay and St. Margaret's Bay
+## Gross Range Test
 
+### Sensor Thresholds
 
-# Gross Range Test
+The sensor thresholds were determined based on the manual for the HOBO U26 (@tbl-do-sensor-thresh).
 
-## Sensor Thresholds
-
-The sensor thresholds were determined based on the manual for the HOBO DO (Table 1).
-
-Table 1: Dissolved oxygen (mg/L) sensor thresholds for the Gross Range Test.
 ```{r}
+#| label: tbl-do-sensor-thresh
+#| tbl-cap: Gross Range Test sensor thresholds for dissolved oxygen (mg/L).
+
 sensors %>%
   filter(str_detect(variable, "dissolved_oxygen"), sensor_type == "hobo do") %>%
   mutate(
+    sensor_type = "HOBO U26",
     `Sensor (link to spec sheet)` =
       paste0('<a  target=_blank href=', url, '>', sensor_type,'</a>')
   ) %>%
@@ -77,18 +76,19 @@ sensors %>%
   datatable(options = dt_options2, rownames = FALSE, escape = FALSE)
 ```
 
-## User Thresholds
+### User Thresholds
 
-The dissolved oxygen (mg/L) observations were normally distributed (@fig-do-hist), and so the mean and standard deviation were used to determine $user_{min}$ and $user_{max}$. The statistics and threshold values are shown in Table 2.
+The dissolved oxygen (mg/L) observations are approximately normally distributed (@fig-do-hist), and so the mean and standard deviation were used to determine $\text{user}_\text{min}$ and $\text{user}_\text{max}$. The statistics and threshold values are shown in @tbl-do-mg-user.
 
 :::panel-tabset
 
-### Figure 1
+#### Figure 1
 ```{r}
 #| warning: false
 #| fig-height: 4
-#| fig-cap: Distribution of dissolved oxygen (mg / L) observations (binwidth = 0.5 mg / L). Dotted orange lines indicate the user thresholds.
 #| label: fig-do-hist
+#| fig-cap: Distribution of dissolved oxygen (mg/L) observations (binwidth = 0.5 mg/L). Dotted orange lines indicate the user thresholds.
+#| fig-alt: Histogram of dissolved oxygen (mg/L) observations.
 
 user_do <- dat_do_mg_per_l %>% 
   qc_calculate_user_thresholds(
@@ -103,32 +103,35 @@ p <- plot_histogram(
   binwidth = 0.5,
   pal= hist_pal, user_thresh = c(user_do$user_min, user_do$user_max)
 ) +
-  scale_x_continuous("Dissolved Oxygen (mg / L)")
+  scale_x_continuous("Dissolved Oxygen (mg/L)")
 
 ggplotly(p, tooltip = "text")
 ```
 
-### Table 2
+#### User Thresholds
 
-Table 2: Gross Range Test statistics and user thresholds for dissolved oxygen (mg/L).
 ```{r}
+#| label: tbl-do-mg-user
+#| tbl-cap: Gross Range Test statistics and user thresholds for dissolved oxygen (mg/L).
+
 user_do %>% 
   datatable(options = dt_options2, rownames = FALSE)
 ```
 :::
 
-# Climatological Test
+## Climatological Test
 
-@fig-do-clim shows the monthly mean and standard deviation of dissolved oxygen (mg/L) data. The observations are normally distributed within each month (@fig-do-hist-clim), and so the mean and standard deviation were used to calculate the seasonal thresholds (Table 3).
+@fig-do-clim shows the monthly mean and standard deviation of dissolved oxygen (mg/L) data. The observations are approximately normally distributed within each month (@fig-do-hist-clim), and so the mean and standard deviation were used to calculate the seasonal thresholds (@tbl-do-climatology).
 
 ::: panel-tabset
 
-### Figure 2
+#### Figure 2
 ```{r}
 #| fig-height: 5
-#| fig-cap: Mean +/- 3 standard deviations of the monthly dissolved oxygen (mg / L) observations.
 #| label: fig-do-clim
 #| message: false
+#| fig-cap: Mean ± 3 standard deviations of the monthly dissolved oxygen (mg/L) observations.
+#| fig-alt: Mean monthly dissolved oxygen (mg/L) shown as points, with ± 3 standard deviations as vertical lines.
 
 do_clim <- dat_do_mg_per_l %>% 
   group_by(month) %>% 
@@ -138,32 +141,25 @@ do_clim <- dat_do_mg_per_l %>%
   ) %>% 
   mutate(
     variable = "dissolved_oxygen_uncorrected_mg_per_l",
-    season_min = round(mean - 3 * stdev, digits = 3),
-    season_max = round(mean + 3 * stdev, digits = 3)
+    season_min = round(mean - 3 * stdev, digits = 1),
+    season_max = round(mean + 3 * stdev, digits = 1)
   )
 
-# # quick check
-# do_thresh <- thresholds %>%
-#   filter(variable == "dissolved_oxygen_uncorrected_mg_per_l", qc_test == "climatology") %>%
-#   pivot_wider(names_from = threshold, values_from = threshold_value)
-# 
-# all.equal(do_clim$season_min, do_thresh$season_min)
-# all.equal(do_clim$season_max, do_thresh$season_max)
-
 p <- plot_mean_sd_season(do_clim, n_sd = 3, facet_county = FALSE) +
-  scale_y_continuous("Dissolved Oxygen (mg / L)")
+  scale_y_continuous("Dissolved Oxygen (mg/L)")
   
 ggplotly(p)
 
 ```
 
-### Figure 3
+#### Figure 3
 ```{r}
 #| warning: false
 #| fig-height: 10
-#| fig-cap:  Seasonal distribution of dissolved oxygen (mg/L) observations (binwidth = 0.5 mg/L). Dotted orange lines indicate the user thresholds. 
 #| label: fig-do-hist-clim
 #| message: false
+#| fig-cap: Monthly distribution of dissolved oxygen (mg/L) observations (binwidth = 0.5 mg/L). Dotted orange lines indicate the seasonal thresholds. 
+#| fig-alt: A separate panel for each month showing a histogram of dissolved oxygen observations (mg/L) measured in that month.
 
 p <- dat_do_mg_per_l %>% 
   plot_histogram(
@@ -176,21 +172,23 @@ p <- dat_do_mg_per_l %>%
   geom_vline(
     data = do_clim, aes(xintercept = season_max), linetype = 3, col = "#EDA247"
   ) +
-  scale_x_continuous("Dissolved Oxygen (mg / L)") +
+  scale_x_continuous("Dissolved Oxygen (mg/L)") +
   facet_wrap(~month,  ncol = 3) +
   theme_facet_plotly
 
 ggplotly(p, tooltip = "text")
 ```
 
-### Table 3
+#### Climatology Thresholds
 
-Table 2: Climatology statistics and thresholds for dissolved oxygen (mg/L).
 ```{r}
+#| label: tbl-do-climatology
+#| tbl-cap: Climatology statistics and thresholds for dissolved oxygen (mg/L).
+
 do_clim %>% 
   mutate( 
-    season_mean = round(mean, digits = 3), 
-    season_stdev = round(stdev, digits = 3)
+    season_mean = round(mean, digits = 1), 
+    season_stdev = round(stdev, digits = 1)
   ) %>% 
   select(month, season_mean, season_stdev, season_min, season_max) %>% 
   datatable(options = dt_options, rownames = FALSE)
@@ -198,20 +196,21 @@ do_clim %>%
 
 :::
 
-# Spike Test
+## Spike Test
 
-The distribution of the spike value is skewed right (@fig-do-spike-dist), and so several upper quartile values (90th, 95th, and 99.7th quartile) were evaluated to use as the $spike_{low}$. 
+The distribution of the [spike value](qc_tests.qmd#sec-spike-test) is skewed right (@fig-do-spike-dist), and so several upper percentile values (90th, 95th, and 99.7th percentile) were evaluated to use as the $\text{spike}_\text{low}$. 
 
-There were relatively few large single-value spikes in the dissolved oxygen (mg/L) data, and so the 99.7th quartile was selected to avoid false positives. $spike_{high}$ was defined as 3 * $spike_{low}$ to identify especially egregious spike values.
+There were relatively few large single-value spikes in the dissolved oxygen (mg/L) data, and so the 99.7th percentile was selected to avoid false positives. $\text{spike}_\text{high}$ was defined as $3 \times \text{spike}_\text{low}$ to identify especially egregious spike values.
 
 ::: panel-tabset
 
-### Figure 4
+#### Figure 4
 ```{r}
 #| warning: false
 #| fig-height: 4
-#| fig-cap: Distribution of the spike value of dissolved oxygen (gm / L) observations (binwidth = 0.1 mg/ L). Dotted orange line indicates $spike_{low}$; dotted red line indicates $spike_{high}$.
 #| label: fig-do-spike-dist
+#| fig-cap: Distribution of the spike value of dissolved oxygen (mg/L) observations (binwidth = 0.1 mg/L). Dotted orange line indicates $\text{spike}_\text{low}$ and dotted red line indicates $\text{spike}_{high}$.
+#| fig-alt: Histogram of the spike value calculated for dissolved oxygen (mg/L) observations.
 
 spike_thresh <- thresholds %>% 
   filter(variable == "dissolved_oxygen_uncorrected_mg_per_l", qc_test == "spike") %>% 
@@ -234,16 +233,18 @@ p <- dat_sp %>%
     user_thresh = spike_thresh$spike_low
   ) +
   geom_vline(xintercept = spike_thresh$spike_high, col = "#DB4325", linetype = 3) +
-  scale_x_continuous("Dissolved Oxygen (mg / L)\nSpike Value")
+  scale_x_continuous("Dissolved Oxygen (mg/L)\nSpike Value")
 
 ggplotly(p, tooltip = "text")
 
 ```
 
-### Table 4
+#### Spike Thresholds
 
-Table 4: Spike thresholds for dissolved oxygen (mg/L).
 ```{r}
+#| label: tbl-do-spike
+#| tbl-cap: Spike thresholds for dissolved oxygen (mg/L).
+
 spike_thresh %>% 
   select(spike_low, spike_high) %>% 
   datatable(options = dt_options2, rownames = FALSE)
@@ -251,24 +252,25 @@ spike_thresh %>%
 
 :::
 
-# Rolling Standard Deviation Test
+## Rolling Standard Deviation Test
 
-The distribution of rolling standard deviation is skewed right (@fig-do-roll-sd-dist), and so several upper quartile values were evaluated to use as the $rolling\_sd\_max$. 
+The distribution of [rolling standard deviation](qc_tests.qmd#sec-rolling-sd-test) is skewed right (@fig-do-roll-sd-dist), and so several upper percentile values were evaluated to use as the $\text{rolling\_sd}_\text{max}$. 
 
-The 90th, 95th, and 99.7th quartile values were each applied to the the raw data (no preliminary QC) and the results inspected. The 90th quartile was determined to be too stringent, as it generated false positives, while The 99.7th quartile was determined to be too lenient, as it resulted in false negatives. The 95th quartile identified 23% of the raw data (no preliminary QC) as [Suspect/Of Interest]{style="color: #EDA247;"} and was considered the most useful threshold.
+The 90th, 95th, and 99.7th percentile values were each applied to the raw data (no preliminary QC) and the results inspected. The 90th percentile was determined to be too stringent, as it generated false positives, while the 99.7th percentile was determined to be too lenient, as it resulted in false negatives. The 95th percentile identified 23% of the raw data (no preliminary QC) as Suspect/Of Interest and was considered the most useful threshold.
 
-As discussed for dissolved oxygen (percent saturation), this is a very high percent of observations to flag as [Suspect/Of Interest]{style="color: #EDA247;"}. However, it was anticipated that a large proportion of the dissolved oxygen observations would be flagged by this test because there were substantial biofouling signals identified during the preliminary QC process. CMAR is currently assessing options to reduce biofouling on dissolved oxygen sensors.
+As discussed for [dissolved oxygen (percent saturation)](do_thresholds.qmd), this is a very high percentage of observations to flag as Suspect/Of Interest. However, it was anticipated that a large proportion of the dissolved oxygen observations would be flagged by this test because there were substantial biofouling signals identified during the preliminary QC process. CMAR is currently assessing options to reduce biofouling on dissolved oxygen sensors.
 
-There is no [Fail]{style="color: #DB4325;"} flag for the Rolling Standard Deviation Test because of the natural variability of the Water Quality variables. However, CMAR recommends that the dissolved oxygen observations flagged as [Suspect/Of Interest]{style="color: #EDA247;"} should be considered [Suspect]{style="color: #EDA247;"}, and filtered out of most analyses. 
+There is no Fail flag for the Rolling Standard Deviation Test because of the natural variability of the Water Quality variables. 
 
 ::: panel-tabset
 
-### Figure 5
+#### Figure 5
 ```{r}
 #| warning: false
 #| fig-height: 4
-#| fig-cap: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (mg/L) observations (binwidth = 0.1 mg / L). Dotted orange line indicates $rolling\_sd\_max$.
 #| label: fig-do-roll-sd-dist
+#| fig-cap: Distribution of the 24-hour rolling standard deviation of dissolved oxygen (mg/L) observations (binwidth = 0.1 mg/L). Dotted orange line indicates $\text{rolling\_sd}_\text{max}$.
+#| fig-alt: Histogram of the rolling standard deviation calculated for dissolved oxygen (mg/L) observations.
 
 do_roll_sd <- thresholds %>% 
   filter(
@@ -290,10 +292,12 @@ ggplotly(p, tooltip = "text")
 
 ```
 
-### Table 5
+#### Rolling SD Thresholds
 
-Table 5: Rolling standard deviation threshold for dissolved oxygen (mg/L).
 ```{r}
+#| label: tbl-do-rolling-sd
+#| tbl-cap: Rolling standard deviation threshold for dissolved oxygen (mg/L).
+
 do_roll_sd %>% 
   datatable(options = dt_options2, rownames = FALSE)
 ```

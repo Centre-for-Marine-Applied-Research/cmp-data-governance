@@ -5,7 +5,7 @@ editor_options:
 ---
 
 ```{r, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, dpi = 600, fig.width = 8)
+knitr::opts_chunk$set(echo = FALSE, dpi = 200, fig.width = 8)
 
 library(dplyr)
 library(here)
@@ -57,16 +57,17 @@ beaver <- readRDS(here("pages/data-reprocessed/beaver_point_2019-10-20.rds")) %>
 
 This page provides an overview of where and how sensor depth is measured through the CMAR Coastal Monitoring Program.
 
-These figures and values include data collected up to the end of the 2022 field season and subjected to preliminary Quality Control.
+Figures and values on this page include data collected up to the end of the 2022 field season. This data underwent preliminary quality control (QC).
 
-# Locations
+## Locations
 
 CMAR has collected depth data from `r length(na.omit(unique(dat_depth$station)))` stations in `r length(na.omit(unique(dat_depth$county)))` counties (@fig-depth-station-locations). 
 
-```{r, fig-temp-station-units}
+```{r}
 #| label: fig-depth-station-locations
 #| fig-height: 7
-#| fig-cap: Approximate location of stations with temperature data. 
+#| fig-cap: Approximate location of stations with depth data. 
+#| fig-alt: Map of Nova Scotia showing the locations of stations with depth data, coloured by county.
 
 # interactive map
 st_locations %>% 
@@ -82,75 +83,77 @@ st_locations %>%
   
 ```
 
-# Number of Observations
+## Number of Observations
 
 ```{r}
-n_county_obs <- dat_depth_raw %>% 
+n_county_obs <- dat_depth %>% 
   group_by(county) %>%  
   summarise(n = n()) %>% 
   mutate(
-    n_percent = round(100 * n / sum(n), digits = 2),
+    n_percent = round(100 * n / sum(n), digits = 1),
     units = "m"
   ) %>% 
   arrange(desc(n_percent))
-
 ```
 
-A large proportion of depth records are from `r n_county_obs[1, "county"]$county` County (`r n_county_obs[1, "n_percent"]$n_percent`%) and `r n_county_obs[2, "county"]$county` County (`r n_county_obs[2, "n_percent"]$n_percent`%), while a small proportion are from `r n_county_obs[nrow(n_county_obs), "county"]$county` (`r n_county_obs[nrow(n_county_obs), "n_percent"]$n_percent`%) and `r n_county_obs[nrow(n_county_obs)-1, "county"]$county` (`r n_county_obs[nrow(n_county_obs)-1, "n_percent"]$n_percent`%) Counties (@fig-depth-n-obs). 
+A large proportion of depth records are from `r n_county_obs$county[1]` County (`r n_county_obs$n_percent[1]`%) and `r n_county_obs$county[2]` County (`r n_county_obs$n_percent[2]`%), while a small proportion are from `r n_county_obs$county[nrow(n_county_obs)]` (`r n_county_obs$n_percent[nrow(n_county_obs)]`%) and `r n_county_obs$county[nrow(n_county_obs) - 1]` (`r n_county_obs$n_percent[nrow(n_county_obs) - 1]`%) Counties (@fig-depth-n-obs). 
 
 
 ```{r}
 #| label: fig-depth-n-obs
 #| fig-height: 8
 #| fig-cap: The number of depth observations in each county. 
+#| fig-alt: Bar chart showing the number of depth observations in each county.
 
 p <- plot_n_obs_county(n_county_obs)
 
 ggplotly(p)
 ```
 
-# Sensors
+## Sensors
 
-CMAR does not deploy sensors specifically to measure depth; however, some of the sensors used to measure other variables also measure depth. Most VR2AR units and some aquaMeasure units (DOTs and SALs) provide depth measurements.
+CMAR does not deploy sensors specifically to measure depth; however, some of the sensors used to measure other variables also measure depth. Most VR2AR acoustic receivers and some aquaMeasure DOT and SAL sensors provide depth measurements.
 
-The aquaMeasure sensors are programmed to record depth every 10 minutes, and have a precision of 0.1 m. this typically results in a clear sinusoidal signal that would be expected from tidal changes (@fig-aquameasure).
+The aquaMeasure sensors are programmed to record depth every 10 minutes and have a precision of 0.1 m. This typically results in a clear sinusoidal signal expected from tidal changes (@fig-aquameasure).
 
 ```{r}
 #| fig-height: 4
-#| fig-cap: Measured depth observations from an aquaMeasure sensor deployed in January 2020 at Beaver Point.
 #| label: fig-aquameasure
 #| warning: false
+#| fig-cap: Measured depth observations from an aquaMeasure sensor deployed in January 2020 at Beaver Point.
+#| fig-alt: Depth measured every 10 minutes rising and falling in a regular tidal pattern. 
 
 p <- beaver %>% 
   filter(sensor_type == "aquameasure") %>% 
-  ss_ggplot_variables() +
-  facet_wrap(~sensor_type) +
-  geom_point(col = "grey20", size = 0.5) +
-  scale_y_continuous("sensor_depth_measured_m")
-   
+  ggplot(aes(timestamp_utc, sensor_depth_measured_m)) +
+  geom_point(col = "grey20", size = 0.5)  +
+  scale_y_continuous("Measured Sensor Depth (m)") +
+  scale_x_datetime("Timestamp (UTC)")
+ 
 ggplotly(p)
 
 ```
 
-In contrast, the VR2AR units only record depth every hour and have a resolution of 1 m. This results in very coarse depth measurements that don't clearly show a sinusoidal signal, and can result in apparent spikes (@fig-vemco). 
+In contrast, the VR2AR units only record depth every hour and have a precision of 1 m. This results in very coarse depth measurements that do not clearly show a sinusoidal signal and can result in apparent spikes (@fig-vemco). 
 
 ```{r}
 #| fig-height: 4
-#| fig-cap: Measured depth observations from a VR2AR sensor deployed in January 2020 at Beaver Point.
 #| label: fig-vemco
 #| warning: false
+#| fig-cap: Measured depth observations from a VR2AR sensor deployed in January 2020 at Beaver Point.
+#| fig-alt: Hourly depth measurements stepping in 1 m increments with no clear tidal pattern. 
 
 p <- beaver %>% 
   filter(sensor_type == "vr2ar") %>% 
-  ss_ggplot_variables() +
-  facet_wrap(~sensor_type) +
+  ggplot(aes(timestamp_utc, sensor_depth_measured_m)) +
   geom_point(col = "grey20", size = 0.5)  +
-  scale_y_continuous("sensor_depth_measured_m")
-   
+  scale_y_continuous("Measured Sensor Depth (m)") +
+  scale_x_datetime("Timestamp (UTC)")
+ 
 ggplotly(p)
 ```
 
-# Applications
+## Applications
 
-CMAR takes advantage of the opportunistic depth data for several applications, mostly related to quality control. For example, the measured depth is used to verify the estimated depth of sensors on the string in the Depth Crosscheck Test. Abrupt changes in depth can indicate that a sensor string moved during the deployment (e.g., due to a storm), while gradually increasing depth suggests the sensor sunk due to substantial biofouling. Human in the loop flags are added are added to deployments that are suspected to have moved or sunk. Measured depth can also provide an estimate of the tidal range in an area.
+CMAR takes advantage of the opportunistic depth data for several applications, mostly related to quality control. For example, the measured depth is used to verify the estimated depth of sensors on the string in the [Depth Crosscheck Test](qc_tests.qmd#sec-depth-crosscheck-test). Abrupt changes in depth can indicate that a sensor string moved during the deployment (e.g., due to a storm), while gradually increasing depth suggests the sensor sank due to substantial biofouling. Human-in-the-loop flags are added to deployments that are suspected to have moved or sunk. Measured depth can also provide an estimate of the tidal range in an area.
 

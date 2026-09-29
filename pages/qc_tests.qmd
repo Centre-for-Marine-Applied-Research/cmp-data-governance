@@ -6,7 +6,7 @@ editor_options:
 
 
 ```{r, include=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE, dpi = 600, fig.width = 8)
+knitr::opts_chunk$set(echo = FALSE, dpi = 200, fig.width = 8)
 
 library(DT)
 library(dplyr)
@@ -19,22 +19,9 @@ library(qaqcmar)
 theme_set(theme_light())
 
 dt_options1 <- list(
-      dom = 'ft',
+      dom = 't',
       paging = FALSE,
-      searching = FALSE,
-      pageLength = 500,
       columnDefs = list(list(className = 'dt-center', targets = "_all"))
-)
-
-dt_options2 <- list(
-      dom = 'Bft',
-      paging = FALSE,
-      searching = TRUE,
-      pageLength = 500,
-      scrollY = "500px",
-      scrollX = "500px",
-      columnDefs = list(list(className = 'dt-center', targets = "_all")),
-      buttons = c('copy', 'csv')
 )
 
 ```
@@ -44,11 +31,11 @@ This page describes the QC tests applied to the Coastal Monitoring Program Water
 
 # Thresholds 
 
-Where possible, the thresholds for each QC test and variable were determined from historical data, which provide a baseline of "normal" and "outlying" conditions. The historical data used here was the Coastal Monitoring Program Water Quality data sets submitted to the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?q=coastal%20monitoring&sortBy=relevance) in December 2022. Preliminary quality control measures (e.g., obvious outliers and suspected biofouling removed) were applied to these datasets before submission. Additional QC was applied where required throughout the thresholds analysis. For example, freshwater and other outlier stations were excluded to provide a better representation of "normal" coastal ocean conditions.
+Where possible, the thresholds for each QC test and variable were determined from historical data, which provide a baseline of "normal" and "outlying" conditions. The historical data used here was the Coastal Monitoring Program Water Quality data sets submitted to the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?q=coastal%20monitoring&sortBy=relevance) in December 2022. Preliminary quality control measures (e.g., obvious outliers and suspected biofouling removed) were applied to these data sets before submission. Additional QC was applied where required throughout the thresholds analysis. For example, freshwater and other outlier stations were excluded to provide a better representation of "normal" coastal ocean conditions.
 
 The historical data was reviewed carefully prior to calculating thresholds. Depending on the number of observations and the spatial and temporal resolution of observations, data was pooled together or separated into different groups (e.g., county, sensor type). 
 
-The distribution of observations was then reviewed to determined which statistics to use to quantify outlying conditions. The mean plus/minus 3 standard deviations was used for relatively normally distributed variables [@RN26877], while upper quartiles were used for skewed distributions. 
+The distribution of observations was then reviewed to determine which statistics to use to quantify outlying conditions. The mean plus/minus 3 standard deviations was used for relatively normally distributed variables [@RN26877], while upper percentiles were used for skewed distributions. 
 
 These thresholds may be re-evaluated in several years, when more data is available.
 
@@ -56,65 +43,68 @@ These thresholds may be re-evaluated in several years, when more data is availab
 
 Three QARTOD tests, two CMAR-developed tests, and a human in the loop test were applied to the CMAR Water Quality data.
 
-Automated QC tests were applied to each sensor string deployment using CMAR-developed R package [`qaqcmar`](https://github.com/centre-for-marine-applied-research/qaqcmar), which is available to view and install from GitHub. The human in the loop test was applied during data review using `qaqcmar` and the [qc_tests_water_quality](https://github.com/centre-for-marine-applied-research/qc_tests_water_quality) R repository, which is also available on GitHub.
+Automated QC tests were applied to each sensor string deployment using CMAR-developed R package [`qaqcmar`](https://github.com/centre-for-marine-applied-research/qaqcmar), which is available to view and install from GitHub. The Human in the Loop Test was applied during data review using `qaqcmar` and the [qc_tests_water_quality](https://github.com/centre-for-marine-applied-research/qc_tests_water_quality) R repository, which is also available on GitHub.
 
 ## Gross Range Test
 
-Following QARTOD, the Gross Range Test aims to identify observations that fall outside of the sensor measurement range (flagged [Fail]{style="color: #DB4325;"}) and observations that are statistical outliers (flagged [Suspect/Of Interest]{style="color: #EDA247;"}).
+Following QARTOD, the Gross Range Test aims to identify observations that fall outside of the sensor measurement range (flagged Fail) and observations that are statistical outliers (flagged Suspect/Of Interest).
 
-Thresholds for [failed]{style="color: #DB4325;"} observations are named $sensor_{min}$ and $sensor_{max}$, and are determined by the sensor specifications. CMAR assigned these thresholds for each variable and sensor based on information in the associated manuals.
+Thresholds for failed observations are named $\text{sensor}_\text{min}$ and $\text{sensor}_\text{max}$, and are determined by the sensor specifications. CMAR assigned these thresholds for each variable and sensor based on information in the associated manuals.
 
-Thresholds for [suspect/of interest]{style="color: #EDA247;"} observations are named $user_{min}$ and $user_{max}$. CMAR assigned these thresholds based on historical Coastal Monitoring Program data.
+Thresholds for Suspect/Of Interest observations are named $\text{user}_\text{min}$ and $\text{user}_\text{max}$. CMAR assigned these thresholds based on historical Coastal Monitoring Program data.
 
-Following the [OOI Biogeochemical Sensor Data: Best Practices & User Guide](https://docs.google.com/document/d/19pS5V1hsKAcSaGjwfmyrmZRIJFMXNAc4B0Uo9Akvmd4/edit#heading=h.u87btnaapb66), these thresholds were calculated from historical data as the mean +/- three standard deviations (@eq-user-min, @eq-user-max):
+These thresholds were calculated from historical data as the mean ± three standard deviations [@RN16736] (@eq-user-min, @eq-user-max):
 
 $$
-user_{min} = avg_{var} - 3 * stdev_{var}  
+\text{user}_\text{min} = \text{avg}_\text{var} - 3 \times \text{stdev}_\text{var}
 $$ {#eq-user-min}
 
+
 $$
-user_{max} = avg_{var} + 3 * stdev_{var}
+\text{user}_\text{max} = \text{avg}_\text{var} + 3 \times \text{stdev}_\text{var}
 $$ {#eq-user-max}
 
-where $avg_{var}$ is average of the variable of interest, and $stdev_{var}$ is the standard deviation of the variable of interest.
+where $\text{avg}_\text{var}$ is the average of the variable of interest, and $\text{stdev}_\text{var}$ is the standard deviation of the variable of interest.
 
 ## Climatological Test
 
-The Climatological Test is a variation of the Gross Range Test that accounts for seasonal variability. Under QARTOD, there is no [Fail]{style="color: #DB4325;"} flag associated with this test for temperature, salinity, or dissolved oxygen due to the dynamic nature of these variables [@RN24432; @RN26562]. Following this guidance, CMAR chose to assign the flag [Suspect/Of Interest]{style="color: #EDA247;"} to seasonal outliers for all variables.
+The Climatological Test is a variation of the Gross Range Test that accounts for seasonal variability. Under QARTOD, there is no Fail flag associated with this test for temperature, salinity, or dissolved oxygen due to the dynamic nature of these variables [@RN24432; @RN26562]. Following this guidance, CMAR chose to assign the flag Suspect/Of Interest to seasonal outliers for all variables.
 
-The Climatological thresholds are named $season_{min}$ and $season_{max}$. Following the [OOI Biogeochemical Sensor Data: Best Practices & User Guide](https://docs.google.com/document/d/19pS5V1hsKAcSaGjwfmyrmZRIJFMXNAc4B0Uo9Akvmd4/edit#heading=h.u87btnaapb66), seasons were defined based on the calendar month, and the thresholds were based on historical data. The monthly thresholds were defined similar to the Gross Range Test:
+The Climatological thresholds are named $\text{season}_\text{min}$ and $\text{season}_\text{max}$. Seasons were defined based on the calendar month [@RN16736], and the thresholds were based on historical data. The monthly thresholds were defined similarly to the Gross Range Test:
 
 $$
-season_{min} = avg_{season} - 3 * stdev_{season}  
+\text{season}_\text{min} = \text{avg}_\text{season} - 3 \times \text{stdev}_\text{season}  
 $$ {#eq-season-min}
 
 $$
-season_{max} = avg_{season} + 3 * stdev_{season}  
+\text{season}_\text{max} = \text{avg}_\text{season} + 3 \times \text{stdev}_\text{season}  
 $$ {#eq-season-max}
 
-The $avg_{season}$ was calculated as the average of all observations for a given month, and $stdev_{season}$ was the associated standard deviation. 
+The $\text{avg}_\text{season}$ was calculated as the average of all observations for a given month, and $\text{stdev}_\text{season}$ was the associated standard deviation. 
 
-Note that OOI used a more complex method (harmonic analysis, as described [here](https://github.com/oceanobservatories/qc-lookup)) to estimate $avg_{season}$ to account for spurious values. This was beyond the current scope of the CMAR Coastal Monitoring Program, but could be applied in future iterations of this threshold analysis.
+Note that the Ocean Observatories Initiative (OOI) used a more complex method to estimate $\text{avg}_\text{season}$ (harmonic analysis) to account for spurious values [@RN16736]. This was beyond the current scope of the CMAR Coastal Monitoring Program, but could be applied in future iterations of this threshold analysis.
 
 ## Spike Test {#sec-spike-test}
 
 The QARTOD Spike Test identifies single observations that are unexpectedly high (or low) based on the previous and following observations.
 
-For each observation, a $spike_{value}$ is calculated based on a spike reference ($spike_{ref}$). The $spike_{value}$ is compared to the Spike Test thresholds and the appropriate flag is assigned.
+For each observation, a $\text{spike}_\text{value}$ is calculated based on a spike reference ($\text{spike}_\text{ref}$). The $\text{spike}_\text{value}$ is compared to the Spike Test thresholds and the appropriate flag is assigned.
 
-$$spike_{ref} = (lead_{value} + lag_{value}) / 2$$
+$$\text{spike}_\text{ref} = (\text{lead}_\text{value} + \text{lag}_\text{value}) / 2$$
 
-$$spike_{value} = abs(value - spike_{ref})$$
+$$
+\text{spike}_\text{value} = \left| \text{value} - \text{spike}_\text{ref}\right |
+$$
 
-Due to the dependence on $lead_{value}$ and $lag_{value}$, the first and last observations in each sensor deployment will be flagged as [Not Evaluated]{style="color: #5A5A5A;"} because the $spike_{ref}$ cannot be calculated.
+Due to the dependence on $\text{lead}_\text{value}$ and $\text{lag}_\text{value}$, the first and last observations in each sensor deployment will be flagged as Not Evaluated because the $\text{spike}_\text{ref}$ cannot be calculated.
 
-As a simple example, consider several observations that increase linearly over time (Example 1: Figure). Here, the $spike_{ref}$ is always equal to the observed value, and so the $spike_{value}$ is zero, indicating no spike detected (Example 1: Table).
+As a simple example, consider several observations that increase linearly over time (Example 1: Figure). Here, the $\text{spike}_\text{ref}$ is always equal to the observed value, and so the $\text{spike}_\text{value}$ is zero, indicating no spike detected (Example 1: Table).
 
 ::: panel-tabset
 
 ### Example 1: Figure 
 ```{r, fig.height=4}
-flag_colours <- c("chartreuse4", "grey24", "#EDA247", "#DB4325")
+flag_colours <- c("#009200", "#3D3D3D", "#EDA247", "#DB4325")
 
 dat <- data.frame(time = 1:11, observation_value = seq(10, 20, 1)) %>% 
   mutate(
@@ -130,7 +120,7 @@ dat <- data.frame(time = 1:11, observation_value = seq(10, 20, 1)) %>%
 
 ggplot(dat, aes(time, observation_value, color = flag)) +
   geom_point(show.legend = TRUE) +
-  scale_colour_manual("Flag Value", values = flag_colours, drop = FALSE) +
+  scale_colour_manual("Flag", values = flag_colours, drop = FALSE) +
   guides(color = guide_legend(override.aes = list(size = 4))) 
 ```
 
@@ -140,7 +130,8 @@ datatable(dat, rownames = FALSE, options = dt_options1)
 ```
 :::
 
-Now consider that the value of one of these observations lies above or below the linear pattern (Example 2). This value will have a relatively high $spike_{value}$, and may be flagged, depending on the threshold values. Note that the observations on either side of the spike may also be flagged, but multiple spike values may not be (Example 2, Example 3). 
+Now consider that the value of one of these observations lies above or below the linear pattern (Example 2). This value will have a relatively high $\text{spike}_\text{value}$, and may be flagged, depending on the threshold values. Note that the observations on either side of the spike may also be flagged (Example 2). However, a spike made up of several consecutive high values may not be flagged, because the neighbouring values raise the spike reference (Example 3).
+
 
 ::: panel-tabset
 
@@ -162,7 +153,7 @@ dat2 <- dat %>%
 
 ggplot(dat2, aes(time, observation_value, colour = flag)) +
     geom_point(show.legend = TRUE) +
-    scale_colour_manual("Flag Value", values = flag_colours, drop = FALSE) +
+    scale_colour_manual("Flag", values = flag_colours, drop = FALSE) +
     guides(color = guide_legend(override.aes = list(size = 4))) 
 
 ```
@@ -192,7 +183,7 @@ dat3 <- dat %>%
 
 ggplot(dat3, aes(time, observation_value, colour = flag)) +
     geom_point(show.legend = TRUE) +
-    scale_colour_manual("Flag Value", values = flag_colours, drop = FALSE) +
+    scale_colour_manual("Flag", values = flag_colours, drop = FALSE) +
     guides(color = guide_legend(override.aes = list(size = 4))) 
 
 ```
@@ -204,23 +195,23 @@ datatable(dat3, rownames = FALSE, options = dt_options1)
 
 :::
 
-CMAR uses two Spike Test thresholds: $spike_{low}$ and $spike_{high}$. Observations greater than $spike_{low}$ but less than or equal to  $spike_{high}$ are assigned a flag of [Suspect/Of Interest]{style="color: #EDA247;"}. Values greater than $spike_{high}$ are assigned a flag of [Fail]{style="color: #DB4325;"}.
+CMAR uses two Spike Test thresholds: $\text{spike}_\text{low}$ and $\text{spike}_\text{high}$. Observations with a $\text{spike}_\text{value}$ greater than $\text{spike}_\text{low}$ but less than or equal to $\text{spike}_\text{high}$ are assigned a flag of Suspect/Of Interest. A $\text{spike}_\text{value}$ greater than $\text{spike}_\text{high}$ is assigned a flag of Fail.
 
-Values for $spike_{low}$ were selected based on the 99.7th quartile of the $spike_{value}$ for each variable. The quartile was used instead of the mean and standard deviation because the distribution of $spike_{value}$ skews right for each variable. The value for $spike_{high}$ was set to be 3 * $spike_{low}$. 
+Values for $\text{spike}_\text{low}$ were selected based on the 99.7th percentile of the $\text{spike}_\text{value}$ for each variable. The percentile was used instead of the mean and standard deviation because the distribution of $\text{spike}_\text{value}$ skews right for each variable. The value for $\text{spike}_\text{high}$ was set to be $3 \times \text{spike}_\text{low}$. 
 
-## Rolling Standard Deviation {#sec-rolling-sd-test}
+## Rolling Standard Deviation Test {#sec-rolling-sd-test}
 
-The Rolling Standard Deviation test was developed by CMAR to identify suspected biofouling in the dissolved oxygen data. The test assumes that there is a 24-hour oxygen cycle, with net oxygen production during the day, and net oxygen consumption during the night. Biofouling is suspected when the amplitude of this cycle, as measured by the standard deviation, increases above a threshold (@fig-do-cycle). 
+The Rolling Standard Deviation Test was developed by CMAR to identify suspected biofouling in the dissolved oxygen data. The test assumes that there is a 24-hour oxygen cycle, with net oxygen production during the day, and net oxygen consumption during the night. Biofouling is suspected when the amplitude of this cycle, as measured by the standard deviation, increases above a threshold (@fig-do-cycle). 
 
-The rolling standard deviation, $sd_{roll}$, was calculated from a 24-hour centered rolling window of observations, i.e., $T_{n-m/2}$, ... $T_{n-1}$, $T_{n}$, $T_{n+1}$, ... $T_{n+m/2}$.[^1]  The number of observations in each window depends on the sample interval, which is typically 10 minutes.
+The rolling standard deviation, $\text{sd}_\text{roll}$, was calculated from a 24-hour centered rolling window of observations, i.e., $T_{n-m/2}$, ... $T_{n-1}$, $T_{n}$, $T_{n+1}$, ... $T_{n+m/2}$.[^1]  The number of observations in each window depends on the sample interval, which is typically 10 minutes.
 
 [^1]: Note that a centered window is possible because the data is being post-processed after collection. Real-time data would likely use a left-aligned window, i.e., observations $T_{n}$, $T_{n-1}$, $T_{n-2}$ ... $T_{n-m}$.
 
 Although this test was designed to identify suspected biofouling, it was also applied to the other Water Quality variables as a general test of the standard deviation. In particular, it is expected to flag rapid changes in temperature due to fall storms and upwelling. 
 
-The Rolling Standard Deviation Test threshold is called $rolling\_sd\_max$. Observations greater than this threshold are flagged as [Suspect/Of Interest]{style="color: #EDA247;"}. This test does not flag any observations as [Fail]{style="color: #DB4325;"} because of the high natural variability in the Water Quality variables. Observations at the beginning and end of the deployment for which the rolling standard deviation cannot be calculated (i.e, observations less than 12 hours from the start or end of deployment) are flagged [Not Evaluated]{style="color: #5A5A5A;"}.  
+The Rolling Standard Deviation Test threshold is called $\text{rolling\_sd}_\text{max}$. Observations with $\text{sd}_\text{roll}$ greater than this threshold are flagged as Suspect/Of Interest. This test does not flag any observations as Fail because of the high natural variability in the Water Quality variables. Observations at the beginning and end of the deployment for which the rolling standard deviation cannot be calculated (i.e., observations less than 12 hours from the start or end of deployment) are flagged Not Evaluated.  
 
-Values for $rolling\_sd\_max$ were selected based on the mean and standard deviation or an upper quartile $sd_{roll}$, depending on the distribution of the variable observations.
+Values for $\text{rolling\_sd}_\text{max}$ were selected based on the mean and standard deviation or an upper percentile of $\text{sd}_\text{roll}$, depending on the distribution of the variable observations.
 
 ```{r}
 #| label: fig-do-cycle
@@ -242,23 +233,25 @@ ggplotly(p$dissolved_oxygen_percent_saturation$rolling_sd ) %>%
   layout(legend = list(x = 1.0, y = 0.6))
 ```
 
-## Depth Crosscheck
+## Depth Crosscheck Test {#sec-depth-crosscheck-test}
 
 The Depth Crosscheck Test was developed by CMAR to flag deployments where the measured sensor depth does not align with the estimated sensor depth in the `sensor_depth_at_low_tide_m` column. 
 
-For this test, the difference between the minimum value of measured depth and the estimated depth is calculated. If the absolute difference ($abs_{diff}$) between the two is greater than the threshold $depth\_diff\_max$, then test results in a flag of [Suspect/Of Interest]{style="color: #EDA247;"}.
+For this test, the difference between the minimum value of measured depth and the estimated depth is calculated. If the absolute difference ($\text{abs}_\text{diff}$) between the two is greater than the threshold $\text{depth\_diff}\_\text{max}$, then the test assigns a flag of Suspect/Of Interest.
 
-$$abs_{diff} = abs(sensor\_depth\_at\_low\_tide\_m - min\_measured\_depth\_m) $$
+$$
+\text{abs}_\text{diff} = \left|\text{sensor\_depth\_at\_low\_tide\_m} - \text{min\_measured\_depth\_m}\right| 
+$$
 
-$depth\_diff\_max$ was determined based on the 95th percentile of the $abs_{diff}$ from all deployments with measured depth data.
+$\text{depth\_diff}\_\text{max}$ was determined based on the 95th percentile of the $\text{abs}_\text{diff}$ from all deployments with measured depth data.
 
-Note that the Depth Crosscheck Test is a deployment-level test; all observations from a deployment will have the same depth crosscheck flag value. If there is more than one sensor on the string that measures depth, the worst (highest) flag will be assigned to the deployment. This is because a [Suspect/Of Interest]{style="color: #EDA247;"} flag for the Depth Crosscheck test is an indication that the sensor string was moored in an area deeper (or shallower) than expected. For example, if the string was moored in an area 10 m deeper than anticipated, all sensors will likely be 10 m deeper than recorded in the `sensor_depth_at_low_tide_m` column.
+Note that the Depth Crosscheck Test is a deployment-level test; all observations from a deployment will have the same depth crosscheck flag value. If there is more than one sensor on the string that measures depth, the worst (highest) flag will be assigned to the deployment. This is because a Suspect/Of Interest flag for the Depth Crosscheck test is an indication that the sensor string was moored in an area deeper (or shallower) than expected. For example, if the string was moored in an area 10 m deeper than anticipated, all sensors will likely be 10 m deeper than recorded in the `sensor_depth_at_low_tide_m` column.
 
-## Human in the Loop
+## Human in the Loop Test
 
-Human experts reviewed the results of the automated QC tests to identify poor quality observations that were not adequately flagged. Results of the automated tests were not changed, but an additional human in the loop flag of [Fail]{style="color: #DB4325;"} was added to identify these observations. 
+Human experts reviewed the results of the automated QC tests to identify poor quality observations that were not adequately flagged. Results of the automated tests were not changed, but an additional human-in-the-loop flag was added to identify these observations. 
 
-Situations where observations were upgraded to [Suspect/Of Interest]{style="color: #EDA247;"} or [Fail]{style="color: #DB4325;"} by human experts include:
+Situations where observations were flagged Suspect/Of Interest or Fail by human experts include:
 
 - Spikes with multiple observations (e.g., Spike Test Example 3 above).
 - Known issue with the deployment or sensor, for example:
