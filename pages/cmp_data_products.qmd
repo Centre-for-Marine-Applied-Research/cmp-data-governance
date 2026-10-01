@@ -4,7 +4,7 @@ title: "Data Products"
 
 Coastal Monitoring Program Water Quality data can be accessed from several platforms. Summary reports are available on the CMAR Data Access Map on the [Coastal Monitoring Program homepage](https://cmar.ca/coastal-monitoring-program/). Full data sets can be downloaded from the [Nova Scotia Open Data Portal](https://data.novascotia.ca/browse?tags=coastal+monitoring+program) and the Canadian Integrated Ocean Observing System (CIOOS) [Atlantic catalogue](https://catalogue.cioosatlantic.ca/organization/cmar).
 
-This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal. The CIOOS Atlantic data sets have a similar structure. Differences are noted in the Data Format section below.
+This page describes the structure of the data that can be downloaded from the Nova Scotia Open Data Portal. The CIOOS Atlantic data sets have a similar structure. 
 
 # County Datasets
 
@@ -71,12 +71,5 @@ dd |>
     )) |> 
   formatStyle(columns = names(dd), fontSize = "85%")
 ```
-
-
-## CIOOS Data Sets
-
-- text to come
-- can choose download format
-- csv splits the deployment_Range column
 
 
